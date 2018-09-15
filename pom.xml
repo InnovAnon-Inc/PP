@@ -275,10 +275,11 @@
 					<!-- <docfilessubdirs>true</docfilessubdirs> -->
 					<header><![CDATA[
 					<div style="overflow: auto">                
-    					<div style="float: left; display: block"><img 
+    					<div style="float: left; display: block"><a
+    						href="https://innovanon-inc.github.com/LHP"><img 
     						style="display: block; width: 20px; height: 20px" 
     						src="doc-files/logo.png" 
-    						alt="Shiva Tandava" /></div>
+    						alt="Shiva Tandava" /></a></div>
     					<div class="post-content">
         					<b>InnovAnon, Inc.</b>
    						</div>
