@@ -276,7 +276,7 @@
 					<header><![CDATA[
 					<div style="overflow: auto">                
     					<div style="float: left; display: block"><img 
-    						style="display: block" 
+    						style="display: block; width: 30px; height: 30px" 
     						src="doc-files/logo.png" 
     						alt="Shiva Tandava" /></div>
     					<div class="post-content">
