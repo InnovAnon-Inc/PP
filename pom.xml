@@ -266,14 +266,18 @@
 					<failOnError>false</failOnError>
 					<!-- <bootclasspath>${sun.boot.class.path}</bootclasspath> -->
 					<packagesheader><![CDATA[
+					<b>${project.name} Project</b><br />${project.version}
+                    ]]></packagesheader> 
+					<top>Free Code for a Free World</top>
+					<footer>Innovations Anonymous</footer> 
+					<header><![CDATA[
 					<a href="https://innovanon-inc.github.io/LHP/"><img
 						src="src/main/javadoc/logo.png"
 						alt="Shiva Tandava"
 						style="width: 100%; height: 100%"></a>
-					<b>${project.name} Project</b><br />${project.version}
-                    ]]></packagesheader> 
-					<top>Free Code for a Free World</top> <footer>Innovations Anonymous</footer> 
-					<header>InnovAnon, Inc.</header> 
+					<br />
+					<b>InnovAnon, Inc.</b>
+                    ]]></header> 
 
 	<!-- 
 	<stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile>
