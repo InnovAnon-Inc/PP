@@ -18,18 +18,7 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.rnd.struct;
-
 /**
- * The primary application, currently:
- * Hello world!
+ * @author gouldbergstein
  */
-public enum App {
-	/* no instances */;
-	/**
-	 * @param args command line arguments
-	 */
-	public static void main(String... args) {
-		System.out.println("Hello World!");
-	}
-}
+package com.innovanon.rnd.struct.bag;

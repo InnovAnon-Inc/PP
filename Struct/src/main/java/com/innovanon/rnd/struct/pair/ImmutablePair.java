@@ -18,18 +18,14 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.rnd.struct;
+package com.innovanon.rnd.struct.pair;
 
 /**
- * The primary application, currently:
- * Hello world!
+ * @author gouldbergstein
+ *
+ * @param <CAR> Contents of the Address part of Register number
+ * @param <CDR> Contents of the Decrement part of Register number
  */
-public enum App {
-	/* no instances */;
-	/**
-	 * @param args command line arguments
-	 */
-	public static void main(String... args) {
-		System.out.println("Hello World!");
-	}
+public interface ImmutablePair<CAR, CDR> extends Pair<CAR, CDR> {
+	// empty
 }
