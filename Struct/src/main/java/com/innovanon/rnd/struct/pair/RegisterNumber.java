@@ -34,7 +34,7 @@ package com.innovanon.rnd.struct.pair;
  * @param <CPR> Contents of the Prefix part of Register number
  * @param <CTR> Contents of the Tag part of Register number
  */
-public interface RegisterNumber<CAR, CDR, CPR, CTR> extends Pair<Pair<CAR, CDR>, Pair<CPR, CTR>> {
+public interface RegisterNumber<CAR, CDR, CPR, CTR> extends ImmutablePair<Pair<CAR, CDR>, Pair<CPR, CTR>> {
 	/**
 	 * @return the {@link #CAR}
 	 * @see Pair#getCar()

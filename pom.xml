@@ -18,10 +18,12 @@
 		<module>Struct</module>
 	</modules>
 	
+	<!-- 
 	<prerequisites>
 	<maven>3.5.4</maven>
 	</prerequisites>
-
+	-->
+	
 	<organization>
 	<name>InnovAnon, Inc. (Ministries)</name>
 	<url>https://innovanon-inc.github.io/LHP</url>
@@ -264,8 +266,8 @@
 					<failOnError>false</failOnError>
 					<!-- <bootclasspath>${sun.boot.class.path}</bootclasspath> -->
 					<packagesheader>${project.name} Project</packagesheader> 
-					<top>Free Code for a Free World</top> <footer>InnovAnon, Inc.</footer> 
-					<header>Innovations Anonymous</header> 
+					<top>Free Code for a Free World</top> <footer>Innovations Anonymous</footer> 
+					<header>InnovAnon, Inc.</header> 
 
 	<!-- 
 	<stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile>
