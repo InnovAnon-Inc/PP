@@ -576,7 +576,32 @@
 					<debug>${debug}</debug>
 				</configuration>
 			</plugin>
+			
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->
+			<plugin>
+      <inherited>true</inherited>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-enforcer-plugin</artifactId>
+      <version>3.0.0-M2</version>
+        <executions>
+          <execution>
+            <id>enforce-maven-3</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.5.4</version>
+                </requireMavenVersion>                
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+       </executions>
+     </plugin>
 		</plugins>
+		
 		<pluginManagement>
 			<plugins>
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
