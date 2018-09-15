@@ -274,12 +274,12 @@
 					<footer>Innovations Anonymous</footer> 
 					<!-- <docfilessubdirs>true</docfilessubdirs> -->
 					<header><![CDATA[
+					<b>InnovAnon, Inc.</b>
+					<br />
 					<a href="https://innovanon-inc.github.io/LHP"><img
 						src="doc-files/logo.png"
 						alt="Shiva Tandava"
-						style="width: 70px; height: 70px"></a>
-					<br />
-					<b>InnovAnon, Inc.</b>
+						style="width: 30px; height: 30px"></a>
                     ]]></header> 
 
 	<!-- 
