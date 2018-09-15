@@ -275,7 +275,7 @@
 					<docfilessubdirs>true</docfilessubdirs>
 					<header><![CDATA[
 					<a href="https://innovanon-inc.github.io/LHP"><img
-						src="src/main/javadoc/doc-files/logo.png"
+						src="doc-files/logo.png"
 						alt="Shiva Tandava"
 						style="width: 100%; height: 100%"></a>
 					<br />
