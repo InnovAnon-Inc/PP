@@ -272,12 +272,12 @@
                     ]]></packagesheader> 
 					<top>Free Code for a Free World</top>
 					<footer>Innovations Anonymous</footer> 
-					<docfilessubdirs>true</docfilessubdirs>
+					<!-- <docfilessubdirs>true</docfilessubdirs> -->
 					<header><![CDATA[
 					<a href="https://innovanon-inc.github.io/LHP"><img
 						src="doc-files/logo.png"
 						alt="Shiva Tandava"
-						style="width: 100%; height: 100%"></a>
+						style="width: 70px; height: 70px"></a>
 					<br />
 					<b>InnovAnon, Inc.</b>
                     ]]></header> 
