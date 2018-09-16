@@ -12,10 +12,45 @@
 	<artifactId>Struct</artifactId>
 	<name>Struct</name>
 	<description>Simple Data Structures</description>
-	
-	<!-- 
-	<prerequisites>
-	<maven>3.5.4</maven>
-	</prerequisites>
-	-->
+
+	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
+
+	<dependencies>
+		<dependency>
+			<groupId>com.innovanon.rnd</groupId>
+			<artifactId>Aspect</artifactId>
+		</dependency>
+	</dependencies>
+<!-- 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<configuration>
+					<aspectLibraries>
+						<aspectLibrary>
+							<groupId>com.innovanon.rnd</groupId>
+							<artifactId>Aspect</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+						</aspectLibrary>
+					</aspectLibraries>
+ -->
+ 
+					<!-- <weaveDependencies> <weaveDependency> <groupId>com.innovanon.rnd</groupId> 
+						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </weaveDependency> 
+						</weaveDependencies> -->
+<!-- 
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+-->
 </project>
