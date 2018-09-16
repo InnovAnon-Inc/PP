@@ -16,7 +16,7 @@ about the software, its performance or its conformity to any specification.
 
 */
 
-package com.innovanon.rnd.tracing;
+package com.innovanon.rnd.aspect;
 
 import com.innovanon.rnd.App;
 
@@ -27,7 +27,7 @@ import com.innovanon.rnd.App;
 public aspect TraceMyClasses extends Trace {
     pointcut myClass(Object obj): 
 	this(obj) && 
-	(within(com.innovanon.rnd.*));
+	(within(com.innovanon.rnd.struct.*));
 
     /**
      * A main function for testing the trace aspect.

@@ -16,7 +16,7 @@
 	
 	<modules>
 		<module>Struct</module>
-	</modules>
+		<module>Aspect</module></modules>
 	
 	<!-- 
 	<prerequisites>
@@ -273,6 +273,7 @@
 					<top>Free Code for a Free World</top>
 					<footer>Innovations Anonymous</footer> 
 					<!-- <docfilessubdirs>true</docfilessubdirs> -->
+					
 					<header><![CDATA[
 					<div style="overflow: auto">                
     					<div style="float: left; display: block"><a
@@ -456,6 +457,13 @@
 					<complianceLevel>${java.version}</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
+					<aspectLibraries>
+					<aspectLibrary>
+						<groupId>${project.groupId}</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</aspectLibrary>
+					</aspectLibraries>
 				</configuration>
 				<executions>
 					<execution>

@@ -21,4 +21,4 @@
 /**
  * @author gouldbergstein
  */
-package com.innovanon.rnd.tracing;
+package com.innovanon.rnd.aspect;

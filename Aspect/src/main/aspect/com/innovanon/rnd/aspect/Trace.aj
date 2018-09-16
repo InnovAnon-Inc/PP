@@ -16,7 +16,7 @@ about the software, its performance or its conformity to any specification.
 
 */
 
-package com.innovanon.rnd.tracing;
+package com.innovanon.rnd.aspect;
 
 import java.io.PrintStream;
 

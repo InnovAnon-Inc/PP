@@ -20,9 +20,13 @@
  */
 package com.innovanon.rnd.struct;
 
+import java.util.Random;
+
+import com.innovanon.rnd.struct.bag.Bag;
+import com.innovanon.rnd.struct.bag.BagImpl;
+
 /**
- * The primary application, currently:
- * Hello world!
+ * The primary application, currently: Hello world!
  */
 public enum App {
 	/* no instances */;
@@ -31,5 +35,10 @@ public enum App {
 	 */
 	public static void main(String... args) {
 		System.out.println("Hello World!");
+
+		Random random = new Random();
+		String[] copy = { "abc", "def", "ghi", "jkl", "mno" };
+		Bag<String> bag = new BagImpl<String>(random, copy);
+		System.out.println(bag);
 	}
 }
