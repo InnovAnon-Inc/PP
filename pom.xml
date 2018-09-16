@@ -198,6 +198,12 @@
 			<!-- <scope>runtime</scope> -->
 		</dependency>
 		
+		<dependency>
+							<groupId>com.innovanon.rnd.struct</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -459,7 +465,7 @@
 					<showWeaveInfo>true</showWeaveInfo>
 					<aspectLibraries>
 					<aspectLibrary>
-						<groupId>${project.groupId}</groupId>
+						<groupId>com.innovanon.rnd.struct</groupId>
 						<artifactId>Aspect</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</aspectLibrary>
@@ -480,6 +486,12 @@
 						<groupId>org.aspectj</groupId>
 						<artifactId>aspectjtools</artifactId>
 						<version>${aspectj.version}</version>
+					</dependency>
+					
+					<dependency>
+						<groupId>com.innovanon.rnd.struct</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
 				</dependencies>
 			</plugin>
