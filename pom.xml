@@ -54,9 +54,7 @@
 			</roles>
 			<timezone>America/Chicago</timezone>
 			<properties>
-			<picUrl><![CDATA[
-			https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/18951149_1342664659102711_9050074988052272314_n.jpg?_nc_cat=0&oh=46921cd58e1c55493c816294161fbf3e&oe=5C16D962
-			]]></picUrl>
+			<picUrl>https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/18951149_1342664659102711_9050074988052272314_n.jpg</picUrl>
 			</properties>
 		</developer>
 	</developers>
