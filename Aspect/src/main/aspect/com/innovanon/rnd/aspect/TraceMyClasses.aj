@@ -18,8 +18,6 @@ about the software, its performance or its conformity to any specification.
 
 package com.innovanon.rnd.aspect;
 
-import com.innovanon.rnd.App;
-
 /**
  * This class concretizes the abstract crosscut in Trace, 
  * applying the trace facility to these application classes.
@@ -27,7 +25,7 @@ import com.innovanon.rnd.App;
 public aspect TraceMyClasses extends Trace {
     pointcut myClass(Object obj): 
 	this(obj) && 
-	(within(com.innovanon.rnd.struct.*));
+	(within(com.innovanon.rnd.*));
 
     /**
      * A main function for testing the trace aspect.
