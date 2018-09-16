@@ -16,7 +16,7 @@
 	
 	<modules>
 		<module>Struct</module>
-		<module>Aspect</module></modules>
+	</modules>
 	
 	<!-- 
 	<prerequisites>
@@ -197,13 +197,13 @@
 			<version>${aspectj.version}</version>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
-		<!-- 
+		<!--
 		<dependency>
 							<groupId>com.innovanon.rnd</groupId>
 						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+						</dependency>
 		-->
+		
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -215,6 +215,15 @@
 	
 	<dependencyManagement>
 		<dependencies>
+				
+		<!--
+		<dependency>
+							<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		-->
+		
 		<!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
 		<dependency>
 			<groupId>org.reflections</groupId>
@@ -275,7 +284,7 @@
 					<!-- TODO donations, chat help -->
 					<packagesheader><![CDATA[
 					<b>${project.name} Project</b><br />${project.version}
-                    ]]></packagesheader> 
+                    ]]></packagesheader>
 					<top>Free Code for a Free World</top>
 					<footer>Innovations Anonymous</footer> 
 					<!-- <docfilessubdirs>true</docfilessubdirs> -->
@@ -292,6 +301,8 @@
    						</div>
 					</div>
                     ]]></header> 
+                    
+                
 
 	<!-- 
 	<stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile>
@@ -463,7 +474,7 @@
 					<complianceLevel>${java.version}</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
-					<!-- 
+					 <!-- 
 					<aspectLibraries>
 					<aspectLibrary>
 						<groupId>com.innovanon.rnd</groupId>
@@ -471,6 +482,15 @@
 						<version>0.0.1-SNAPSHOT</version>
 					</aspectLibrary>
 					</aspectLibraries>
+					 -->
+					 <!--
+					<weaveDependencies>
+					<weaveDependency>
+						<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</weaveDependency>
+					</weaveDependencies>
 					-->
 				</configuration>
 				<executions>
@@ -489,13 +509,13 @@
 						<artifactId>aspectjtools</artifactId>
 						<version>${aspectj.version}</version>
 					</dependency>
-					<!-- 
+					 <!--
 					<dependency>
 						<groupId>com.innovanon.rnd</groupId>
 						<artifactId>Aspect</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
-					-->
+				-->
 				</dependencies>
 			</plugin>
 
@@ -634,7 +654,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.5.4</version>
+                  <version>3.5.3</version>
                 </requireMavenVersion>                
               </rules>
               <fail>true</fail>
