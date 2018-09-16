@@ -18,4 +18,28 @@
 	<maven>3.5.4</maven>
 	</prerequisites>
 	-->
+	<build>
+	<plugins>
+				<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<configuration>
+					<aspectLibraries>
+					<aspectLibrary>
+						<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</aspectLibrary>
+					</aspectLibraries>
+				</configuration>
+				<dependencies>			
+					<dependency>
+						<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Aspect</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+	</plugins>
+	</build>
 </project>
