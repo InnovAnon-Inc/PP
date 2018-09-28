@@ -5,4 +5,4 @@
  * @author gouldbergstein
  *
  */
-package com.innovanon.simon.util.reflection;
+package com.innovanon.rnd.util.reflection;
