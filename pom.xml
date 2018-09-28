@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.innovanon.rnd</groupId>
@@ -20,6 +18,10 @@
 		<module>Util</module>
 		<module>TS</module>
 		<module>Demo</module>
+    <module>HH</module>
+    <module>Math</module>
+    <module>Refl</module>
+    <module>RI</module>
 	</modules>
 	
 	<!-- 
@@ -223,7 +225,18 @@
 	
 	<dependencyManagement>
 		<dependencies>
-				
+		
+		<dependency>
+							<groupId>com.innovanon.rnd</groupId>
+						<artifactId>HH</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+							<groupId>com.innovanon.rnd</groupId>
+						<artifactId>Math</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+		</dependency>		
 		 
 		<dependency>
 							<groupId>com.innovanon.rnd</groupId>
@@ -717,7 +730,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>

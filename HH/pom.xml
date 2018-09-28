@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.innovanon.rnd</groupId>
+		<artifactId>PP</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>HH</artifactId>
+	<name>HH</name>
+	<description><![CDATA[
+  	Hafren Haver Musical Library<br />
+  	Hafren:
+  	<cite>
+		wikipedia:
+	</cite>
+	<blockquote cite="https://en.wikipedia.org/wiki/Hafren">
+		Hafren was a legendary British princess who was drowned in the River
+		Severn.... Hafren is the eponym of the Severn... (recorded as early as
+		the 2nd century in the Latinized form Sabrina).
+	</blockquote><br />  	
+  	Haver:
+  	<cite>
+		dictionary:
+	</cite>
+	<blockquote cite="https://www.thefreedictionary.com/haver">
+		dialect Scot and Northern English to talk nonsense; babble
+	</blockquote>
+  ]]></description>
+  <dependencies>
+  	<dependency>
+  	<groupId>com.innovanon.rnd</groupId>
+  	<artifactId>Math</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+  <groupId>com.explodingart</groupId>
+  <artifactId>jmusic</artifactId>
+  <version>1.6.4.1</version>
+</dependency>
+  </dependencies>
+</project>

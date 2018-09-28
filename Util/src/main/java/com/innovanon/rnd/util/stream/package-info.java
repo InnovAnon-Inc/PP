@@ -5,4 +5,4 @@
  * @author gouldbergstein
  *
  */
-package com.innovanon.simon.util.stream;
+package com.innovanon.rnd.util.stream;

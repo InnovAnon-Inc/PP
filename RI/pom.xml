@@ -7,39 +7,18 @@
     <artifactId>PP</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>Demo</artifactId>
-  <name>Demo</name>
-  <description>Applications which Demonstrate our Libraries' Usage and Abilities</description>
+  <artifactId>RI</artifactId>
+  <name>RI</name>
+  <description>Random Instantiators</description>
   
   <dependencies>
   <dependency>
   <groupId>com.innovanon.rnd</groupId>
-  <artifactId>Aspect</artifactId>
-  </dependency>
-  
-  <dependency>
-  <groupId>com.innovanon.rnd</groupId>
   <artifactId>Struct</artifactId>
   </dependency>
-  
-  <dependency>
-  <groupId>com.innovanon.rnd</groupId>
-  <artifactId>TS</artifactId>
-  </dependency>
-  
   <dependency>
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>Util</artifactId>
-  </dependency>
-  
-    <dependency>
-  <groupId>com.innovanon.rnd</groupId>
-  <artifactId>HH</artifactId>
-  </dependency>
-  
-    <dependency>
-  <groupId>com.innovanon.rnd</groupId>
-  <artifactId>Math</artifactId>
   </dependency>
   </dependencies>
 </project>
