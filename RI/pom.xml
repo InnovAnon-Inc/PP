@@ -20,5 +20,13 @@
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>Util</artifactId>
   </dependency>
+  <dependency>
+  <groupId>com.innovanon.rnd</groupId>
+  <artifactId>Func</artifactId>
+  </dependency>
+   <dependency>
+  <groupId>com.innovanon.rnd</groupId>
+  <artifactId>Rand</artifactId>
+  </dependency>
   </dependencies>
 </project>

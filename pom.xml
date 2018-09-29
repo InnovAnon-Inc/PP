@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.innovanon.rnd</groupId>
@@ -11,28 +13,26 @@
 	<description>InnovAnon, Inc. (Ministries) Corporate Parent POM for Maven</description>
 	<url>http://lmaddox.chickenkiller.com</url>
 	<inceptionYear>2010</inceptionYear>
-	
+
 	<modules>
 		<module>Struct</module>
 		<module>Aspect</module>
 		<module>Util</module>
 		<module>TS</module>
 		<module>Demo</module>
-    <module>HH</module>
-    <module>Math</module>
-    <module>Refl</module>
-    <module>RI</module>
+		<module>HH</module>
+		<module>Math</module>
+		<module>Refl</module>
+		<module>RI</module>
+		<module>Func</module>
+		<module>Rand</module>
 	</modules>
-	
-	<!-- 
-	<prerequisites>
-	<maven>3.5.4</maven>
-	</prerequisites>
-	-->
-	
+
+	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
+
 	<organization>
-	<name>InnovAnon, Inc. (Ministries)</name>
-	<url>https://innovanon-inc.github.io/LHP</url>
+		<name>InnovAnon, Inc. (Ministries)</name>
+		<url>https://innovanon-inc.github.io/LHP</url>
 	</organization>
 
 	<developers>
@@ -56,20 +56,20 @@
 			</roles>
 			<timezone>America/Chicago</timezone>
 			<properties>
-			<picUrl>https://c2.staticflickr.com/4/3545/3407135068_d872bb371f.jpg</picUrl>
+				<picUrl>https://c2.staticflickr.com/4/3545/3407135068_d872bb371f.jpg</picUrl>
 			</properties>
 		</developer>
 	</developers>
 	<contributors>
 	</contributors>
-	
+
 	<licenses>
-	<license>
-	<comments>Free Code for a Free World</comments>
-	<distribution>repo</distribution>
-	<name>The Unlicense</name>
-	<url>https://choosealicense.com/licenses/unlicense</url>
-	</license>
+		<license>
+			<comments>Free Code for a Free World</comments>
+			<distribution>repo</distribution>
+			<name>The Unlicense</name>
+			<url>https://choosealicense.com/licenses/unlicense</url>
+		</license>
 	</licenses>
 
 	<mailingLists>
@@ -106,11 +106,11 @@
 	<distributionManagement>
 		<repository>
 			<id>localDropbox</id>
-			<url>file:///opt/files/Dropbox/mvn-repo</url>
+			<url>file://${user.home}/Dropbox/mvn-repo</url>
 		</repository>
 		<site>
 			<id>localDropbox</id>
-			<url>file:///opt/files/Dropbox/www/docs</url>
+			<url>file://${user.home}/Dropbox/www/docs</url>
 		</site>
 	</distributionManagement>
 
@@ -153,8 +153,55 @@
 				<toolsjar>${java.home}/lib/tools.jar</toolsjar>
 			</properties>
 		</profile>
+
+		<profile>
+			<id>only-eclipse</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!--This plugin's configuration is used to store Eclipse m2e settings 
+							only. It has no influence on the Maven build itself. -->
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>
+													org.codehaus.gmavenplus
+												</groupId>
+												<artifactId>
+													gmavenplus-plugin
+												</artifactId>
+												<versionRange>
+													[1.6.1,)
+												</versionRange>
+												<goals>
+													<goal>execute</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
 	</profiles>
-	
+
 	<properties>
 		<detail>false</detail>
 		<verbose>true</verbose>
@@ -207,13 +254,9 @@
 			<version>${aspectj.version}</version>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
-		<!--
-		<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Aspect</artifactId>
-						</dependency>
-		-->
-		
+		<!-- <dependency> <groupId>com.innovanon.rnd</groupId> <artifactId>Aspect</artifactId> 
+			</dependency> -->
+
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -222,71 +265,84 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
-		
-		<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>HH</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Math</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>		
-		 
-		<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-				<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Struct</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-				<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Util</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-						<dependency>
-							<groupId>com.innovanon.rnd</groupId>
-						<artifactId>TS</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		 
-		
-		<!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>${reflections.version}</version>
-		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>${groovy.version}</version>
-			<scope>runtime</scope>
-			<type>pom</type>
-		</dependency>
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>HH</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 
-		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
-		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>${dom4j.version}</version>
-		</dependency>
-	</dependencies>
-</dependencyManagement>
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Math</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Aspect</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Struct</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Util</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Func</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Rand</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>TS</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+
+			<!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+			<dependency>
+				<groupId>org.reflections</groupId>
+				<artifactId>reflections</artifactId>
+				<version>${reflections.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>${groovy.version}</version>
+				<scope>runtime</scope>
+				<type>pom</type>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<reporting>
 		<plugins>
@@ -314,20 +370,20 @@
 					<!-- <stylesheet>java</stylesheet> -->
 					<source>${java.version}</source>
 					<sourcetab>${indentSize}</sourcetab>
-					
+
 					<stylesheetfile>src/main/javadoc/javadoc_stylesheet.css</stylesheetfile>
 
 					<failOnError>false</failOnError>
 					<!-- <bootclasspath>${sun.boot.class.path}</bootclasspath> -->
-					
+
 					<!-- TODO donations, chat help -->
 					<packagesheader><![CDATA[
 					<b>${project.name} Project</b><br />${project.version}
                     ]]></packagesheader>
 					<top>Free Code for a Free World</top>
-					<footer>Innovations Anonymous</footer> 
+					<footer>Innovations Anonymous</footer>
 					<!-- <docfilessubdirs>true</docfilessubdirs> -->
-					
+
 					<header><![CDATA[
 					<div style="overflow: auto">                
     					<div style="float: left; display: block"><a
@@ -339,28 +395,31 @@
         					<b>InnovAnon, Inc.</b>
    						</div>
 					</div>
-                    ]]></header> 
-                    
-                
+                    ]]></header>
 
-	<!-- 
-	<stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile>
-	<bootclasspath>${sun.boot.class.path}</bootclasspath>
- -->
+
+
+					<!-- <stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile> 
+						<bootclasspath>${sun.boot.class.path}</bootclasspath> -->
 					<!-- <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet> <docletArtifact> --><!-- https://search.maven.org/artifact/org.umlgraph/doclet -->
 					<!-- <groupId>org.umlgraph</groupId> <artifactId>doclet</artifactId> 
 						<version>5.1</version> </docletArtifact> <additionalparam> -inferrel -attributes 
 						-types -visibility -inferdep -quiet -hide java.* -collpackages java.util.* 
 						-qualify -postfixpackage -nodefontsize 9 -nodefontpackagesize 7 </additionalparam> -->
 					<!-- https://search.maven.org/artifact/org.umlgraph/umlgraph/5.6.6/jar -->
-					 <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet> <docletArtifact> 
-						<groupId>org.umlgraph</groupId> <artifactId>umlgraph</artifactId> <version>5.6.6</version> 
-						</docletArtifact> <additionalparam>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>umlgraph</artifactId>
+						<version>5.6.6</version>
+					</docletArtifact>
+					<additionalparam>
 						-views -all
-						</additionalparam> <useStandardDocletOptions>true</useStandardDocletOptions> 
+					</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
 				</configuration>
 			</plugin>
-			
+
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -368,11 +427,11 @@
 				<version>${maven-project-info-reports-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-				<!--  <licenseFileEncoding>UTF-8</licenseFileEncoding>				 -->
+					<!-- <licenseFileEncoding>UTF-8</licenseFileEncoding> -->
 				</configuration>
 			</plugin>
-			
-						<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
+
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
@@ -387,20 +446,15 @@
 				<version>${maven-surefire-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-				<runOrder>random</runOrder>				
+					<runOrder>random</runOrder>
 				</configuration>
 			</plugin>
 
 			<!-- https://mvnrepository.com/artifact/com.atlassian.maven.plugins/maven-clover2-plugin -->
-			<!-- 
-			<plugin>
-				<groupId>com.atlassian.maven.plugins</groupId>
-				<artifactId>maven-clover2-plugin</artifactId>
-				<version>${maven-clover2-plugin.version}</version>
-				<inherited>true</inherited>
-			</plugin>
-			 -->
-			 
+			<!-- <plugin> <groupId>com.atlassian.maven.plugins</groupId> <artifactId>maven-clover2-plugin</artifactId> 
+				<version>${maven-clover2-plugin.version}</version> <inherited>true</inherited> 
+				</plugin> -->
+
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -410,17 +464,14 @@
 				<configuration>
 					<targetjdk>${java.version}</targetjdk>
 					<rulesets>
-					<!-- 
-						<ruleset>/rulesets/basic.xml</ruleset>
-						<ruleset>/rulesets/controversial.xml</ruleset>
-					-->
+						<!-- <ruleset>/rulesets/basic.xml</ruleset> <ruleset>/rulesets/controversial.xml</ruleset> -->
 						<ruleset>/category/java/bestpractices.xml</ruleset>
 					</rulesets>
 					<format>xml</format>
 					<linkXref>true</linkXref>
-					<!-- <sourceEncoding>UTF-8</sourceEncoding>-->
+					<!-- <sourceEncoding>UTF-8</sourceEncoding> -->
 					<minimumTokens>100</minimumTokens>
-					<!-- <aggregate></aggregate>-->
+					<!-- <aggregate></aggregate> -->
 					<analysisCache>true</analysisCache>
 					<benchmark>true</benchmark>
 					<includeTests>true</includeTests>
@@ -428,7 +479,7 @@
 					<verbose>${verbose}</verbose>
 				</configuration>
 			</plugin>
-	
+
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-changes-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -436,28 +487,23 @@
 				<version>${maven-changes-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-				<addActionDate>true</addActionDate>
-				<generateJiraAnnouncement>true</generateJiraAnnouncement>
-				<includeOpenIssues>true</includeOpenIssues>
-				<onlyMilestoneIssues>false</onlyMilestoneIssues>
-				<smtpHost>localhost</smtpHost>
-				<!-- <sslMode>true</sslMode> -->
-				<!--<startTls>true</startTls> -->
+					<addActionDate>true</addActionDate>
+					<generateJiraAnnouncement>true</generateJiraAnnouncement>
+					<includeOpenIssues>true</includeOpenIssues>
+					<onlyMilestoneIssues>false</onlyMilestoneIssues>
+					<smtpHost>localhost</smtpHost>
+					<!-- <sslMode>true</sslMode> -->
+					<!--<startTls>true</startTls> -->
 				</configuration>
 			</plugin>
-			
+
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>changelog-maven-plugin</artifactId> 
 				<inherited>true</inherited></plugin> -->
-			
+
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-changelog-plugin -->
-			<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-changelog-plugin</artifactId>
-				<version>${maven-changelog-plugin.version}</version>
-				<inherited>true</inherited>
-			</plugin>
-			 -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-changelog-plugin</artifactId> 
+				<version>${maven-changelog-plugin.version}</version> <inherited>true</inherited> 
+				</plugin> -->
 
 			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/taglist-maven-plugin -->
 			<plugin>
@@ -470,7 +516,7 @@
 	</reporting>
 
 	<build>
-	<defaultGoal>site-deploy deploy</defaultGoal>	
+		<defaultGoal>site-deploy deploy</defaultGoal>
 		<plugins>
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
 			<plugin>
@@ -513,24 +559,12 @@
 					<complianceLevel>${java.version}</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
-					 <!-- 
-					<aspectLibraries>
-					<aspectLibrary>
-						<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-					</aspectLibrary>
-					</aspectLibraries>
-					 -->
-					 <!--
-					<weaveDependencies>
-					<weaveDependency>
-						<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-					</weaveDependency>
-					</weaveDependencies>
-					-->
+					<!-- <aspectLibraries> <aspectLibrary> <groupId>com.innovanon.rnd</groupId> 
+						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </aspectLibrary> 
+						</aspectLibraries> -->
+					<!-- <weaveDependencies> <weaveDependency> <groupId>com.innovanon.rnd</groupId> 
+						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </weaveDependency> 
+						</weaveDependencies> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -548,13 +582,8 @@
 						<artifactId>aspectjtools</artifactId>
 						<version>${aspectj.version}</version>
 					</dependency>
-					 <!--
-					<dependency>
-						<groupId>com.innovanon.rnd</groupId>
-						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-					</dependency>
-				-->
+					<!-- <dependency> <groupId>com.innovanon.rnd</groupId> <artifactId>Aspect</artifactId> 
+						<version>0.0.1-SNAPSHOT</version> </dependency> -->
 				</dependencies>
 			</plugin>
 
@@ -627,29 +656,29 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
-			 <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>${maven-source-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-				<includePom>true</includePom>
+					<includePom>true</includePom>
 				</configuration>
-				  <executions>
-    <execution>
-      <id>attach-sources</id>
-      <goals>
-        <goal>jar</goal>
-      </goals>
-    </execution>
-  </executions>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-  
-  <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->  
+
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
 			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>${maven-assembly-plugin.version}</version>
 				<inherited>true</inherited>
@@ -660,9 +689,9 @@
 				</configuration>
 			</plugin>
 
-<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<inherited>true</inherited>
@@ -671,73 +700,38 @@
 					<optimize>true</optimize>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<!-- <encoding>UTF-8</encoding>-->
+					<!-- <encoding>UTF-8</encoding> -->
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<!-- <release></release>  -->
+					<!-- <release></release> -->
 					<debug>${debug}</debug>
 				</configuration>
 			</plugin>
-			
+
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->
 			<plugin>
-      <inherited>true</inherited>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-enforcer-plugin</artifactId>
-      <version>3.0.0-M2</version>
-        <executions>
-          <execution>
-            <id>enforce-maven-3</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <version>3.5.3</version>
-                </requireMavenVersion>                
-              </rules>
-              <fail>true</fail>
-            </configuration>
-          </execution>
-       </executions>
-     </plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.0.0-M2</version>
+				<executions>
+					<execution>
+						<id>enforce-maven-3</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.5.3</version>
+								</requireMavenVersion>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-		
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.gmavenplus
-										</groupId>
-										<artifactId>
-											gmavenplus-plugin
-										</artifactId>
-										<versionRange>
-											[1.6.1,)
-										</versionRange>
-										<goals>
-											<goal>execute</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+
+
 	</build>
 </project>
