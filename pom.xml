@@ -106,11 +106,17 @@
 	<distributionManagement>
 		<repository>
 			<id>localDropbox</id>
+			<!-- 
 			<url>file://${user.home}/Dropbox/mvn-repo</url>
+			 -->
+			 <url>file:///opt/files/Dropbox/mvn-repo</url>
 		</repository>
 		<site>
 			<id>localDropbox</id>
+			<!--
 			<url>file://${user.home}/Dropbox/www/docs</url>
+			-->
+			<url>file:///opt/files/Dropbox/www/docs</url>
 		</site>
 	</distributionManagement>
 
