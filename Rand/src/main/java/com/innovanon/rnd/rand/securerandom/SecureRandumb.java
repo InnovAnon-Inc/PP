@@ -29,6 +29,13 @@ public class SecureRandumb implements Randumb {
 	}
 
 	/**
+	 * 
+	 */
+	public SecureRandumb() {
+		this(new SecureRandom());
+	}
+
+	/**
 	 * @return
 	 * @see java.util.Random#nextInt()
 	 */

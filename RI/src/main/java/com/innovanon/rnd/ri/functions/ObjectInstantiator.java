@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.functions;
 
-import java.util.Random;
 import java.util.function.Function;
+
+import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein

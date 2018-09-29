@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers.special;
 
-import java.util.Random;
 import java.util.function.DoubleSupplier;
+
+import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein

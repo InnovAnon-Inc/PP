@@ -3,9 +3,8 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
-import java.util.Random;
-
 import com.innovanon.rnd.func.CharSupplier;
+import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
 
 /**

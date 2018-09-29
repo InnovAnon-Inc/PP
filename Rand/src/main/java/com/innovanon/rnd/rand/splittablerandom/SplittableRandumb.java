@@ -28,6 +28,13 @@ public class SplittableRandumb implements Randumb {
 	}
 
 	/**
+	 * 
+	 */
+	public SplittableRandumb() {
+		this(new SplittableRandom());
+	}
+
+	/**
 	 * @return
 	 * @see java.util.SplittableRandom#split()
 	 */

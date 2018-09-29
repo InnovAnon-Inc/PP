@@ -26,6 +26,13 @@ public class RandomRandumb implements Randumb {
 	public RandomRandumb(Random delegate) {
 		this.delegate = delegate;
 	}
+	
+	/**
+	 * 
+	 */
+	public RandomRandumb () {
+		this (new Random ());
+	}
 
 	/**
 	 * @param seed

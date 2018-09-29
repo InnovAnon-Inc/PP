@@ -4,10 +4,10 @@
 package com.innovanon.rnd.ri.functions;
 
 import java.lang.reflect.Array;
-import java.util.Random;
 import java.util.function.Function;
 import java.util.function.IntSupplier;
 
+import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.special.SizeSupplier;
 
 /**

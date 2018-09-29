@@ -3,7 +3,6 @@
  */
 package com.innovanon.rnd.ri.functions;
 
-import java.util.Random;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
@@ -14,6 +13,7 @@ import com.innovanon.rnd.func.ByteSupplier;
 import com.innovanon.rnd.func.CharSupplier;
 import com.innovanon.rnd.func.FloatSupplier;
 import com.innovanon.rnd.func.ShortSupplier;
+import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.RandomBooleanSupplier;
 import com.innovanon.rnd.ri.suppliers.RandomByteSupplier;
 import com.innovanon.rnd.ri.suppliers.RandomCharSupplier;
