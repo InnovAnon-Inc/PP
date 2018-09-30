@@ -321,4 +321,19 @@ public class SplittableRandumb implements Randumb {
 		// TODO Auto-generated method stub
 
 		throw new UnsupportedOperationException();	}
+
+	@Override
+	public void setSeed(long seed) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();	}
+
+	@Override
+	public float nextFloat() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();	}
+
+	@Override
+	public double nextGaussian() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();	}
 }
