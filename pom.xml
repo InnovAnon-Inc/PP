@@ -532,10 +532,16 @@
 				</configuration>
 			</plugin>
 
-			<!-- https://mvnrepository.com/artifact/com.atlassian.maven.plugins/maven-clover2-plugin -->
-			<!-- <plugin> <groupId>com.atlassian.maven.plugins</groupId> <artifactId>maven-clover2-plugin</artifactId> 
-				<version>${maven-clover2-plugin.version}</version> <inherited>true</inherited> 
-				</plugin> -->
+			<!--   https://mvnrepository.com/artifact/com.atlassian.maven.plugins/maven-clover2-plugin -->
+	<plugin>
+		<groupId>com.atlassian.maven.plugins</groupId>
+		<artifactId>maven-clover2-plugin</artifactId>
+		<version>${maven-clover2-plugin.version}</version>
+		<inherited>true</inherited>
+		<configuration>
+		 <failOnViolation>false</failOnViolation>
+		</configuration>
+	</plugin> 
 
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
 			<plugin>
