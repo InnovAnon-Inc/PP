@@ -638,6 +638,7 @@
 </plugin>
 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/javancss-maven-plugin -->
+<!-- 
 <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>javancss-maven-plugin</artifactId>
@@ -646,13 +647,9 @@
 				<ccnLimit>10</ccnLimit>
 					<ncssLimit>100</ncssLimit>				
 					<failOnViolation>false</failOnViolation>
-					<!-- 
-					<excludes>
-						<exclude>**/tests/**/*.*</exclude>
-					</excludes>
-					 -->
 				</configuration>
 </plugin>
+-->
 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/findbugs-maven-plugin -->
 <plugin>
