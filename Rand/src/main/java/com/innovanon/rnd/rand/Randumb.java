@@ -14,10 +14,6 @@ import java.util.stream.LongStream;
  *
  */
 public interface Randumb {
-	default void setSeed(long seed) {
-		throw new Error("incomplete");
-	}
-
 	void nextBytes(byte[] bytes);
 
 	int nextInt();
@@ -28,15 +24,7 @@ public interface Randumb {
 
 	boolean nextBoolean();
 
-	default float nextFloat() {
-		throw new Error("incomplete");
-	}
-
 	double nextDouble();
-
-	default double nextGaussian() {
-		throw new Error("incomplete");
-	}
 
 	IntStream ints(long streamSize);
 
@@ -61,6 +49,22 @@ public interface Randumb {
 	DoubleStream doubles(long streamSize, double randomNumberOrigin, double randomNumberBound);
 
 	DoubleStream doubles(double randomNumberOrigin, double randomNumberBound);
+
+	//
+/*
+	default void setSeed(long seed) {
+		throw new Error("incomplete");
+	}
+
+	default float nextFloat() {
+		throw new Error("incomplete");
+	}
+
+	default double nextGaussian() {
+		throw new Error("incomplete");
+	}
+
+	//
 
 	default Provider getProvider() {
 		throw new Error("incomplete");
@@ -101,4 +105,39 @@ public interface Randumb {
 	default double nextDouble(double origin, double bound) {
 		return origin + nextDouble(bound);
 	}
+	*/
+	
+	default void setSeed(long seed) {
+		throw new Error("incomplete");
+	}
+
+	default float nextFloat() {
+		throw new Error("incomplete");
+	}
+
+	default double nextGaussian() {
+		throw new Error("incomplete");
+	}
+
+	//
+
+	  Provider getProvider() ;
+
+  String getAlgorithm() ;
+
+  void setSeed(byte[] seed);
+
+  byte[] generateSeed(int numBytes);
+
+  SplittableRandom split() ;
+
+  int nextInt(int origin, int bound) ;
+
+  long nextLong(long bound) ;
+
+  long nextLong(long origin, long bound);
+
+	 double nextDouble(double bound) ;
+
+	 double nextDouble(double origin, double bound) ;
 }

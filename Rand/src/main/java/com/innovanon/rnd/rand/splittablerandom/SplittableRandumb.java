@@ -3,6 +3,7 @@
  */
 package com.innovanon.rnd.rand.splittablerandom;
 
+import java.security.Provider;
 import java.util.SplittableRandom;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -283,4 +284,41 @@ public class SplittableRandumb implements Randumb {
 			bytes[index] = b;
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#getProvider()
+	 */
+	@Override
+	public Provider getProvider() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#getAlgorithm()
+	 */
+	@Override
+	public String getAlgorithm() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#setSeed(byte[])
+	 */
+	@Override
+	public void setSeed(byte[] seed) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#generateSeed(int)
+	 */
+	@Override
+	public byte[] generateSeed(int numBytes) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();	}
 }

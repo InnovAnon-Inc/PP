@@ -3,7 +3,9 @@
  */
 package com.innovanon.rnd.rand.random;
 
+import java.security.Provider;
 import java.util.Random;
+import java.util.SplittableRandom;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -245,5 +247,94 @@ public class RandomRandumb implements Randumb {
 	@Override
 	public int nextInt(int origin, int bound) {
 		return origin + nextInt(bound);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#getProvider()
+	 */
+	@Override
+	public Provider getProvider() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#getAlgorithm()
+	 */
+	@Override
+	public String getAlgorithm() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#setSeed(byte[])
+	 */
+	@Override
+	public void setSeed(byte[] seed) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#generateSeed(int)
+	 */
+	@Override
+	public byte[] generateSeed(int numBytes) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#split()
+	 */
+	@Override
+	public SplittableRandom split() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextLong(long)
+	 */
+	@Override
+	public long nextLong(long bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextLong(long, long)
+	 */
+	@Override
+	public long nextLong(long origin, long bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextDouble(double)
+	 */
+	@Override
+	public double nextDouble(double bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextDouble(double, double)
+	 */
+	@Override
+	public double nextDouble(double origin, double bound) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 }

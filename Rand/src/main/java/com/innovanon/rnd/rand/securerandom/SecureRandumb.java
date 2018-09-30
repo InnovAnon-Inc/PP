@@ -5,6 +5,7 @@ package com.innovanon.rnd.rand.securerandom;
 
 import java.security.Provider;
 import java.security.SecureRandom;
+import java.util.SplittableRandom;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -284,4 +285,53 @@ public class SecureRandumb implements Randumb {
 	public int nextInt(int origin, int bound) {
 		return origin + nextInt(bound);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#split()
+	 */
+	@Override
+	public SplittableRandom split() {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextLong(long)
+	 */
+	@Override
+	public long nextLong(long bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextLong(long, long)
+	 */
+	@Override
+	public long nextLong(long origin, long bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextDouble(double)
+	 */
+	@Override
+	public double nextDouble(double bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.rand.Randumb#nextDouble(double, double)
+	 */
+	@Override
+	public double nextDouble(double origin, double bound) {
+		// TODO Auto-generated method stub
+
+		throw new UnsupportedOperationException();	}
 }
