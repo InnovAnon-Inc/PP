@@ -36,7 +36,8 @@
 		<module>Func</module>
 		<module>Rand</module>
 		<module>Ree</module>
-		<moduledule></modules>
+		<module>Simon</module>
+		</modules>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
 
