@@ -14,6 +14,13 @@
 	<url>http://lmaddox.chickenkiller.com</url>
 	<inceptionYear>2010</inceptionYear>
 
+	<!-- https://mvnrepository.com/artifact/org.sonatype.oss/oss-parent -->
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent>
+
 	<modules>
 		<module>Struct</module>
 		<module>Aspect</module>
@@ -26,6 +33,7 @@
 		<module>RI</module>
 		<module>Func</module>
 		<module>Rand</module>
+		<module>Ree</module>
 	</modules>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
@@ -83,7 +91,8 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:https://github.com/InnovAnon-Inc/PP</connection>
+		<!-- <connection>scm:git:https://github.com/InnovAnon-Inc/PP</connection> -->
+		<connection>scm:git:git@github.com:InnovAnon-Inc/PP.git</connection>
 		<developerConnection>scm:git:git@github.com/InnovAnon-Inc/PP</developerConnection>
 		<url>https://github.com/InnovAnon-Inc/PP</url>
 	</scm>
@@ -99,21 +108,59 @@
 		<notifiers>
 			<notifier>
 				<address>InnovAnon-Inc@protonmail.com</address>
+				<type>mail</type>
+			</notifier>
+			<notifier>
+				<address>InnovAnon-Inc@gmx.com</address>
+				<type>mail</type>
+			</notifier>
+			<notifier>
+				<address>InnovAnon@mailfence.com</address>
+				<type>mail</type>
+			</notifier>
+			<notifier>
+				<address>InnovAnon-Inc@tutanota.com</address>
+				<type>mail</type>
 			</notifier>
 		</notifiers>
 	</ciManagement>
 
 	<distributionManagement>
+		<!--
 		<repository>
 			<id>localDropbox</id>
-			<!-- <url>file://${user.home}/Dropbox/mvn-repo</url> -->
 			<url>file:///opt/files/Dropbox/mvn-repo</url>
 		</repository>
+		-->
+		
+				<repository>
+					<id>localDropbox</id>
+			 		<url>file://${user.home}/Dropbox/mvn-repo</url>		
+			 	</repository>
+		
+		<!-- 
 		<site>
 			<id>localDropbox</id>
-			<!-- <url>file://${user.home}/Dropbox/www/docs</url> -->
 			<url>file:///opt/files/Dropbox/www/docs</url>
 		</site>
+		 -->
+			<site>
+			<id>localDropbox</id>
+			 <url>file://${user.home}/Dropbox/www/docs</url>
+		</site>
+		
+		
+		
+		<!--
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+</repository>
+-->
 	</distributionManagement>
 
 	<profiles>
@@ -247,6 +294,15 @@
 		<maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
 		<taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
 		<code-coverage-maven-plugin.version>1.0.1.Final</code-coverage-maven-plugin.version>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+		<cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
+		<javancss-maven-plugin.version>2.1</javancss-maven-plugin.version>
+		<findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+		<jdepend-maven-plugin.version>2.0</jdepend-maven-plugin.version>
+
+		<!-- TODO idk what I'm doing tbh -->
+		<!-- <maven.pmd.excludes>**/generated-sources/**</maven.pmd.excludes>-->
 	</properties>
 
 	<dependencies>
@@ -317,6 +373,18 @@
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Rand</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Ri</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Ree</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 
@@ -528,6 +596,75 @@
 				<version>${code-coverage-maven-plugin.version}</version>
 				<inherited>true</inherited>
 			</plugin>
+			
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<configuration>
+					<!-- <excludes>**/test/java/**/*.java</excludes> -->
+					<headerLocation>LICENSE</headerLocation>
+					<failOnViolation>true</failOnViolation>
+				</configuration>
+			</plugin>
+			
+			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura-maven-plugin.version}</version>
+				<configuration>
+					<check>
+						<haltOnFailure>false</haltOnFailure>
+						<totalBranchRate>80</totalBranchRate>
+						<totalLineRate>80</totalLineRate>
+						<packageLineRate>80</packageLineRate>
+						<packageBranchRate>80</packageBranchRate>
+					</check>
+					<!-- 
+					<instrumentation>
+						<excludes>
+							<exclude>**/HelpMojo.class</exclude>
+						</excludes>
+					</instrumentation> -->
+				</configuration>
+</plugin>
+
+<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/javancss-maven-plugin -->
+<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>${javancss-maven-plugin.version}</version>
+				<configuration>
+				<ccnLimit>10</ccnLimit>
+					<ncssLimit>100</ncssLimit>
+					<failOnViolation>true</failOnViolation>
+					<!-- 
+					<excludes>
+						<exclude>**/tests/**/*.*</exclude>
+					</excludes>
+					 -->
+				</configuration>
+</plugin>
+
+<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/findbugs-maven-plugin -->
+<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs-maven-plugin.version}</version>
+				<configuration>
+					<failOnError>true</failOnError>
+					<!-- <excludeFilterFile>findBugsExclude.xml</excludeFilterFile> -->
+				</configuration>
+</plugin>
+
+<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/jdepend-maven-plugin -->
+<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>${jdepend-maven-plugin.version}</version>
+</plugin>
 		</plugins>
 	</reporting>
 
@@ -746,6 +883,46 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			
+			
+			<!-- install plugin -->
+			<!-- release plugin -->
+			<!-- deploy plugin -->
+			
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-gpg-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>${maven-gpg-plugin.version}</version>
+				<!-- 
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions> 
+				 -->
+				</plugin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</plugins>
 
 
