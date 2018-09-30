@@ -15,12 +15,14 @@
 	<inceptionYear>2010</inceptionYear>
 
 	<!-- https://mvnrepository.com/artifact/org.sonatype.oss/oss-parent -->
+	<!-- 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>9</version>
 	</parent>
-
+ -->
+ 
 	<modules>
 		<module>Struct</module>
 		<module>Aspect</module>
@@ -133,6 +135,10 @@
 		</repository>
 		-->
 		
+		<snapshotRepository>
+					<id>localDropbox</id>
+			 		<url>file://${user.home}/Dropbox/mvn-repo</url>		
+		</snapshotRepository>
 				<repository>
 					<id>localDropbox</id>
 			 		<url>file://${user.home}/Dropbox/mvn-repo</url>		
