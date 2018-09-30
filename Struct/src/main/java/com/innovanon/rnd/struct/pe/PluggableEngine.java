@@ -35,7 +35,7 @@ public class PluggableEngine<T> implements Collection<T> {
 	 */
 	@Override
 	public Stream<T> stream() {
-		/*
+		
 		return plugins.stream().map(new Function<Set<T>, Stream<T>>() {
 			@Override
 			public Stream<T> apply(Set<T> t) {
@@ -43,7 +43,7 @@ public class PluggableEngine<T> implements Collection<T> {
 				return t.stream();
 			}
 		}).reduce(Stream.empty(), Stream::concat);
-		*/
+		/*
 		return plugins.stream().map(new Function<Set<T>, Stream<T>>() {
 			@Override
 			public Stream<T> apply(Set<T> t) {
@@ -58,6 +58,7 @@ public class PluggableEngine<T> implements Collection<T> {
 			}
 			
 		});
+		*/
 	}
 
 	/*
