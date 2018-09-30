@@ -140,4 +140,10 @@ public interface Randumb {
 	 double nextDouble(double bound) ;
 
 	 double nextDouble(double origin, double bound) ;
+	 
+	   void setSeed(long seed) ;
+
+		  float nextFloat() ;
+
+		  double nextGaussian() ;
 }
