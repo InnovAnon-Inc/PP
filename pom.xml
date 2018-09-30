@@ -171,8 +171,22 @@
 	</distributionManagement>
 
 	<profiles>
+	
 		<profile>
 			<id>default-profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<file>
+					<exists>${java.home}/lib/tools.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/lib/tools.jar</toolsjar>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>whatever-profile</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 				<file>
@@ -197,18 +211,6 @@
 			</properties>
 		</profile>
 
-		<profile>
-			<id>whatever-profile</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<file>
-					<exists>${java.home}/lib/tools.jar</exists>
-				</file>
-			</activation>
-			<properties>
-				<toolsjar>${java.home}/lib/tools.jar</toolsjar>
-			</properties>
-		</profile>
 
 		<profile>
 			<id>only-eclipse</id>
