@@ -27,7 +27,14 @@ public enum StreamUtil {
 			Collection<Class<? extends Throwable>> exceptionClassesToCatch) {
 		ErrorEatingOptionalConverter<A, R> eater = new ErrorEatingOptionalConverter<A, R>(conv, exceptionClassesToCatch,
 				false);
-		Stream<Optional<R>> a = stream.map(eater::apply);
+		//Stream<Optional<R>> a = stream.map(eater::apply);
+		Stream<Optional<R>>a = stream.map(new Function<A,Optional<R>>(){
+
+			@Override
+			public Optional<R> apply(A t) {
+	return eater.apply(t);		}
+			
+		});
 		Stream<R> b = a.flatMap(new OptionalEatingMap<>());
 		return b;
 	}

@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
@@ -42,7 +44,20 @@ public class PluggableEngine<T> implements Collection<T> {
 			}
 		}).reduce(Stream.empty(), Stream::concat);
 		*/
-		throw new UnsupportedOperationException();
+		return plugins.stream().map(new Function<Set<T>, Stream<T>>() {
+			@Override
+			public Stream<T> apply(Set<T> t) {
+				// TODO randomize
+				return t.stream();
+			}
+		}).reduce(Stream.empty(), new BinaryOperator<Stream<T>>() {
+
+			@Override
+			public Stream<T> apply(Stream<T> t, Stream<T> u) {
+				return Stream.concat(t,u);
+			}
+			
+		});
 	}
 
 	/*
