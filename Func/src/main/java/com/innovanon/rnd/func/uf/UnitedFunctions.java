@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * @author gouldbergstein
  *
  */
-public class UnitedFunctions<T, R> implements Function<T, R> {
+public class UnitedFunctions<T, R> implements Function<T, R>, Predicate<T> {
 
 	/**
 	 * 
@@ -44,5 +44,15 @@ public class UnitedFunctions<T, R> implements Function<T, R> {
 		Entry<Predicate<T>, Function<T, R>> entry = optional.get();
 		assert entry.getKey().test(t);
 		return entry.getValue().apply(t);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.function.Predicate#test(java.lang.Object)
+	 */
+	@Override
+	public boolean test(T t) {
+		Stream<Entry<Predicate<T>, Function<T, R>>> stream = delegates.entrySet().stream();
+		Predicate<? super Entry<Predicate<T>, Function<T, R>>> predicate = new UFPredicate<T, R>(t);
+		return stream.anyMatch(predicate);
 	}
 }

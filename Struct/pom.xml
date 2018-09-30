@@ -12,6 +12,13 @@
 	<artifactId>Struct</artifactId>
 	<name>Struct</name>
 	<description>Simple Data Structures</description>
+	
+	<dependencies>
+	<dependency>
+	<groupId>com.innovanon.rnd</groupId>
+	<artifactId>Func</artifactId>
+	</dependency>
+	</dependencies>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
 

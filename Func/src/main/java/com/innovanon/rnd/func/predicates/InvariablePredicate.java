@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.util;
+package com.innovanon.rnd.func.predicates;
 
 import java.util.function.Predicate;
 
@@ -11,6 +11,9 @@ import java.util.function.Predicate;
  */
 public class InvariablePredicate<T> implements Predicate<Predicate<T>> {
 	
+	/**
+	 * 
+	 */
 	private T t;
 
 	/**

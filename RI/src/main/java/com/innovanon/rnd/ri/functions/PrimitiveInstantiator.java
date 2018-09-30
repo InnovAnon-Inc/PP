@@ -5,7 +5,6 @@ package com.innovanon.rnd.ri.functions;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
-import java.util.function.Function;
 import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
 
@@ -27,7 +26,7 @@ import com.innovanon.rnd.ri.suppliers.RandomShortSupplier;
  * @author gouldbergstein
  *
  */
-public class PrimitiveInstantiator implements Function<Class<?>, Object> {
+public class PrimitiveInstantiator implements Instantiator<Class<?>, Object> {
 	/**
 	 * 
 	 */
@@ -86,9 +85,10 @@ public class PrimitiveInstantiator implements Function<Class<?>, Object> {
 	/**
 	 * @param random
 	 */
-	public PrimitiveInstantiator (Randumb random) {
-		this (new RandomIntSupplier (random), new RandomBooleanSupplier (random), new RandomDoubleSupplier (random),
-				new RandomShortSupplier(random),new RandomLongSupplier(random),new RandomFloatSupplier(random),new RandomByteSupplier(random), new RandomCharSupplier(random));
+	public PrimitiveInstantiator(Randumb random) {
+		this(new RandomIntSupplier(random), new RandomBooleanSupplier(random), new RandomDoubleSupplier(random),
+				new RandomShortSupplier(random), new RandomLongSupplier(random), new RandomFloatSupplier(random),
+				new RandomByteSupplier(random), new RandomCharSupplier(random));
 	}
 
 	/*
@@ -98,7 +98,7 @@ public class PrimitiveInstantiator implements Function<Class<?>, Object> {
 	 */
 	@Override
 	public Object apply(Class<?> t) {
-		assert t.isPrimitive();
+		assert test(t);
 		if (t.equals(int.class))
 			return Integer.valueOf(ints.getAsInt());
 		if (t.equals(boolean.class))
@@ -117,5 +117,32 @@ public class PrimitiveInstantiator implements Function<Class<?>, Object> {
 			return Character.valueOf(chars.getAsChar());
 		// TODO
 		throw new Error("unsupported primitive type");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.function.Predicate#test(java.lang.Object)
+	 */
+	@Override
+	public boolean test(Class<?> t) {
+		if (! t.isPrimitive())return false;
+		if (t.equals(int.class))
+			return true;
+		if (t.equals(boolean.class))
+			return true;
+		if (t.equals(double.class))
+			return true;
+		if (t.equals(short.class))
+			return true;
+		if (t.equals(long.class))
+			return true;
+		if (t.equals(float.class))
+			return true;
+		if (t.equals(byte.class))
+			return true;
+		if (t.equals(char.class))
+			return true;
+		return false;
 	}
 }

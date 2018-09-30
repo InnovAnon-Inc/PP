@@ -3,15 +3,13 @@
  */
 package com.innovanon.rnd.ri.functions;
 
-import java.util.function.Function;
-
 import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
  *
  */
-public class EnumInstantiator implements Function<Class<?>, Object> {
+public class EnumInstantiator implements Instantiator<Class<?>, Object> {
 
 	/**
 	 * 
@@ -32,9 +30,17 @@ public class EnumInstantiator implements Function<Class<?>, Object> {
 	 */
 	@Override
 	public Object apply(Class<?> t) {
-		assert t.isEnum();
+	assert test(t);
 		Object[] instances = t.getEnumConstants();
 		int index = random.nextInt(instances.length);
 		return instances[index];
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.function.Predicate#test(java.lang.Object)
+	 */
+	@Override
+	public boolean test(Class<?> t) {
+		return t.isEnum();
 	}
 }

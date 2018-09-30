@@ -4,14 +4,13 @@
 package com.innovanon.rnd.ri.consumers;
 
 import java.lang.reflect.Array;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
  * @author gouldbergstein
  *
  */
-public class ArrayInitializer implements Consumer<Object> {
+public class ArrayInitializer implements Initializer<Object> {
 
 	/**
 	 * 
@@ -32,8 +31,8 @@ public class ArrayInitializer implements Consumer<Object> {
 	 */
 	@Override
 	public void accept(Object array) {
+		assert test(array);
 		Class<?> tClass = array.getClass();
-		assert tClass.isArray();
 		Class<?> eClass = tClass.getComponentType();
 		//if (eClass.isPrimitive())
 		int length = Array.getLength(array);
@@ -41,5 +40,15 @@ public class ArrayInitializer implements Consumer<Object> {
 			Object value = elements.apply(eClass);
 			Array.set(array, index, value);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.function.Predicate#test(java.lang.Object)
+	 */
+	@Override
+	public boolean test(Object t) {
+		if (t == null) return false;
+		Class<?>tClass=t.getClass();
+		return tClass.isArray();
 	}
 }
