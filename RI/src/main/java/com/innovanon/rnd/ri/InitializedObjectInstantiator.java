@@ -3,31 +3,51 @@
  */
 package com.innovanon.rnd.ri;
 
+import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.consumers.Initializer;
-import com.innovanon.rnd.ri.functions.Instantiator;
+import com.innovanon.rnd.ri.consumers.ObjectInitializer;
+import com.innovanon.rnd.ri.functions.ObjectInstantiator;
+import com.innovanon.rnd.ri.functions.YInstantiator;
 
 /**
  * @author gouldbergstein
  *
  */
-public class InitializedObjectInstantiator implements Instantiator<Class<?>, Object> {
+public class InitializedObjectInstantiator implements YInstantiator<Class<?>, Object> {
 
 	/**
 	 * 
 	 */
-	private Instantiator<Class<?>, Object> function;
+	private YInstantiator<Class<?>, Object> function;
 	/**
 	 * 
 	 */
-	private Initializer<Object> consumer;
+	private Initializer<Class<?>,Object> consumer;
 
 	/**
 	 * @param function
 	 * @param consumer
 	 */
-	public InitializedObjectInstantiator(Instantiator<Class<?>, Object> function, Initializer<Object> consumer) {
+	public InitializedObjectInstantiator(YInstantiator<Class<?>, Object> function, Initializer<Class<?>,Object> consumer) {
 		this.function = function;
 		this.consumer = consumer;
+	}
+
+	/**
+	 * 
+	 * @param function
+	 */
+	public InitializedObjectInstantiator(YInstantiator<Class<?>, Object> function) {
+		this(function, new ObjectInitializer());
+		this.consumer.setDelegate(this);
+	}
+
+	/**
+	 * 
+	 * @param random
+	 */
+	public InitializedObjectInstantiator(Randumb random) {
+		this(new ObjectInstantiator(random));
 	}
 
 	/*
@@ -52,5 +72,14 @@ public class InitializedObjectInstantiator implements Instantiator<Class<?>, Obj
 	@Override
 	public boolean test(Class<?> t) {
 		return function.test(t);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.innovanon.rnd.yfunc.YFunction#setDelegate(com.innovanon.rnd.yfunc.YFunction)
+	 */
+	@Override
+	public void setDelegate(YInstantiator<Class<?>, Object> delegate) {
+	function.setDelegate (delegate);
+	consumer.setDelegate (delegate);
 	}
 }

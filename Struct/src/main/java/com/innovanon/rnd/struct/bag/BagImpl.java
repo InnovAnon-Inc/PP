@@ -31,7 +31,7 @@ import java.util.Random;
 /**
  * @author gouldbergstein
  * @see java.util.ArrayList
- * @param <E> type of element contained within the baag
+ * @param <E> type of element contained within the bag
  */
 public class BagImpl<E> implements Bag<E> {
 	/**

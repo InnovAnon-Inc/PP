@@ -3,79 +3,94 @@
  */
 package com.innovanon.rnd.ri.consumers;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.StreamSupport;
 
 import com.innovanon.rnd.func.predicates.InvariablePredicate;
-import com.innovanon.rnd.ri.functions.Instantiator;
-import com.innovanon.rnd.struct.pe.PluggableEngine;
+import com.innovanon.rnd.ri.functions.YInstantiator;
 
 /**
  * @author gouldbergstein
  *
  */
-public class ObjectInitializer implements Initializer<Object> {
-/**
- * 
- * @param delegate
- * @return
- */
-	private static Collection<Initializer<Object>> getDelegates (Instantiator<Class<?>,Object> delegate) {
-		Initializer<Object> arrays = new ArrayInitializer(delegate);
-		Set<Initializer<Object>> firstPass = new HashSet<>();
+public class ObjectInitializer implements Initializer<Class<?>, Object> {
+	/**
+	 * 
+	 * @param delegate
+	 * @return
+	 */
+	private static Iterable<Initializer<Class<?>, Object>> getDelegates() {
+		Initializer<Class<?>, Object> arrays = new ArrayInitializer();
+		Set<Initializer<Class<?>, Object>> firstPass = new HashSet<>();
 		firstPass.add(arrays);
-		List<Set<Initializer<Object>>> delegates = new ArrayList<>();
-		delegates.add(firstPass);
-		Collection<Initializer<Object>>ret = new PluggableEngine<>(delegates);
-		return ret;
+		return firstPass;
 	}
-	
+
 	/**
 	 * 
 	 */
-	private Collection<Initializer<Object>> delegates;
-	
-	
+	private Iterable<Initializer<Class<?>, Object>> delegates;
 
 	/**
 	 * @param delegates
 	 */
-	public ObjectInitializer(Collection<Initializer<Object>> delegates) {
+	public ObjectInitializer(Iterable<Initializer<Class<?>, Object>> delegates) {
 		this.delegates = delegates;
 	}
-	
+
 	/**
 	 * 
 	 * @param delegate
 	 */
-	public ObjectInitializer(Instantiator<Class<?>, Object> delegate) {
-		this (getDelegates(delegate));
+	public ObjectInitializer() {
+		this(getDelegates());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.function.Predicate#test(java.lang.Object)
 	 */
 	@Override
 	public boolean test(Object t) {
-	return	delegates.stream().anyMatch(new InvariablePredicate<Object>(t));
+		return StreamSupport.stream(delegates.spliterator(), true).anyMatch(new InvariablePredicate<Object>(t));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.function.Consumer#accept(java.lang.Object)
 	 */
 	@Override
 	public void accept(Object t) {
-		Iterator<Initializer<Object>> iterator = delegates.stream().filter(new InvariablePredicate<Object>(t)).iterator();
-		if (! iterator.hasNext())throw new Error ("unsupported type");
+		Iterator<Initializer<Class<?>, Object>> iterator = StreamSupport.stream(delegates.spliterator(), true)
+				.filter(new InvariablePredicate<Object>(t)).iterator();
+		if (!iterator.hasNext())
+			throw new Error("unsupported type");
 		while (iterator.hasNext()) {
-			Initializer<Object> instantiator = iterator.next();
+			Initializer<Class<?>, Object> instantiator = iterator.next();
 			instantiator.accept(t);
 			return;
 		}
-		throw new Error ("failed");
+		throw new Error("failed");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.innovanon.rnd.yfunc.Delegator#setDelegate(com.innovanon.rnd.yfunc.
+	 * Delegator)
+	 */
+	@Override
+	public void setDelegate(YInstantiator<Class<?>, Object> delegate) {
+		StreamSupport.stream(delegates.spliterator(), true).forEach(new Consumer<Initializer<Class<?>, Object>>() {
+			@Override
+			public void accept(Initializer<Class<?>, Object> t) {
+				t.setDelegate(delegate);
+			}
+		});
 	}
 }
