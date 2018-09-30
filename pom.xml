@@ -36,7 +36,7 @@
 		<module>Func</module>
 		<module>Rand</module>
 		<module>Ree</module>
-	</modules>
+		<moduledule></modules>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->
 
@@ -384,7 +384,7 @@
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
-				<artifactId>Ri</artifactId>
+				<artifactId>RI</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 

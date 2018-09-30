@@ -9,19 +9,22 @@
 		<artifactId>PP</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>Ree</artifactId>
-	<name>Ree</name>
-	<description>Arbitrary Instantiators built atop RI</description>
+	<artifactId>Simon</artifactId>
+	<name>Simon</name>
+	<description>Simon, the Drawer-er</description>
+
 	<dependencies>
-		<dependency>
-		<groupId>com.innovanon.rnd</groupId>
-		<artifactId>RI</artifactId>
-		</dependency>
+	 <dependency>
+	 <groupId>com.innovanon.rnd</groupId>
+	 <artifactId>Ree</artifactId>
+	 </dependency>
 	
+		<!-- https://mvnrepository.com/artifact/com.sharneng/gm4java -->
 		<dependency>
-			<groupId>com.github.mifmif</groupId>
-			<artifactId>generex</artifactId>
-			<version>1.0.2</version>
+			<groupId>com.sharneng</groupId>
+			<artifactId>gm4java</artifactId>
+			<version>1.1.1</version>
 		</dependency>
+
 	</dependencies>
 </project>
