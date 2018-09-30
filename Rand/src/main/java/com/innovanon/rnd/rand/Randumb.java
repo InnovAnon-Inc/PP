@@ -105,7 +105,7 @@ public interface Randumb {
 	default double nextDouble(double origin, double bound) {
 		return origin + nextDouble(bound);
 	}
-	*/
+	
 	
 	default void setSeed(long seed) {
 		throw new Error("incomplete");
@@ -118,7 +118,7 @@ public interface Randumb {
 	default double nextGaussian() {
 		throw new Error("incomplete");
 	}
-
+*/
 	//
 
 	  Provider getProvider() ;
