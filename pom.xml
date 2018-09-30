@@ -106,16 +106,12 @@
 	<distributionManagement>
 		<repository>
 			<id>localDropbox</id>
-			<!-- 
-			<url>file://${user.home}/Dropbox/mvn-repo</url>
-			 -->
-			 <url>file:///opt/files/Dropbox/mvn-repo</url>
+			<!-- <url>file://${user.home}/Dropbox/mvn-repo</url> -->
+			<url>file:///opt/files/Dropbox/mvn-repo</url>
 		</repository>
 		<site>
 			<id>localDropbox</id>
-			<!--
-			<url>file://${user.home}/Dropbox/www/docs</url>
-			-->
+			<!-- <url>file://${user.home}/Dropbox/www/docs</url> -->
 			<url>file:///opt/files/Dropbox/www/docs</url>
 		</site>
 	</distributionManagement>
@@ -250,6 +246,7 @@
 		<maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
 		<maven-changelog-plugin.version>2.3</maven-changelog-plugin.version>
 		<taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
+		<code-coverage-maven-plugin.version>1.0.1.Final</code-coverage-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -521,6 +518,14 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>${taglist-maven-plugin.version}</version>
+				<inherited>true</inherited>
+			</plugin>
+
+			<!-- https://search.maven.org/artifact/org.jboss.maven.plugins/code-coverage-maven-plugin/1.0.1.Final/maven-plugin -->
+			<plugin>
+				<groupId>org.jboss.maven.plugins</groupId>
+				<artifactId>code-coverage-maven-plugin</artifactId>
+				<version>${code-coverage-maven-plugin.version}</version>
 				<inherited>true</inherited>
 			</plugin>
 		</plugins>
