@@ -1,23 +1,18 @@
 /**
  * 
  */
-package com.innovanon.rnd.simon;
+package com.innovanon.rnd.net.url;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.function.Supplier;
-
-import javax.imageio.ImageIO;
 
 /**
  * @author gouldbergstein
  *
  */
-public class URLImageSupplier implements Supplier<Image> {
+public class URLConnectionSupplier implements Supplier<URL> {
 
 	/**
 	 * 
@@ -32,7 +27,7 @@ public class URLImageSupplier implements Supplier<Image> {
 	 * @param urlspecs
 	 * @param userAgents
 	 */
-	public URLImageSupplier(Supplier<URL> urlspecs, Supplier<String> userAgents) {
+	public URLConnectionSupplier(Supplier<URL> urlspecs, Supplier<String> userAgents) {
 		this.urls = urlspecs;
 		this.userAgents = userAgents;
 	}
@@ -43,7 +38,7 @@ public class URLImageSupplier implements Supplier<Image> {
 	 * @see java.util.function.Supplier#get()
 	 */
 	@Override
-	public Image get() {
+	public URL get() {
 		/*String urlspec = urlspecs.get();
 		URL url;
 		try {
@@ -62,15 +57,6 @@ public class URLImageSupplier implements Supplier<Image> {
 		}
 		String userAgent = userAgents.get();
 		connection.setRequestProperty("User-Agent", userAgent);
-		BufferedImage c;
-		try {
-			c = ImageIO.read(url);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			throw new Error(e);
-		}
-		// ImageIcon image = new ImageIcon(c);
-		// return image;
-		return c;
+		return url;
 	}
 }

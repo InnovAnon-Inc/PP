@@ -2,10 +2,9 @@ package com.innovanon.rnd.ri;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.function.Supplier;
 
-import com.innovanon.rnd.rand.Randumb;
-import com.innovanon.rnd.rand.random.RandomRandumb;
 import com.innovanon.rnd.ri.consumers.Initializer;
 import com.innovanon.rnd.ri.consumers.ObjectInitializer;
 import com.innovanon.rnd.ri.functions.ObjectInstantiator;
@@ -17,7 +16,7 @@ import com.innovanon.rnd.ri.functions.YInstantiator;
  */
 public class App {
 	public static void main(String[] args) {
-		Randumb random = new RandomRandumb();
+		Random random = new Random();
 		ObjectInstantiator objects = new ObjectInstantiator(random);
 		// TODO
 		Supplier<Class<?>> classes = new Supplier<Class<?>>() {

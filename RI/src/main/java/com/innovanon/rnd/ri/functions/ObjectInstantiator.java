@@ -5,12 +5,12 @@ package com.innovanon.rnd.ri.functions;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.StreamSupport;
 
 import com.innovanon.rnd.func.predicates.InvariablePredicate;
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -23,7 +23,7 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 	 * @param parent should initialize instantiate
 	 * @return
 	 */
-	private static Iterable<Instantiator<Class<?>, Object>> getDelegates(Randumb random) {
+	private static Iterable<Instantiator<Class<?>, Object>> getDelegates(Random random) {
 		Instantiator<Class<?>, Object> arrays = new ArrayInstantiator(random);
 		Instantiator<Class<?>, Object> primitives = new PrimitiveInstantiator(random);
 		Instantiator<Class<?>, Object> enums = new EnumInstantiator(random);
@@ -34,7 +34,7 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 		return firstPass;
 	}
 
-	private static Iterable<YInstantiator<Class<?>, Object>> getYDelegates(Randumb random) {
+	private static Iterable<YInstantiator<Class<?>, Object>> getYDelegates(Random random) {
 		// TODO interfaces
 		// TODO constructors
 		// TODO factory methods
@@ -63,7 +63,7 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 	 * 
 	 * @param random
 	 */
-	public ObjectInstantiator(Randumb random) {
+	public ObjectInstantiator(Random random) {
 		this(getDelegates(random), getYDelegates(random));
 	}
 

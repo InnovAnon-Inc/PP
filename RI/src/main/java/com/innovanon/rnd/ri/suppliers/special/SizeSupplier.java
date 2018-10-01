@@ -3,9 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers.special;
 
+import java.util.Random;
 import java.util.function.IntSupplier;
 
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -20,7 +20,7 @@ public class SizeSupplier implements IntSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 	/**
 	 * 
 	 */
@@ -30,7 +30,7 @@ public class SizeSupplier implements IntSupplier {
 	 * @param random
 	 * @param epsilon
 	 */
-	public SizeSupplier(Randumb random, double epsilon) {
+	public SizeSupplier(Random random, double epsilon) {
 		this.random = random;
 		this.epsilon = epsilon;
 	}
@@ -39,7 +39,7 @@ public class SizeSupplier implements IntSupplier {
 	 * 
 	 * @param random
 	 */
-	public SizeSupplier(Randumb random) {
+	public SizeSupplier(Random random) {
 		this(random, DEFAULT_EPSILON);
 	}
 

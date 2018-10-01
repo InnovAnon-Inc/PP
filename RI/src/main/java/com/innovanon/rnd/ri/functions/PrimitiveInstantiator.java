@@ -3,6 +3,7 @@
  */
 package com.innovanon.rnd.ri.functions;
 
+import java.util.Random;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
@@ -12,7 +13,6 @@ import com.innovanon.rnd.func.ByteSupplier;
 import com.innovanon.rnd.func.CharSupplier;
 import com.innovanon.rnd.func.FloatSupplier;
 import com.innovanon.rnd.func.ShortSupplier;
-import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.RandomBooleanSupplier;
 import com.innovanon.rnd.ri.suppliers.RandomByteSupplier;
 import com.innovanon.rnd.ri.suppliers.RandomCharSupplier;
@@ -85,7 +85,7 @@ public class PrimitiveInstantiator implements Instantiator<Class<?>, Object> {
 	/**
 	 * @param random
 	 */
-	public PrimitiveInstantiator(Randumb random) {
+	public PrimitiveInstantiator(Random random) {
 		this(new RandomIntSupplier(random), new RandomBooleanSupplier(random), new RandomDoubleSupplier(random),
 				new RandomShortSupplier(random), new RandomLongSupplier(random), new RandomFloatSupplier(random),
 				new RandomByteSupplier(random), new RandomCharSupplier(random));

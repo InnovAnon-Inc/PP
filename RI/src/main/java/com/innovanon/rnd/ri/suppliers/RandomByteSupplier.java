@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
+
 import com.innovanon.rnd.func.ByteSupplier;
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -14,12 +15,12 @@ public class RandomByteSupplier implements ByteSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public RandomByteSupplier(Randumb random) {
+	public RandomByteSupplier(Random random) {
 		this.random = random;
 	}
 

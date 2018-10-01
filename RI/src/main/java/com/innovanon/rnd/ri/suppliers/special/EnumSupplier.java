@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.ree;
+package com.innovanon.rnd.ri.suppliers.special;
 
 import java.util.Random;
 import java.util.function.Supplier;

@@ -3,9 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers.special;
 
+import java.util.Random;
 import java.util.function.IntSupplier;
 
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -15,7 +15,7 @@ public class RangedIntSupplier implements IntSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 	/**
 	 * 
 	 */
@@ -30,7 +30,7 @@ public class RangedIntSupplier implements IntSupplier {
 	 * @param offset
 	 * @param bound
 	 */
-	public RangedIntSupplier(Randumb random, int offset, int bound) {
+	public RangedIntSupplier(Random random, int offset, int bound) {
 		this.random = random;
 		this.offset = offset;
 		this.bound = bound;
@@ -42,7 +42,7 @@ public class RangedIntSupplier implements IntSupplier {
 	 * @param max
 	 * @param random
 	 */
-	public RangedIntSupplier(int min, int max, Randumb random) {
+	public RangedIntSupplier(int min, int max, Random random) {
 		this(random, min, max - min + 1);
 	}
 

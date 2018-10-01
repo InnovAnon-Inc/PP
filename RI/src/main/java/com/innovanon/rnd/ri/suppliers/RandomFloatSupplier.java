@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
+
 import com.innovanon.rnd.func.FloatSupplier;
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -14,12 +15,12 @@ public class RandomFloatSupplier implements FloatSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public RandomFloatSupplier(Randumb random) {
+	public RandomFloatSupplier(Random random) {
 		this.random = random;
 	}
 

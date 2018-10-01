@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
+
 import com.innovanon.rnd.func.CharSupplier;
-import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
 
 /**
@@ -16,7 +17,7 @@ public class RandomCharSupplier extends RangedIntSupplier implements CharSupplie
 	/**
 	 * @param random
 	 */
-	public RandomCharSupplier(Randumb random) {
+	public RandomCharSupplier(Random random) {
 		super(Character.MIN_VALUE, Character.MAX_VALUE, random);
 	}
 

@@ -3,7 +3,8 @@
  */
 package com.innovanon.rnd.ri;
 
-import com.innovanon.rnd.rand.Randumb;
+import java.util.Random;
+
 import com.innovanon.rnd.ri.consumers.Initializer;
 import com.innovanon.rnd.ri.consumers.ObjectInitializer;
 import com.innovanon.rnd.ri.functions.ObjectInstantiator;
@@ -46,7 +47,7 @@ public class InitializedObjectInstantiator implements YInstantiator<Class<?>, Ob
 	 * 
 	 * @param random
 	 */
-	public InitializedObjectInstantiator(Randumb random) {
+	public InitializedObjectInstantiator(Random random) {
 		this(new ObjectInstantiator(random));
 	}
 

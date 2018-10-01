@@ -3,8 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
+
 import com.innovanon.rnd.func.ShortSupplier;
-import com.innovanon.rnd.rand.Randumb;
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
 
 /**
@@ -16,7 +17,7 @@ public class RandomShortSupplier extends RangedIntSupplier implements ShortSuppl
 	/**
 	 * @param random
 	 */
-	public RandomShortSupplier(Randumb random) {
+	public RandomShortSupplier(Random random) {
 		super(Short.MIN_VALUE, Short.MAX_VALUE,random);
 	}
 

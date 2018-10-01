@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.ree;
+package com.innovanon.rnd.ri.suppliers.special;
 
 import java.util.Collection;
 import java.util.Random;
@@ -21,7 +21,7 @@ public class EnumSubsetSupplier<T > implements Supplier<Collection<T>> {
 	 */
 	public EnumSubsetSupplier(Class<T> t, Random random) {
 		assert t.isEnum();
-		this.delegate = new DiscreteSubsetSupplier<T>(random, t.getEnumConstants());
+		this.delegate = new DiscreteSubsetSupplier<T>(random,0, t.getEnumConstants());
 	}
 
 	@Override

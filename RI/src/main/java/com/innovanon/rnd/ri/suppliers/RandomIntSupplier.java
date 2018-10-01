@@ -3,9 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
 import java.util.function.IntSupplier;
 
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -15,12 +15,12 @@ public class RandomIntSupplier implements IntSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public RandomIntSupplier(Randumb random) {
+	public RandomIntSupplier(Random random) {
 		this.random = random;
 	}
 

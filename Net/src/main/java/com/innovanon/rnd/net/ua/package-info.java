@@ -5,4 +5,4 @@
  * @author gouldbergstein
  *
  */
-package com.innovanon.rnd.rand.securerandom;
+package com.innovanon.rnd.net.ua;

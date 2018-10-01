@@ -3,7 +3,7 @@
  */
 package com.innovanon.rnd.ri.functions;
 
-import com.innovanon.rnd.rand.Randumb;
+import java.util.Random;
 
 /**
  * @author gouldbergstein
@@ -14,12 +14,12 @@ public class EnumInstantiator implements Instantiator<Class<?>, Object> {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public EnumInstantiator(Randumb random) {
+	public EnumInstantiator(Random random) {
 		this.random = random;
 	}
 

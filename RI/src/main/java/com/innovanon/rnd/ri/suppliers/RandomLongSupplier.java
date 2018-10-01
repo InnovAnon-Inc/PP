@@ -3,9 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
 import java.util.function.LongSupplier;
 
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -15,12 +15,12 @@ public class RandomLongSupplier implements LongSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public RandomLongSupplier(Randumb random) {
+	public RandomLongSupplier(Random random) {
 		this.random = random;
 	}
 

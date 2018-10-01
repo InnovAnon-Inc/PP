@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.ree;
+package com.innovanon.rnd.ri.suppliers.special;
 
 import java.util.Collection;
 import java.util.Random;
@@ -10,8 +10,6 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import com.innovanon.rnd.rand.random.RandomRandumb;
-import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
 import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
@@ -39,8 +37,8 @@ public class DiscreteSubsetSupplier<T> implements Supplier<Collection<T>> {
 	}
 	
 	@SafeVarargs
-	public DiscreteSubsetSupplier(Random random, T...array) {
-		this(random,new RangedIntSupplier(0, array.length-1, new RandomRandumb(random)) , array);
+	public DiscreteSubsetSupplier(Random random, int min,T...array) {
+		this(random,new RangedIntSupplier(min, array.length-min, random) , array);
 	}
 
 	/*

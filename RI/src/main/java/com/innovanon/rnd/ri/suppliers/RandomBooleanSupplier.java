@@ -3,9 +3,9 @@
  */
 package com.innovanon.rnd.ri.suppliers;
 
+import java.util.Random;
 import java.util.function.BooleanSupplier;
 
-import com.innovanon.rnd.rand.Randumb;
 
 /**
  * @author gouldbergstein
@@ -16,12 +16,12 @@ public class RandomBooleanSupplier implements BooleanSupplier {
 	/**
 	 * 
 	 */
-	private Randumb random;
+	private Random random;
 
 	/**
 	 * @param random
 	 */
-	public RandomBooleanSupplier(Randumb random) {
+	public RandomBooleanSupplier(Random random) {
 		this.random = random;
 	}
 
