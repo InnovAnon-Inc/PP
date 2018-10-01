@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.ree;
+package com.innovanon.rnd.ree.re;
 
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
@@ -12,7 +12,7 @@ import com.mifmif.common.regex.Generex;
  * @author gouldbergstein
  *
  */
-public class RegexSupplier implements Supplier<String> {
+public class RegexStringSupplier implements Supplier<String> {
 	/**
 	 * 
 	 */
@@ -26,7 +26,7 @@ public class RegexSupplier implements Supplier<String> {
 	 * @param minLength
 	 * @param sizes
 	 */
-	public RegexSupplier(Generex generex, int minLength, IntSupplier sizes) {
+	public RegexStringSupplier(Generex generex, int minLength, IntSupplier sizes) {
 		this.generex = generex;
 		this.minLength = minLength;
 		this.sizes = sizes;

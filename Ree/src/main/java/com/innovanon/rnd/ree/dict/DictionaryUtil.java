@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.ree;
+package com.innovanon.rnd.ree.dict;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

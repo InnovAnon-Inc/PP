@@ -18,7 +18,12 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.rnd.struct;
+package com.innovanon.rnd.struct.bag;
+
+import java.util.Random;
+
+import com.innovanon.rnd.struct.bag.Bag;
+import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
  * The primary application, currently: Hello world!
@@ -29,7 +34,9 @@ public enum App {
 	 * @param args command line arguments
 	 */
 	public static void main(String... args) {
-		//TODO
-		System.out.println("Hello World!");
+		Random random = new Random();
+		String[] copy = { "abc", "def", "ghi", "jkl", "mno" };
+		Bag<String> bag = new BagImpl<String>(random, copy);
+		System.out.println(bag);
 	}
 }

@@ -36,6 +36,7 @@
 		<module>Ree</module>
 		<module>Simon</module>
     <module>Net</module>
+    <module>AlphaTech</module>
   </modules>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->

@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Random;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import javax.xml.bind.JAXBException;
 
@@ -19,14 +20,21 @@ import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
  * Hello world!
  *
  */
-public class App {
-	public static void main(String[] args) throws FileNotFoundException, IOException, JAXBException {
-		System.out.println("Hello World!");
+public enum App {
+	/* no instances */ ;
 
+	/**
+	 * 
+	 * @param args
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws JAXBException
+	 */
+	public static void main(String... args) throws FileNotFoundException, IOException, JAXBException {
 		Random random = new Random();
-		Supplier<String> userAgents = new UserAgentSupplier(random);
-		for (int k = 1; k <= 10; k++)
-			System.out.println(userAgents.get());
+		//Supplier<String> userAgents = new UserAgentSupplier(random);
+		//for (int k = 1; k <= 10; k++)
+		//	System.out.println(userAgents.get());
 
 		String[] array = { "a", "b", "c" };
 		// IntSupplier nterm = new RangedIntSupplier(random, 1,array.length - 1);
@@ -46,8 +54,7 @@ public class App {
 		IntSupplier page = new RangedIntSupplier(random, 0, 10);
 		IntSupplier pageAmt = new RangedIntSupplier(random, 3, 200);
 		Supplier<URL> urls = new PixabayURLSupplier(searchTerms, langs, widths, heights, page, pageAmt, random);
-		for (int k = 1; k <= 10; k++)
-			System.out.println(urls.get());
-
+		long maxSize = 10;
+		Stream.generate(urls).limit(maxSize ).forEach(System.out::println);
 	}
 }

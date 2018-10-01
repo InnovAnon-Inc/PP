@@ -38,7 +38,7 @@ public class DiscreteSubsetSupplier<T> implements Supplier<Collection<T>> {
 	
 	@SafeVarargs
 	public DiscreteSubsetSupplier(Random random, int min,T...array) {
-		this(random,new RangedIntSupplier(min, array.length-min, random) , array);
+		this(random,new RangedIntSupplier(min, array.length + 1,random) , array);
 	}
 
 	/*

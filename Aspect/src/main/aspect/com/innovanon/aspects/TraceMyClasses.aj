@@ -18,6 +18,8 @@ about the software, its performance or its conformity to any specification.
 
 package com.innovanon.aspects;
 
+import com.innovanon.rnd.aspects.App;
+
 /**
  *
  * This class concretizes the abstract crosscut in Trace, 
@@ -32,12 +34,10 @@ public aspect TraceMyClasses extends Trace {
     /**
      * A main function for testing the trace aspect.
      */
-    /*
     public static void main(String... args) {
 	Trace.TRACELEVEL = 2;
 	Trace.initStream(System.err);
 	App.main(args);
     }
-    */
 }
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.struct;
+package com.innovanon.rnd.struct.iter;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -16,7 +16,13 @@ import com.innovanon.rnd.struct.bag.Bag;
  */
 public class Reiterator<T> implements Iterator<T> {
 
+	/**
+	 * 
+	 */
 	private Iterable<T> iterable;
+	/**
+	 * 
+	 */
 	private Iterator<T> iterator;
 
 	/**

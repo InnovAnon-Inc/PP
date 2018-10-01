@@ -18,7 +18,15 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.rnd.struct;
+package com.innovanon.rnd.struct.iter;
+
+import java.util.Iterator;
+import java.util.Random;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
+import com.innovanon.rnd.struct.bag.Bag;
+import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
  * The primary application, currently: Hello world!
@@ -29,7 +37,19 @@ public enum App {
 	 * @param args command line arguments
 	 */
 	public static void main(String... args) {
-		//TODO
-		System.out.println("Hello World!");
+		Random random = new Random();
+		String[] copy = { "abc", "def", "ghi", "jkl", "mno" };
+		Bag<String> bag = new BagImpl<String>(random, copy);
+		Iterator<String> iter = new Reiterator<>(bag);
+		Supplier<String> s = new Supplier<String>() {
+
+			@Override
+			public String get() {
+				return iter.next();
+			}
+
+		};
+		long maxSize = bag.size() * 2;
+		Stream.generate(s).limit(maxSize).forEach(System.out::println);
 	}
 }

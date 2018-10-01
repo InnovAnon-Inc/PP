@@ -8,6 +8,14 @@ package com.innovanon.rnd.math;
  *
  */
 public interface Fraction {
+	/**
+	 * 
+	 * @return
+	 */
 	int getDenominator();
+	/**
+	 * 
+	 * @return
+	 */
 	int getNumerator();
 }
