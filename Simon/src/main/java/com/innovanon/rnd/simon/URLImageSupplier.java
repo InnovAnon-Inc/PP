@@ -22,7 +22,7 @@ public class URLImageSupplier implements Supplier<Image> {
 	/**
 	 * 
 	 */
-	private Supplier<String> urlspecs;
+	private Supplier<URL> urls;
 	/**
 	 * 
 	 */
@@ -32,8 +32,8 @@ public class URLImageSupplier implements Supplier<Image> {
 	 * @param urlspecs
 	 * @param userAgents
 	 */
-	public URLImageSupplier(Supplier<String> urlspecs, Supplier<String> userAgents) {
-		this.urlspecs = urlspecs;
+	public URLImageSupplier(Supplier<URL> urlspecs, Supplier<String> userAgents) {
+		this.urls = urlspecs;
 		this.userAgents = userAgents;
 	}
 
@@ -44,14 +44,15 @@ public class URLImageSupplier implements Supplier<Image> {
 	 */
 	@Override
 	public Image get() {
-		String urlspec = urlspecs.get();
+		/*String urlspec = urlspecs.get();
 		URL url;
 		try {
 			url = new URL(urlspec);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			throw new Error(e);
-		}
+		}*/
+		URL url = urls.get();
 		URLConnection connection;
 		try {
 			connection = url.openConnection();
