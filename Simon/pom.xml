@@ -18,6 +18,10 @@
 	 <groupId>com.innovanon.rnd</groupId>
 	 <artifactId>Ree</artifactId>
 	 </dependency>
+	 	 <dependency>
+	 <groupId>com.innovanon.rnd</groupId>
+	 <artifactId>Net</artifactId>
+	 </dependency>
 	
 		<!-- https://mvnrepository.com/artifact/com.sharneng/gm4java -->
 		<dependency>

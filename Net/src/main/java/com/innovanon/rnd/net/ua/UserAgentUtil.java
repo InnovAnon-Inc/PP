@@ -5,6 +5,7 @@ package com.innovanon.rnd.net.ua;
 
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,18 +18,32 @@ import javax.xml.bind.Unmarshaller;
  *
  */
 public enum UserAgentUtil {
-	;
+	/* no instances */ ;
+
+	/**
+	 * 
+	 */
+	private static Collection<String> userAgents;
+
+	/**
+	 * 
+	 * @return
+	 * @throws JAXBException
+	 */
 	public static Collection<String> getUserAgents() throws JAXBException {
+		if (userAgents != null)
+			return userAgents;
 		JAXBContext jaxbContext = JAXBContext.newInstance(UserAgents.class);
 		Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
 
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		URL url = classloader.getResource("allagents.xml");
 
-		UserAgents userAgents = (UserAgents) jaxbMarshaller.unmarshal(url);
-		List<UserAgent> list = userAgents.userAgents;
+		UserAgents ua = (UserAgents) jaxbMarshaller.unmarshal(url);
+		List<UserAgent> list = ua.userAgents;
 		assert list != null;
-		Collection<String> set = list.stream().map(ua -> ua.string).collect(Collectors.toList());
-		return set;
+		List<String> temp = list.stream().map(u -> u.string).collect(Collectors.toList());
+		userAgents = Collections.unmodifiableList(temp);
+		return userAgents;
 	}
 }

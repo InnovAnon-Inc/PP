@@ -8,17 +8,19 @@ import java.util.Random;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-import com.innovanon.rnd.ree.DiscreteSubsetSupplier;
-import com.innovanon.rnd.ree.EnumSupplier;
+import javax.xml.bind.JAXBException;
+
+import com.innovanon.rnd.net.ua.UserAgentSupplier;
+import com.innovanon.rnd.ri.suppliers.special.DiscreteSubsetSupplier;
+import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
-import com.innovanon.rnd.simon.ua.UserAgentSupplier;
 
 /**
  * Hello world!
  *
  */
 public class App {
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void main(String[] args) throws FileNotFoundException, IOException, JAXBException {
 		System.out.println("Hello World!");
 
 		Random random = new Random();
@@ -26,20 +28,18 @@ public class App {
 		for (int k = 1; k <= 10; k++)
 			System.out.println(userAgents.get());
 
-		String[] array= {"a","b","c"};
-		//IntSupplier nterm = new RangedIntSupplier(random, 1,array.length - 1);
-		Supplier<Collection<String>> searchTerms = new DiscreteSubsetSupplier<String>(random,1, array);
+		String[] array = { "a", "b", "c" };
+		// IntSupplier nterm = new RangedIntSupplier(random, 1,array.length - 1);
+		Supplier<Collection<String>> searchTerms = new DiscreteSubsetSupplier<String>(random, 1, array);
 		/*
-		  Supplier<String>queries = new Supplier<String>() {
-		 
-
-			@Override
-			public String get() {
-Collection<String>searchTerm = searchTerms.get();
-				return String.join("+", searchTerm);
-			}
-			
-		};*/
+		 * Supplier<String>queries = new Supplier<String>() {
+		 * 
+		 * 
+		 * @Override public String get() { Collection<String>searchTerm =
+		 * searchTerms.get(); return String.join("+", searchTerm); }
+		 * 
+		 * };
+		 */
 		Supplier<QueryLang> langs = new EnumSupplier<QueryLang>(QueryLang.class, random);
 		IntSupplier widths = new RangedIntSupplier(random, 0, 100);
 		IntSupplier heights = new RangedIntSupplier(random, 0, 100);

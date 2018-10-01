@@ -3,11 +3,11 @@
  */
 package com.innovanon.rnd.ri.suppliers.special;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import com.innovanon.rnd.struct.Reiterator;
 import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
@@ -18,8 +18,7 @@ public class DiscreteSupplier<T> implements Supplier<T> {
 	/**
 	 * 
 	 */
-	private Collection<T> delegates;
-	private Iterator<T> delegate;
+	private Iterator<T> iter;
 
 	/**
 	 * 
@@ -29,10 +28,8 @@ public class DiscreteSupplier<T> implements Supplier<T> {
 	@SafeVarargs
 	public DiscreteSupplier(Random random, T... array) {
 		// TODO Auto-generated constructor stub
-		delegates = new BagImpl<T>(random, array);
-		assert array.length!=0;
-		assert ! delegates.isEmpty();
-		delegate = delegates.iterator();
+		Iterable<T> iterable = new BagImpl<>(random, array);
+		iter = new Reiterator<>(iterable);
 	}
 
 	/*
@@ -42,10 +39,7 @@ public class DiscreteSupplier<T> implements Supplier<T> {
 	 */
 	@Override
 	public T get() {
-		if (/* repeat && */delegate == null || !delegate.hasNext())
-			delegate = delegates.iterator();
-		assert delegate.hasNext();
-		return delegate.next();
+		return iter.next();
 	}
 
 }

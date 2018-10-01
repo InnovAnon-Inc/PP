@@ -7,37 +7,39 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Random;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.innovanon.rnd.struct.bag.Bag;
-import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
  * @author gouldbergstein
  *
  */
-public class DictionarySupplier implements Supplier<String> {
-	private Bag<String> dict;
+public enum DictionaryUtil {
+	/* no instances */ ;
 
-	public DictionarySupplier(Random random) {
-		// TODO Auto-generated constructor stub
+	/**
+	 * 
+	 */
+	private static Collection<String> dictionary;
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static Collection<String> getDictionary() {
+		if (dictionary != null)
+			return dictionary;
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("all");
 		Reader r = new InputStreamReader(is);
 		BufferedReader reader = new BufferedReader(r);
 		Stream<String> stream = reader.lines();
 		// TODO filter out comments
-		Set<String> set = stream.collect(Collectors.toSet());
-		dict = new BagImpl<>(set, random);
-	}
-
-	@Override
-	public String get() {
-		// TODO with or without replacement?
-		return dict.remove();
+		List<String> temp = stream.collect(Collectors.toList());
+		dictionary = Collections.unmodifiableList(temp);
+		return dictionary;
 	}
 }

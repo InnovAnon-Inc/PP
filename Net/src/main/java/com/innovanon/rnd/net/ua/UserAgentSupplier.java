@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 import javax.xml.bind.JAXBException;
 
-import com.innovanon.rnd.struct.bag.Bag;
+import com.innovanon.rnd.struct.Reiterator;
 import com.innovanon.rnd.struct.bag.BagImpl;
 
 /**
@@ -21,13 +21,14 @@ public class UserAgentSupplier implements Supplier<String> {
 	/**
 	 * 
 	 */
-	private Bag<String> userAgents;
-	private Iterator<String>delegate;
+	private Iterator<String> iter;
 
 	public UserAgentSupplier(Random random) throws JAXBException {
-		Collection<String> agents =UserAgentUtil.getUserAgents();
+		Collection<String> agents = UserAgentUtil.getUserAgents();
 		assert !agents.isEmpty();
-		this.userAgents = new BagImpl<>(agents,random);
+		// this.userAgents = new BagImpl<>(agents,random);
+		Iterable<String> iterable = new BagImpl<>(agents, random);
+		iter = new Reiterator<>(iterable);
 	}
 
 	/*
@@ -37,9 +38,6 @@ public class UserAgentSupplier implements Supplier<String> {
 	 */
 	@Override
 	public String get() {
-		if (delegate==null||!delegate.hasNext())
-			delegate = userAgents.iterator();
-		assert delegate.hasNext();
-		return delegate.next();
+		return iter.next();
 	}
 }

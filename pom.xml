@@ -389,6 +389,12 @@
 				<artifactId>RI</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			
+						<dependency>
+				<groupId>com.innovanon.rnd</groupId>
+				<artifactId>Net</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
