@@ -19,8 +19,8 @@ import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import com.innovanon.rnd.ree.EnumSubsetSupplier;
-import com.innovanon.rnd.ree.EnumSupplier;
+import com.innovanon.rnd.ri.suppliers.special.EnumSubsetSupplier;
+import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
 
 enum QueryLang {
 	CS("cs"), DA("da"), DE("de"), EN("en"), ES("es"), FR("fr"), ID("id"), IT("it"), HU("hu"), NL("nl"), NO("no"),
