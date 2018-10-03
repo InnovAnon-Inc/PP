@@ -37,6 +37,7 @@
 		<module>Simon</module>
     <module>Net</module>
     <module>AlphaTech</module>
+    <module>IO</module>
   </modules>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->

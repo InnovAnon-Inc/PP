@@ -7,10 +7,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -23,13 +19,13 @@ public enum DictionaryUtil {
 	/**
 	 * 
 	 */
-	private static Collection<String> dictionary;
+	private static Stream<String> dictionary;
 
 	/**
 	 * 
 	 * @return
 	 */
-	public static Collection<String> getDictionary() {
+	public static Stream<String> getDictionary() {
 		if (dictionary != null)
 			return dictionary;
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -37,9 +33,10 @@ public enum DictionaryUtil {
 		Reader r = new InputStreamReader(is);
 		BufferedReader reader = new BufferedReader(r);
 		Stream<String> stream = reader.lines();
+		dictionary=stream;
 		// TODO filter out comments
-		List<String> temp = stream.collect(Collectors.toList());
-		dictionary = Collections.unmodifiableList(temp);
+		//List<String> temp = stream.collect(Collectors.toList());
+		//dictionary = Collections.unmodifiableList(temp);
 		return dictionary;
 	}
 }

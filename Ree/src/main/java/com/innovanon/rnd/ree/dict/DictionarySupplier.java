@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import com.innovanon.rnd.struct.bag.BagImpl;
 import com.innovanon.rnd.struct.iter.Reiterator;
@@ -26,7 +27,7 @@ public class DictionarySupplier implements Supplier<String> {
 	 * @param random
 	 */
 	public DictionarySupplier(Random random) {
-		Collection<String> list = DictionaryUtil.getDictionary();
+		Collection<String> list = DictionaryUtil.getDictionary().collect(Collectors.toList());
 		Iterable<String> iter = new BagImpl<>(list, random);
 		dict = new Reiterator<>(iter);
 	}

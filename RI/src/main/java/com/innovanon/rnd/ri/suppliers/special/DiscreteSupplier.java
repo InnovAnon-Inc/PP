@@ -7,8 +7,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import com.innovanon.rnd.struct.Reiterator;
 import com.innovanon.rnd.struct.bag.BagImpl;
+import com.innovanon.rnd.struct.iter.Reiterator;
 
 /**
  * @author gouldbergstein

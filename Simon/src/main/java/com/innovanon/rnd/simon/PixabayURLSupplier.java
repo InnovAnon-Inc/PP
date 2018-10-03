@@ -3,10 +3,7 @@
  */
 package com.innovanon.rnd.simon;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -14,6 +11,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Random;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
@@ -21,6 +19,7 @@ import java.util.stream.Collectors;
 
 import com.innovanon.rnd.ri.suppliers.special.EnumSubsetSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
+import com.innovanon.rnd.struct.pair.Pair;
 
 enum QueryLang {
 	CS("cs"), DA("da"), DE("de"), EN("en"), ES("es"), FR("fr"), ID("id"), IT("it"), HU("hu"), NL("nl"), NO("no"),
@@ -30,16 +29,23 @@ enum QueryLang {
 	 * 
 	 */
 	private String value;
+	
+	private Locale locale;
 
 	/**
 	 * @param value
 	 */
 	QueryLang(String value) {
 		this.value = value;
+		this.locale = Locale.forLanguageTag(value);
 	}
 
 	public String getValue() {
 		return value;
+	}
+
+	public Locale getLocale() {
+		return locale;
 	}
 }
 
@@ -124,9 +130,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 
 	private String key;
 
-	private Supplier<Collection<String>> queries;
-
-	private Supplier<QueryLang> langs;
+	private Supplier<Pair<QueryLang, Collection<String>>> queries;
 
 	private Supplier<QueryType> types;
 
@@ -147,17 +151,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 	private IntSupplier perPages;
 
 	private static String getKey() throws FileNotFoundException, IOException {
-		// TODO Auto-generated constructor stub
-		File file = new File(System.getProperty("user.home"), ".pixabay");
-		FileReader fis = new FileReader(file);
-		BufferedReader input = new BufferedReader(fis);
-		long length = file.length();
-		assert length <= Integer.MAX_VALUE;
-		char[] cbuf = new char[(int) length];
-		int rd = input.read(cbuf);
-		assert rd == -1;
-		String ret = String.valueOf(cbuf);
-		return ret.trim();
+		return String.valueOf(HomeFileToCharArrayUtil.getData(".pixabay"));
 	}
 
 	/**
@@ -179,14 +173,13 @@ public class PixabayURLSupplier implements Supplier<URL> {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public PixabayURLSupplier(Supplier<Collection<String>> queries, Supplier<QueryLang> langs, Supplier<QueryType> types,
+	public PixabayURLSupplier(Supplier<Pair<QueryLang,Collection<String>> >queries,  Supplier<QueryType> types,
 			Supplier<QueryOrientation> orientations, Supplier<QueryCategory> categories, IntSupplier minWidths,
 			IntSupplier minHeights, Supplier<Collection<QueryColor>> colors, Supplier<QueryChoice> choices,
 			Supplier<QuerySafe> safes, Supplier<QueryOrder> orders, IntSupplier pages, IntSupplier perPages)
 			throws FileNotFoundException, IOException {
 		this.key = getKey();
 		this.queries = queries;
-		this.langs = langs;
 		this.types = types;
 		this.orientations = orientations;
 		this.categories = categories;
@@ -200,9 +193,9 @@ public class PixabayURLSupplier implements Supplier<URL> {
 		this.perPages = perPages;
 	}
 
-	public PixabayURLSupplier(Supplier<Collection<String>> queries, Supplier<QueryLang> langs, IntSupplier minWidths,
+	public PixabayURLSupplier(Supplier<Pair<QueryLang,Collection<String>>> queries,  IntSupplier minWidths,
 			IntSupplier minHeights, IntSupplier pages, IntSupplier perPages, Random random) throws FileNotFoundException, IOException {
-		this(queries, langs, new EnumSupplier<QueryType>(QueryType.class, random),
+		this(queries, new EnumSupplier<QueryType>(QueryType.class, random),
 				new EnumSupplier<QueryOrientation>(QueryOrientation.class, random),
 				new EnumSupplier<QueryCategory>(QueryCategory.class, random), minWidths, minHeights,
 				new EnumSubsetSupplier<QueryColor>(QueryColor.class, random),
@@ -220,8 +213,9 @@ public class PixabayURLSupplier implements Supplier<URL> {
 	public URL get() {
 		String enc = StandardCharsets.UTF_8.name();
 		try {
+			Pair<QueryLang, Collection<String>> k = queries.get();
 			String q = 
-			String.join("+",  this.queries.get().stream().map(s -> {
+			String.join("+",  k.getCdr().stream().map(s -> {
 				try {
 					return URLEncoder.encode(s, enc);
 				} catch (UnsupportedEncodingException e) {
@@ -229,7 +223,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 					throw new Error(e);
 				}
 			}).collect(Collectors.toList()));
-			String lang = URLEncoder.encode(langs.get().getValue(), enc);
+			String lang = URLEncoder.encode(k.getCar().getValue(), enc);
 			String image_type = URLEncoder.encode(types.get().getValue(), enc);
 			String orientation = URLEncoder.encode(orientations.get().getValue(), enc);
 			String category = URLEncoder.encode(categories.get().getValue(), enc);

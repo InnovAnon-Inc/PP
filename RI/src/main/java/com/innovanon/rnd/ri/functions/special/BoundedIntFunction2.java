@@ -10,18 +10,29 @@ import java.util.function.IntFunction;
  * @author gouldbergstein
  *
  */
-public class BoundedIntFunction implements IntFunction<Integer> {
+public class BoundedIntFunction2 implements IntFunction<Integer> {
 
 	private Random random;
+	private int offset;
+	private int bound;
 	
 
+	
+	
 	/**
 	 * @param random
+	 * @param offset
+	 * @param bound
 	 */
-	public BoundedIntFunction(Random random) {
+	public BoundedIntFunction2(Random random, int offset, int bound) {
 		this.random = random;
+		this.offset = offset;
+		this.bound = bound;
 	}
-	
+
+
+
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -29,7 +40,7 @@ public class BoundedIntFunction implements IntFunction<Integer> {
 	 */
 	@Override
 	public Integer apply(int bound) {
-		return random.nextInt(bound);
+		return offset + random.nextInt(Math.min(this.bound, bound - offset));
 	}
 
 }
