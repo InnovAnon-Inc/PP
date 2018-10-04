@@ -11,6 +11,7 @@ import java.util.function.Supplier;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class ErrorEatingSupplier<T> extends ErrorEater<T, Throwable> implements Supplier<Optional<T>> {
 
 	private Supplier<T> supplier;

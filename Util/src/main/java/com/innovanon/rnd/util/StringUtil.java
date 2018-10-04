@@ -37,6 +37,18 @@ public enum StringUtil {
 		return String.join(delimiter, elements);
 	}
 
+	/**
+	 * just use serialization ffs
+	 * 
+	 * @param object
+	 * @return
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 */
+	@Deprecated
 	public static String toString(Object object) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (object == null)
 			return null;
@@ -67,6 +79,7 @@ public enum StringUtil {
 		return toString(object, new Method[0]);
 	}
 
+	@Deprecated
 	public static String toString(Object object, Method[] accessors) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (object == null)
 			return null;
@@ -86,6 +99,7 @@ public enum StringUtil {
 		return ret.toString();
 	}
 
+	@Deprecated
 	public static String invocationToString(Method accessor, Object object)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		StringBuilder ret = new StringBuilder();
@@ -105,6 +119,7 @@ public enum StringUtil {
 		return ret.toString();
 	}
 
+	@Deprecated
 	public static String invocationToString(String accessorName, Object object) throws IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Class<?> cls = object.getClass();
@@ -118,6 +133,7 @@ public enum StringUtil {
 		return invocationToString(accessor, object);
 	}
 	
+	@Deprecated
 	public static String toString2(Object object) {
 		if (object == null)
 			return null;
@@ -145,7 +161,7 @@ public enum StringUtil {
 		}
 		return object.toString();
 	}
-
+	@Deprecated
 	public static <T> String arrayToString(T[] array, Function<T,String> toString) {
 		StringBuilder ret = new StringBuilder();
 		ret.append('[');

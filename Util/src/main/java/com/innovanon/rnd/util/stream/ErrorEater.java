@@ -18,6 +18,7 @@ import com.innovanon.rnd.util.IsInstancePredicate;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class ErrorEater<R,E> {
 
 	private Collection<Class<? extends Throwable>> tastyExceptions;

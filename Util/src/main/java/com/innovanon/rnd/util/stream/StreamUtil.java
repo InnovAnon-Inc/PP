@@ -14,6 +14,7 @@ import java.util.stream.StreamSupport;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public enum StreamUtil {
 	;
 	/**

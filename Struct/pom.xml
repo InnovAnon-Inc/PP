@@ -22,6 +22,12 @@
 	<groupId>com.innovanon.rnd</groupId>
 	<artifactId>Rand</artifactId>
 	</dependency>
+	
+	<dependency>
+    <groupId>com.github.javasync</groupId>
+    <artifactId>streamemo</artifactId>
+    <version>1.0.0</version>
+</dependency>
 	</dependencies>
 
 	<!-- <prerequisites> <maven>3.5.4</maven> </prerequisites> -->

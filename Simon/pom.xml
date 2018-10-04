@@ -22,6 +22,10 @@
 	 <groupId>com.innovanon.rnd</groupId>
 	 <artifactId>Net</artifactId>
 	 </dependency>
+	 	 	 <dependency>
+	 <groupId>com.innovanon.rnd</groupId>
+	 <artifactId>IO</artifactId>
+	 </dependency>
 	 <dependency>
 	 <groupId>com.innovanon.rnd</groupId>
 	 <artifactId>Struct</artifactId>

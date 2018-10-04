@@ -15,5 +15,36 @@
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>Struct</artifactId>
   </dependency>
+  
+  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.1</version>
+</dependency>
   </dependencies>
+  <build>
+  <plugins>
+  <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/jaxb2-maven-plugin -->
+  <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+            <version>2.4</version>
+            <!-- 
+            <executions>
+                <execution>
+                    <id>xjc</id>
+                    <goals>
+                        <goal>xjc</goal>
+                    </goals>
+                </execution>
+            </executions>
+            -->
+            <configuration>
+                <!-- The package of your generated sources -->
+                <packageName>com.innovanon.rnd.net</packageName>
+            </configuration>
+        </plugin>
+  </plugins>
+  </build>
 </project>

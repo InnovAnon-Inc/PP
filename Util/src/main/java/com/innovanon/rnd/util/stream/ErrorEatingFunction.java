@@ -14,6 +14,7 @@ import com.innovanon.rnd.struct.pair.Pair;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class ErrorEatingFunction<A, R> extends ErrorEater<R, Pair<A, Throwable>> implements Function<A, Optional<R>> {
 
 	private Function<A, R> supplier;

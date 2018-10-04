@@ -13,6 +13,7 @@ import com.innovanon.rnd.util.IsInstancePredicate;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public enum ReflectionUtil {
 	;
 	@SafeVarargs

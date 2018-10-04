@@ -15,6 +15,7 @@ import com.innovanon.rnd.struct.bag.BagImpl;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class DiscreteSubsetFunction<T> implements IntFunction<Collection<T>> {
 	/**
 	 * 

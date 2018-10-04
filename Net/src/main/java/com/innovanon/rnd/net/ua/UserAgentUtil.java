@@ -4,14 +4,18 @@
 package com.innovanon.rnd.net.ua;
 
 import java.net.URL;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import org.javasync.streams.Replayer;
+
+import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
  * @author gouldbergstein
@@ -23,27 +27,39 @@ public enum UserAgentUtil {
 	/**
 	 * 
 	 */
-	private static Collection<String> userAgents;
+	private static Function<String, Supplier<Stream<String>>> userAgents = Memoizer.memoize(uax -> {
+		try {
+			return Replayer.replay(getUserAgentsHelper (uax));
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			throw new Error (e);
+		}
+	});
+	
+	public static Stream<String> getUserAgents (String userAgentsXml) {
+		return userAgents.apply(userAgentsXml).get();
+	}
 
 	/**
 	 * 
 	 * @return
 	 * @throws JAXBException
 	 */
-	public static Collection<String> getUserAgents() throws JAXBException {
-		if (userAgents != null)
-			return userAgents;
+	private static Stream<String> getUserAgentsHelper(String userAgentsXml) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(UserAgents.class);
 		Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
 
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		URL url = classloader.getResource("allagents.xml");
+		URL url = classloader.getResource(userAgentsXml);
 
 		UserAgents ua = (UserAgents) jaxbMarshaller.unmarshal(url);
 		List<UserAgent> list = ua.userAgents;
 		assert list != null;
-		List<String> temp = list.stream().map(u -> u.string).collect(Collectors.toList());
-		userAgents = Collections.unmodifiableList(temp);
-		return userAgents;
+		//List<String> temp = list.stream().map(u -> u.string).collect(Collectors.toList());
+		//userAgents = Collections.unmodifiableList(temp);
+		//return userAgents;
+		Stream<String> s = list.stream().map(u -> u.string);
+		//return Replayer.replay(s);
+		return s;
 	}
 }

@@ -20,6 +20,7 @@ import java.util.stream.Stream;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class WordListFunction implements Function<Locale,Stream<Word>> {
 	
 	private Function<Locale,Collection<File>>files;

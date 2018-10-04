@@ -10,6 +10,7 @@ import java.util.function.Supplier;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class EnumSupplier<T > implements Supplier<T> {
 
 	private Supplier<T> delegate;

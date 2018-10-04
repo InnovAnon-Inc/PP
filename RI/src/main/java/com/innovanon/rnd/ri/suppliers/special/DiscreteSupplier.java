@@ -14,6 +14,7 @@ import com.innovanon.rnd.struct.iter.Reiterator;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class DiscreteSupplier<T> implements Supplier<T> {
 	/**
 	 * 

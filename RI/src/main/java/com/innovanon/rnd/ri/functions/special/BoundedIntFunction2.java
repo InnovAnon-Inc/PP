@@ -10,6 +10,7 @@ import java.util.function.IntFunction;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class BoundedIntFunction2 implements IntFunction<Integer> {
 
 	private Random random;

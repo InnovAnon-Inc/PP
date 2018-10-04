@@ -10,6 +10,7 @@ import java.util.function.Function;
 /**
  * @author gouldbergstein
  */
+@Deprecated
 public class ErrorEatingOptionalConverter<A, R> implements Function<A, Optional<R>> {
 	//private Function<A, R> nameToClassConverter;
 	//private Collection<Class<? extends Throwable>> tastyExceptions;

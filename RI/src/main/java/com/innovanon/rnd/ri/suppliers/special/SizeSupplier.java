@@ -6,7 +6,7 @@ package com.innovanon.rnd.ri.suppliers.special;
 import java.util.Random;
 import java.util.function.IntSupplier;
 
-
+// TODO we don't want this fed to a stream that ends up being replayed
 /**
  * @author gouldbergstein
  *

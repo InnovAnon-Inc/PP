@@ -14,6 +14,7 @@ import com.innovanon.rnd.struct.bag.Bag;
  * @see Bag#iterator()
  * @author gouldbergstein
  */
+@Deprecated
 public class Reiterator<T> implements Iterator<T> {
 
 	/**

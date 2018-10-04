@@ -3,14 +3,13 @@
  */
 package com.innovanon.rnd.ree.dict;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import com.innovanon.rnd.struct.bag.BagImpl;
-import com.innovanon.rnd.struct.iter.Reiterator;
+import com.innovanon.rnd.io.DictionaryUtil;
+import com.innovanon.rnd.struct.bag.BagUtil;
 
 /**
  * @author gouldbergstein
@@ -27,9 +26,11 @@ public class DictionarySupplier implements Supplier<String> {
 	 * @param random
 	 */
 	public DictionarySupplier(Random random) {
-		Collection<String> list = DictionaryUtil.getDictionary().collect(Collectors.toList());
-		Iterable<String> iter = new BagImpl<>(list, random);
-		dict = new Reiterator<>(iter);
+		Stream<String> list = DictionaryUtil.getDictionary("all");
+		Stream<String>rList = BagUtil.getRandomStream(list, random);
+		//Iterable<String> iter = new BagImpl<>(list, random);
+		//dict = new Reiterator<>(iter);
+		dict = rList.iterator();
 	}
 
 	/**

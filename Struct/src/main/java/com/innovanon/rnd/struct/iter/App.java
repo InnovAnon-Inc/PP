@@ -36,6 +36,7 @@ public enum App {
 	/**
 	 * @param args command line arguments
 	 */
+	@SuppressWarnings("deprecation")
 	public static void main(String... args) {
 		Random random = new Random();
 		String[] copy = { "abc", "def", "ghi", "jkl", "mno" };

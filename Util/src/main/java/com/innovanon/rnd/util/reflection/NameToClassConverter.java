@@ -3,11 +3,10 @@
  */
 package com.innovanon.rnd.util.reflection;
 
-import java.util.function.Function;
-
 /**
  * @author gouldbergstein
  */
+@Deprecated
 public enum NameToClassConverter /*implements Function<String, Class<?>>*/ {
 	/**
 	 * 
