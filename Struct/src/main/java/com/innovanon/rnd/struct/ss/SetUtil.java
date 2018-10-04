@@ -4,13 +4,18 @@
 package com.innovanon.rnd.struct.ss;
 
 import java.util.Collection;
+import java.util.Random;
 import java.util.function.Function;
+import java.util.function.IntSupplier;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
+
+import com.innovanon.rnd.struct.bag.BagUtil;
+import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
  * @author gouldbergstein
@@ -87,5 +92,28 @@ public enum SetUtil {
 	public static <E> Stream<Stream<E>> superstream(Collection<E> c) {
 		Function<Integer, Stream<Stream<E>>> mapper = n -> substreams(c, n);
 		return Stream.iterate(0, x -> x + 1).limit(c.size()).flatMap(mapper);
+	}
+
+	public static <E> Supplier<Stream<Supplier<Stream<E>>>> randomSubstreams(Collection<E> c, int n, Random random) {
+		Stream<Supplier<Stream<E>>> sss = substreams(c, n).map(s -> BagUtil.getRandomStreamSupplier(s, random));
+		return BagUtil.getRandomStreamSupplier(sss, random);
+	}
+
+	public static <E> Supplier<Stream<Supplier<Stream<E>>>> randomSuperstream(Collection<E> c, Random random) {
+		Stream<Supplier<Stream<E>>> sss = superstream(c).map(s -> BagUtil.getRandomStreamSupplier(s, random));
+		return BagUtil.getRandomStreamSupplier(sss, random);
+	}
+
+	public static <E> Supplier<Supplier<Stream<Supplier<Stream<E>>>>> randomSubsetSupplier(Collection<E> c,
+			IntSupplier ns, Random random) {
+		Function<Integer, Supplier<Stream<Supplier<Stream<E>>>>> f0 = n -> randomSubstreams(c, n, random);
+		Function<Integer, Supplier<Stream<Supplier<Stream<E>>>>> f = Memoizer.memoize(f0);
+		return () -> f.apply(ns.getAsInt());
+	}
+
+	public static <E> Stream<Supplier<Stream<E>>> randomSubsetsSupplier (Collection<E>c,IntSupplier ns,Random random){
+		Stream<Supplier<Stream<Supplier<Stream<E>>>>> stream = Stream.generate(randomSubsetSupplier(c, ns, random));
+		Stream<Supplier<Stream<E>>> stream2 = stream.flatMap(s -> s.get());
+		return stream2;
 	}
 }

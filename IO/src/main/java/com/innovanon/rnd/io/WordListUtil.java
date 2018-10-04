@@ -3,10 +3,19 @@
  */
 package com.innovanon.rnd.io;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.util.Arrays;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
@@ -20,22 +29,43 @@ import com.innovanon.rnd.struct.memo.Memoizer;
 public enum WordListUtil {
 	/* no instances */ ;
 
-	private static Function<String, Stream<File>> userAgents = Memoizer
-			.memoize(Replayer.replay(uax -> getDataHelper(uax)));
+	private static Function<Locale, Supplier<Stream<String>>> userAgents = Memoizer
+			.memoize(uax -> Replayer.replay(getDataHelper(uax)));
 
-	public static Stream<File> getData() {
-		String pathname = String.format("%1$svar%1$slib%1$sdictionaries-common%1$swordlist", File.separator);
-		return getData(pathname);
+	public static Stream<String> getData(Locale lang) {
+		return userAgents.apply(lang).get();
 	}
 
-	public static Stream<File> getData(String filename) {
-		return userAgents.apply(filename);
+	private static Stream<String> getDataHelper(Locale lang) {
+	Collection<File> files =	WordListsUtil.getData();
+	return files.stream().flatMap(f -> getLines (f));
 	}
-
-	private static Stream<File> getDataHelper(String pathname) {
-		File dir = new File(pathname);
-		assert dir.isDirectory();
-		File[] files = dir.listFiles();
-		return Stream.of(files);
+	
+	public static Stream<String> getLines (File file) {
+		assert file.exists();
+		assert file.isFile();
+		InputStream is;
+		try {
+			is = new FileInputStream (file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			throw new Error(e);
+		}
+		Reader r = new InputStreamReader(is);
+		BufferedReader reader=null;
+		try {reader= new BufferedReader(r);
+		Stream<String> stream = reader.lines();
+		return stream.collect(Collectors.toList()
+				).stream();
+		//return stream;
+		} finally {
+			try {
+				if (reader != null)
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				throw new Error(e);
+			}
+		}
 	}
 }

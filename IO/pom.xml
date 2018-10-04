@@ -15,5 +15,9 @@
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>Struct</artifactId>
   </dependency>
+   <dependency>
+  <groupId>com.innovanon.rnd</groupId>
+  <artifactId>Util</artifactId>
+  </dependency>
   </dependencies>
 </project>

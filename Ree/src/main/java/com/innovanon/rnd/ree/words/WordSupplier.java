@@ -3,53 +3,38 @@
  */
 package com.innovanon.rnd.ree.words;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.innovanon.rnd.io.WordListUtil;
 import com.innovanon.rnd.ri.functions.Instantiator;
-import com.innovanon.rnd.struct.bag.BagImpl;
+import com.innovanon.rnd.struct.ss.SetUtil;
 
 /**
  * @author gouldbergstein
  *
  */
-public class WordSupplier implements Instantiator<Locale, Collection<Word>> {
+public class WordSupplier implements Instantiator<Locale, Stream<Word>> {
 
-	/**
-	 * 
-	 */
-	private Function<Locale, Stream<Word>> langs;
-
-	/**
-	 * 
-	 */
-	private Map<Locale, Collection<Word>> dicts;
-
-	/**
-	 * 
-	 */
-	private Random random;
+	// supplier of random subsets
+	// supplier of random strings
+	private Function<Locale, Iterator<Supplier<Stream<String>>>> subsets;
 
 	/**
 	 * 
 	 * @param random
 	 */
-	public WordSupplier(Random random) {
-		Function<Locale, Collection<File>> files = new WordListFileFunction();
-		Function<Locale, Stream<Word>> words = new WordListFunction(files);
-		// Collection<String> list = words.apply(t);
-		// Iterable<String> iter = new BagImpl<>(list, random);
-		// dict = new Reiterator<>(iter);
-		langs = words;
-		dicts = new HashMap<>();
-		this.random = random;
+	public WordSupplier(Random random, IntSupplier ns) {
+		Function<Locale, Stream<String>> words = lang -> WordListUtil.getData(lang);
+		subsets = l -> SetUtil.randomSubsetsSupplier(words.apply(l).collect(Collectors.toList()), ns, random)
+				.iterator();
+		// Function<Locale,Supplier<Supplier<Stream<Supplier<Stream<String>>>>>>
 	}
 
 	/*
@@ -58,18 +43,9 @@ public class WordSupplier implements Instantiator<Locale, Collection<Word>> {
 	 * @see java.util.function.Predicate#test(java.lang.Object)
 	 */
 	@Override
-	public boolean test(Locale t) {
-		if (dicts.containsKey(t))
-			return true;
-		Stream<Word> s = langs.apply(t);
-		Collection<Word> list = s.collect(Collectors.toList());
-		if (list.isEmpty())
-			return false;
-		Collection<Word> iter = new BagImpl<>(list, random);
-		//Iterator<Word> dict = new Reiterator<>(iter);
-		//dicts.put(t, dict);
-		dicts.put(t, iter);
-		return true;
+	public boolean test(Locale param) {
+		Iterator<Supplier<Stream<String>>> i = subsets.apply(param);
+		return i != null && i.hasNext();
 	}
 
 	/*
@@ -78,23 +54,9 @@ public class WordSupplier implements Instantiator<Locale, Collection<Word>> {
 	 * @see java.util.function.Function#apply(java.lang.Object)
 	 */
 	@Override
-	public Collection<Word> apply(Locale param) {
-		Collection<Word> sub;
-		if (dicts.containsKey(param))
-			sub = dicts.get(param);
-		else {
-			Stream<Word> s = langs.apply(param);
-			Collection<Word> list = s.collect(Collectors.toList());
-			if (list.isEmpty())
-				throw new Error();
-			Collection<Word> iter = new BagImpl<>(list, random);
-			sub = iter;
-			//sub = new Reiterator<>(iter);
-			//dicts.put(param, sub);
-			dicts.put(param, iter);
-		}
-
-		//return sub.next();
-		return sub;
+	public Stream<Word> apply(Locale param) {
+		Iterator<Supplier<Stream<String>>> i = subsets.apply(param);
+		Supplier<Stream<String>> s = i.next();
+		return s.get().map(S -> Word.valueOf(S, param));
 	}
 }

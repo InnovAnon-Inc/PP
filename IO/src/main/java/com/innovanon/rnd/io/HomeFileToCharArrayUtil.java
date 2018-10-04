@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import com.innovanon.rnd.struct.memo.Memoizer;
+import com.innovanon.rnd.util.CountingUtil;
 
 /**
  * @author gouldbergstein
@@ -29,6 +30,8 @@ public enum HomeFileToCharArrayUtil {
 		return getDataHelper(new File(System.getProperty("user.home"), filename));
 	}
 
+	
+
 	private static char[] getDataHelper(File file) {
 		FileReader fis;
 		try {
@@ -38,28 +41,20 @@ public enum HomeFileToCharArrayUtil {
 			throw new Error(e);
 		}
 		BufferedReader input = null;
-		char[] cbuf;
+
+		long length = file.length();
+		assert length <= Integer.MAX_VALUE;
+		// cbuf = CharBuffer.allocate((int) length);
+		int len = (int) length;
 		int off;
+		char[] cbuf = new char[len];
+
 		try {
 			input = new BufferedReader(fis);
-			long length = file.length();
-			assert length <= Integer.MAX_VALUE;
-			// cbuf = CharBuffer.allocate((int) length);
-			int len = (int) length;
-			off = 0;
-			cbuf = new char[len];
-			try {
-				int rd;
-				do {
-					rd = input.read(cbuf, off, len);
-					off += rd;
-					len -= rd;
-				} while (rd > 0);
-				// assert rd == -1;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				throw new Error(e);
-			}
+			off = IOUtil.r_read(input, cbuf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new Error(e);
 		} finally {
 			if (input != null)
 				try {
@@ -69,8 +64,43 @@ public enum HomeFileToCharArrayUtil {
 					// e.printStackTrace();
 				}
 		}
-		char[] ret = new char[off];
-		System.arraycopy(cbuf, 0, ret, 0, off);
+		// if (off != 0 && Character.isWhitespace(cbuf[off-1]))
+		// off--;
+		// char[] ret = new char[off];
+		// System.arraycopy(cbuf, 0, ret, 0, off);
+		//// assert !String.valueOf(ret).contains("\n");
+		//// assert !String.valueOf(ret).contains("\0");
+		// System.out.println((int)(ret[off-1]));
+		// return ret;
+		return trim(cbuf, 0, off - 1);
+	}
+
+	public static char[] trim(char[] buf) {
+		return trim(buf, 0, buf.length - 1);
+	}
+
+	public static char[] trim(char[] buf, int off, int len) {
+		// System.out.println(off);
+		while (off < len && (Character.isWhitespace(buf[off]) /*|| buf[off] == '\0'||buf[off]==0*/))
+			off++;
+		while (len > off && (Character.isWhitespace(buf[len]) /*|| buf[len] == '\0'||buf[len]==0*/))
+			len--;
+		assert buf[len]!='\0';
+		assert buf[len]!=0;
+		assert len >= 0;
+		assert off <= buf.length;
+		assert off <= len;
+		char[] ret = new char[CountingUtil.inclusiveRange(off, len)];
+		assert ret.length <= buf.length;
+		assert ret.length == len - off + 1;
+		// System.out.println(Arrays.toString(buf));
+		// System.out.println(buf.length);
+		// System.out.println(off);
+		// System.out.println(len);
+		// System.out.println(ret.length);
+		System.arraycopy(buf, off, ret, 0, len + 1);
+		//for (int i = 0; i < ret.length; i++) 
+		//System.out.println((int)ret[i]);
 		return ret;
 	}
 }

@@ -7,13 +7,13 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Random;
 import java.util.function.Function;
-import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.innovanon.rnd.ree.words.Word;
-import com.innovanon.rnd.ri.functions.special.BoundedIntFunction2;
-import com.innovanon.rnd.ri.functions.special.DiscreteSubsetFunction;
+import com.innovanon.rnd.ree.words.WordSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
 import com.innovanon.rnd.struct.pair.ImmutablePairImpl;
 import com.innovanon.rnd.struct.pair.Pair;
@@ -25,14 +25,11 @@ import com.innovanon.rnd.struct.pair.Pair;
 public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String>>> {
 
 	private Supplier<QueryLang> langs;
-	private IntFunction<Integer> lengths;
-	private Function<Locale, DiscreteSubsetFunction<Word>> lists;
+	private Function<Locale, Stream<Word>> words;
 
-	public QuerySupplier(Random random, Function<Locale, DiscreteSubsetFunction<Word>> lists) {
+	public QuerySupplier(Random random, IntSupplier ns) {
 		langs = new EnumSupplier<QueryLang>(QueryLang.class, random);
-		this.lists = lists;
-		//lengths = new RangedIntSupplier(1, 5, random);
-		lengths = new BoundedIntFunction2(random, 1, 4);
+		words = new WordSupplier(random, ns);
 	}
 
 	/*
@@ -42,17 +39,10 @@ public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String
 	 */
 	@Override
 	public Pair<QueryLang, Collection<String>> get() {
-		// TODO
-		while (true) try{
 		QueryLang ql = langs.get();
-		Locale l = ql.getLocale ();
-		DiscreteSubsetFunction<Word> words = lists.apply(l);
-		int length = lengths.apply(words.size());
-		Collection<String> strings = words.apply(length).stream().map(w -> w.getString()).collect(Collectors.toList());
-		return new ImmutablePairImpl<QueryLang, Collection<String>>(ql, strings);
-		}catch (Error e) {
-			System.err.println(e);
-		}
+		Locale l = ql.getLocale();
+		Stream<Word> words = this.words.apply(l);
+		Collection<String> c = words.map(w -> w.getString()).collect(Collectors.toList());
+		return new ImmutablePairImpl<QueryLang, Collection<String>>(ql, c);
 	}
-
 }

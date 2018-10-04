@@ -215,6 +215,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 		String enc = StandardCharsets.UTF_8.name();
 		try {
 			Pair<QueryLang, Collection<String>> k = queries.get();
+			//System.out.println(enc);
 			String q = 
 			String.join("+",  k.getCdr().stream().map(s -> {
 				try {
@@ -224,6 +225,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 					throw new Error(e);
 				}
 			}).collect(Collectors.toList()));
+			System.out.println(q);
 			String lang = URLEncoder.encode(k.getCar().getValue(), enc);
 			String image_type = URLEncoder.encode(types.get().getValue(), enc);
 			String orientation = URLEncoder.encode(orientations.get().getValue(), enc);
@@ -244,12 +246,17 @@ public class PixabayURLSupplier implements Supplier<URL> {
 			String order = URLEncoder.encode(orders.get().getValue(), enc);
 			int page = pages.getAsInt();
 			int per_page = perPages.getAsInt();
+			//System.out.println(q);
+			//System.out.println((int)  (key.charAt(key.length()-1)));
+			//System.out.println("test: " + base + " " + key + " " + q +" " + lang);
 			String s = String.format(
 					"%s?key=%s&q=%s&lang=%s&image_type=%s&orientation=%s&category=%s&min_width=%s&min_height=%s&colors=%s&editors_choice=%s&safesearch=%s&order=%s&page=%s&per_page=%s",
 					base, key, q, lang, image_type, orientation, category, min_width, min_height,
 					colors, editors_choice, safesearch, order, page, per_page);
 			//String encoded = URLEncoder.encode(s, "UTF-8");
 			//return new URL(encoded);
+			//System.out.println("test2");
+//System.out.println("test2: " + s);
 			return new URL(s);
 		} catch (UnsupportedEncodingException | MalformedURLException e) {
 			// TODO Auto-generated catch block

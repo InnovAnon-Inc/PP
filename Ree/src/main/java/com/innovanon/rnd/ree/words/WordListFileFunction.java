@@ -10,18 +10,19 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.innovanon.rnd.io.WordListUtil;
+import com.innovanon.rnd.io.WordListsUtil;
 
 /**
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class WordListFileFunction implements Function<Locale,Collection<File>> {
 	
 	/**
 	 * 
 	 */
-	private Collection<File> dictionaries = WordListUtil.getDictionary();
+	private Collection<File> dictionaries = WordListsUtil.getData();
 
 	/* (non-Javadoc)
 	 * @see java.util.function.Function#apply(java.lang.Object)
