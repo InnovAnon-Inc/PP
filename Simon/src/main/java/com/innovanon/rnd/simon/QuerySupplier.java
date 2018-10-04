@@ -30,6 +30,7 @@ public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String
 	public QuerySupplier(Random random, IntSupplier ns) {
 		langs = new EnumSupplier<QueryLang>(QueryLang.class, random);
 		words = new WordSupplier(random, ns);
+		//System.out.println("A");
 	}
 
 	/*
@@ -39,10 +40,19 @@ public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String
 	 */
 	@Override
 	public Pair<QueryLang, Collection<String>> get() {
-		QueryLang ql = langs.get();
+		// TODO this loop is scary
+		QueryLang ql;
+		do {
+			ql= langs.get();
+		//System.out.println(ql);
 		Locale l = ql.getLocale();
+		//System.out.println(l);
 		Stream<Word> words = this.words.apply(l);
+		if (words == null)continue;
+		//System.out.println("QuerySupplier.get()");
 		Collection<String> c = words.map(w -> w.getString()).collect(Collectors.toList());
+		//System.out.println(c);
 		return new ImmutablePairImpl<QueryLang, Collection<String>>(ql, c);
+		} while (true);
 	}
 }

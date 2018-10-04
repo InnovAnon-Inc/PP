@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.StreamSupport;
 
-import com.innovanon.rnd.func.predicates.InvariablePredicate;
 import com.innovanon.rnd.ri.functions.YInstantiator;
 
 /**
@@ -56,7 +55,7 @@ public class ObjectInitializer implements Initializer<Class<?>, Object> {
 	 */
 	@Override
 	public boolean test(Object t) {
-		return StreamSupport.stream(delegates.spliterator(), true).anyMatch(new InvariablePredicate<Object>(t));
+		return StreamSupport.stream(delegates.spliterator(), true).anyMatch(t0->t0.test(t));
 	}
 
 	/*
@@ -67,7 +66,7 @@ public class ObjectInitializer implements Initializer<Class<?>, Object> {
 	@Override
 	public void accept(Object t) {
 		Iterator<Initializer<Class<?>, Object>> iterator = StreamSupport.stream(delegates.spliterator(), true)
-				.filter(new InvariablePredicate<Object>(t)).iterator();
+				.filter(t0->t0.test(t)).iterator();
 		if (!iterator.hasNext())
 			throw new Error("unsupported type");
 		while (iterator.hasNext()) {

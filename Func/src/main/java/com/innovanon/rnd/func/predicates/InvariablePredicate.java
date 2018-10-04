@@ -9,6 +9,7 @@ import java.util.function.Predicate;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class InvariablePredicate<T> implements Predicate<Predicate<T>> {
 	
 	/**

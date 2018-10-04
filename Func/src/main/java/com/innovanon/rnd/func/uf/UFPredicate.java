@@ -14,6 +14,7 @@ import java.util.function.Predicate;
  * @param <T>
  * @param <R>
  */
+@Deprecated
 public class UFPredicate<T, R> implements Predicate<Entry<Predicate<T>, Function<T, R>>> {
 	/**
 	 * 

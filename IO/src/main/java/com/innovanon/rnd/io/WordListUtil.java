@@ -14,6 +14,7 @@ import java.io.Reader;
 import java.util.Collection;
 import java.util.Locale;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,10 +39,14 @@ public enum WordListUtil {
 
 	private static Stream<String> getDataHelper(Locale lang) {
 	Collection<File> files =	WordListsUtil.getData();
-	return files.stream().flatMap(f -> getLines (f));
+	Predicate<? super File> predicate=f -> f.getName().toLowerCase().contains(lang.getDisplayLanguage().toLowerCase());
+	//System.out.println(lang.getDisplayLanguage());
+	//files.stream().forEach(System.out::println);
+	//files.stream().filter(predicate).forEach(System.out::println);
+	return files.stream().filter(predicate).flatMap(f -> getLines (f));
 	}
 	
-	public static Stream<String> getLines (File file) {
+	private static Stream<String> getLines (File file) {
 		assert file.exists();
 		assert file.isFile();
 		InputStream is;

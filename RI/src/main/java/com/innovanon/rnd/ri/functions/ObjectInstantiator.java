@@ -10,8 +10,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.StreamSupport;
 
-import com.innovanon.rnd.func.predicates.InvariablePredicate;
-
 /**
  * @author gouldbergstein
  *
@@ -75,7 +73,7 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 	@Override
 	public Object apply(Class<?> t) {
 		Iterator<Instantiator<Class<?>, Object>> iterator = StreamSupport.stream(delegates.spliterator(), true)
-				.filter(new InvariablePredicate<Class<?>>(t)).iterator();
+				.filter(t0->t0.test(t)).iterator();
 		if (!iterator.hasNext())
 			throw new Error("unsupported type");
 		while (iterator.hasNext()) {
@@ -84,7 +82,7 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 		}
 
 		Iterator<YInstantiator<Class<?>, Object>> yiterator = StreamSupport.stream(ydelegates.spliterator(), true)
-				.filter(new InvariablePredicate<Class<?>>(t)).iterator();
+				.filter(t0->t0.test(t)).iterator();
 		if (!yiterator.hasNext())
 			throw new Error("unsupported type");
 		while (yiterator.hasNext()) {
@@ -137,9 +135,9 @@ public class ObjectInstantiator implements YInstantiator<Class<?>, Object> {
 	 */
 	@Override
 	public boolean test(Class<?> t) {
-		if (StreamSupport.stream(delegates.spliterator(), true).anyMatch(new InvariablePredicate<Class<?>>(t)))
+		if (StreamSupport.stream(delegates.spliterator(), true).anyMatch(t0->t0.test(t)))
 			return true;
-		return StreamSupport.stream(ydelegates.spliterator(), true).anyMatch(new InvariablePredicate<Class<?>>(t));
+		return StreamSupport.stream(ydelegates.spliterator(), true).anyMatch(t0->t0.test(t));
 	}
 
 	/*

@@ -14,6 +14,7 @@ import java.util.stream.Stream;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class UnitedFunctions<T, R> implements Function<T, R>, Predicate<T> {
 
 	/**

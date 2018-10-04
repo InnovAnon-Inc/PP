@@ -10,6 +10,7 @@ import java.util.function.Function;
  * @author gouldbergstein
  *
  */
+@Deprecated
 public class ConsumingFunction<T, R> implements Function<T, R> {
 	/**
 	 * 
