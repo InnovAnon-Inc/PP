@@ -276,7 +276,7 @@
 		<targetJDK>${java.version}</targetJDK>
 		<targetJdk>${java.version}</targetJdk>
 
-		<aspectj.plugin.version>1.11</aspectj.plugin.version>
+		<aspectj.plugin.version>1.11.1</aspectj.plugin.version>
 		<aspectj.version>1.9.1</aspectj.version>
 		<reflections.version>0.9.11</reflections.version>
 		<groovy.version>2.5.1</groovy.version>
@@ -644,6 +644,7 @@
 			</plugin>
 			
 			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
+			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
@@ -656,15 +657,16 @@
 						<packageLineRate>80</packageLineRate>
 						<packageBranchRate>80</packageBranchRate>
 					</check>
-					<!-- 
+					-->     <!-- 
 					<instrumentation>
 						<excludes>
 							<exclude>**/HelpMojo.class</exclude>
 						</excludes>
 					</instrumentation> -->
-				</configuration>
+		<!-- 		</configuration>
 </plugin>
-
+ -->
+ 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/javancss-maven-plugin -->
 <!-- 
 <plugin>
