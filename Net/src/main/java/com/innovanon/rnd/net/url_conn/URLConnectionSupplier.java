@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.rnd.net.url;
+package com.innovanon.rnd.net.url_conn;
 
 import java.io.IOException;
 import java.net.URL;

@@ -17,6 +17,7 @@ import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.io.HomeFileToCharArrayUtil;
 import com.innovanon.rnd.ri.suppliers.special.EnumSubsetSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
@@ -132,25 +133,28 @@ public class PixabayURLSupplier implements Supplier<URL> {
 	private String key;
 
 	private Supplier<Pair<QueryLang, Collection<String>>> queries;
+	
+	private Supplier<Collection<Supplier<String>>> ss;
 
-	private Supplier<QueryType> types;
+	//private Supplier<QueryType> types;
 
-	private Supplier<QueryOrientation> orientations;
+	//private Supplier<QueryOrientation> orientations;
 
-	private Supplier<QueryCategory> categories;
+	//private Supplier<QueryCategory> categories;
 
-	private IntSupplier minWidths;
-	private IntSupplier minHeights;
+	//private IntSupplier minWidths;
+	//private IntSupplier minHeights;
 
-	private Supplier<Collection<QueryColor>> colors;
+	//private Supplier<Collection<QueryColor>> colors;
 
-	private Supplier<QueryChoice> choices;
-	private Supplier<QuerySafe> safes;
-	private Supplier<QueryOrder> orders;
+	//private Supplier<QueryChoice> choices;
+	//private Supplier<QuerySafe> safes;
+	//private Supplier<QueryOrder> orders;
 
-	private IntSupplier pages;
-	private IntSupplier perPages;
+	//private IntSupplier pages;
+	//private IntSupplier perPages;
 
+	@Todo(message = "don't store passwords in Strings")
 	private static String getKey() throws FileNotFoundException, IOException {
 		return String.valueOf(HomeFileToCharArrayUtil.getData(".pixabay"));
 	}
@@ -181,17 +185,18 @@ public class PixabayURLSupplier implements Supplier<URL> {
 			throws FileNotFoundException, IOException {
 		this.key = getKey();
 		this.queries = queries;
-		this.types = types;
-		this.orientations = orientations;
-		this.categories = categories;
-		this.minWidths = minWidths;
-		this.minHeights = minHeights;
-		this.colors = colors;
-		this.choices = choices;
-		this.safes = safes;
-		this.orders = orders;
-		this.pages = pages;
-		this.perPages = perPages;
+		//this.types = types;
+		//this.orientations = orientations;
+		//this.categories = categories;
+		//this.minWidths = minWidths;
+		//this.minHeights = minHeights;
+		//this.colors = colors;
+		//this.choices = choices;
+		//this.safes = safes;
+		//this.orders = orders;
+		//this.pages = pages;
+		//this.perPages = perPages;
+		ss = new SuppliersSupplier();
 	}
 
 	public PixabayURLSupplier(Supplier<Pair<QueryLang,Collection<String>>> queries,  IntSupplier minWidths,

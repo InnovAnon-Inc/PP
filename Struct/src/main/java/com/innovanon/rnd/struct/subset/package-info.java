@@ -5,4 +5,4 @@
  * @author gouldbergstein
  *
  */
-package com.innovanon.rnd.net.url;
+package com.innovanon.rnd.struct.subset;
