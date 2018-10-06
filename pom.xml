@@ -4,7 +4,7 @@
 
 	<groupId>com.innovanon.rnd</groupId>
 	<artifactId>PP</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>PP</name>
@@ -341,85 +341,85 @@
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>HH</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Math</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Aspect</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Struct</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Util</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			
 					<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>AlphaTech</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Func</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Refl</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Rand</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>RI</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			
 						<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Net</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>IO</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>Ree</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.innovanon.rnd</groupId>
 				<artifactId>TS</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 
 
@@ -749,10 +749,10 @@
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
 					<!-- <aspectLibraries> <aspectLibrary> <groupId>com.innovanon.rnd</groupId> 
-						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </aspectLibrary> 
+						<artifactId>Aspect</artifactId> <version>${project.version}</version> </aspectLibrary> 
 						</aspectLibraries> -->
 					<!-- <weaveDependencies> <weaveDependency> <groupId>com.innovanon.rnd</groupId> 
-						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </weaveDependency> 
+						<artifactId>Aspect</artifactId> <version>${project.version}</version> </weaveDependency> 
 						</weaveDependencies> -->
 				</configuration>
 				<executions>
@@ -772,7 +772,7 @@
 						<version>${aspectj.version}</version>
 					</dependency>
 					<!-- <dependency> <groupId>com.innovanon.rnd</groupId> <artifactId>Aspect</artifactId> 
-						<version>0.0.1-SNAPSHOT</version> </dependency> -->
+						<version>${project.version}</version> </dependency> -->
 						<!-- https://stackoverflow.com/questions/48173963/maven-aspectj-plugin-fails-to-build-with-java-9-due-to-missing-tools-jar -->
 						<!-- <dependency>
             <groupId>org.aspectj</groupId>
@@ -978,5 +978,41 @@
 		</plugins>
 
 
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.github.m50d
+										</groupId>
+										<artifactId>
+											aspectj-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.11.1,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>test-compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
