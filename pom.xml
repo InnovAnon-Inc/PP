@@ -457,7 +457,7 @@
 				<version>${maven-javadoc-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-					<defaultAuthor>InnovAnon</defaultAuthor>
+					<!-- <defaultAuthor>InnovAnon</defaultAuthor> -->
 					<!-- <charset></charset> -->
 					<description>${project.description}</description>
 					<!-- <detectLinks>true</detectLinks> <keywords>true</keywords> <linksource>true</linksource> 
