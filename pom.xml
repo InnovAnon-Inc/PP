@@ -682,15 +682,17 @@
 -->
 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/findbugs-maven-plugin -->
+<!-- 
 <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>${findbugs-maven-plugin.version}</version>
 				<configuration>
-					<failOnError>true</failOnError>
-					<!-- <excludeFilterFile>findBugsExclude.xml</excludeFilterFile> -->
-				</configuration>
+					<failOnError>false</failOnError>
+	 -->				<!-- <excludeFilterFile>findBugsExclude.xml</excludeFilterFile> -->
+	<!-- 			</configuration>
 </plugin>
+ -->
 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/jdepend-maven-plugin -->
 <plugin>
