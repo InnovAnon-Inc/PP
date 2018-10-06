@@ -740,7 +740,7 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<complianceLevel>${java.version}</complianceLevel>
+					<complianceLevel>10</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
 					<!-- <aspectLibraries> <aspectLibrary> <groupId>com.innovanon.rnd</groupId> 
