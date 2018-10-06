@@ -19,5 +19,9 @@
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>Util</artifactId>
   </dependency>
+  <dependency>
+  <groupId>com.innovanon.rnd</groupId>
+  <artifactId>AlphaTech</artifactId>
+  </dependency>
   </dependencies>
 </project>

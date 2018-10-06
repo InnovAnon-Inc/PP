@@ -8,6 +8,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.function.Supplier;
 
+import com.innovanon.rnd.at.Todo;
+
 /**
  * @author gouldbergstein
  *
@@ -38,6 +40,7 @@ public class URLConnectionSupplier implements Supplier<URL> {
 	 * @see java.util.function.Supplier#get()
 	 */
 	@Override
+	@Todo("specialized errors")
 	public URL get() {
 		/*String urlspec = urlspecs.get();
 		URL url;

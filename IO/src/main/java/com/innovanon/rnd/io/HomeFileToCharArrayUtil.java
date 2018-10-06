@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.Function;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.struct.memo.Memoizer;
 import com.innovanon.rnd.util.CountingUtil;
 
@@ -31,7 +32,8 @@ public enum HomeFileToCharArrayUtil {
 	}
 
 	
-
+	@Todo("clean this up")
+	@Todo("specialized errors")
 	private static char[] getDataHelper(File file) {
 		FileReader fis;
 		try {

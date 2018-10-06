@@ -17,6 +17,6 @@ import java.lang.annotation.Retention;
 @Retention(SOURCE)
 @Repeatable(Todos.class)
 public @interface Todo {
-	String message ();
+	String value();
 	String issueTrackerId () default "N/A";
 }

@@ -23,7 +23,6 @@ public enum WordListsUtil {
 
 	public static Collection<File> getData() {
 		//String pathname = String.format("%1$svar%1$slib%1$sdictionaries-common%1$swordlist", File.separator);
-		// TODO are these being found?
 		String pathname = String.format("%1$susr%1$sshare%1$sdict", File.separator);
 		//String pathname = String.format("%1$s%2$sdicts", System.getProperty("user.home"), File.separator);
 		return getData(pathname);

@@ -139,7 +139,7 @@ enum QueryOrder  implements NameValuePair{POPULAR("popular"),LATEST("latest");
  */
 public class PixabayURLSupplier extends URLSupplier {
 
-	@Todo(message = "don't store passwords in Strings")
+	@Todo("don't store passwords in Strings")
 	private static String getKey() throws FileNotFoundException, IOException {
 		return String.valueOf(HomeFileToCharArrayUtil.getData(".pixabay"));
 	}

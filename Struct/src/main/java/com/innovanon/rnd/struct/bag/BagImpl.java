@@ -28,6 +28,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import com.innovanon.rnd.at.Todo;
+
 /**
  * @author gouldbergstein
  * @see java.util.ArrayList
@@ -270,6 +272,7 @@ public class BagImpl<E> implements Bag<E> {
 	 * 
 	 * @see java.util.Queue#offer(java.lang.Object)
 	 */
+	@Todo("check capacity of underlying data structure and return true iff the element can be added without resizing")
 	@Override
 	public boolean offer(E e) {
 		// TODO can't check capacity of arraylist

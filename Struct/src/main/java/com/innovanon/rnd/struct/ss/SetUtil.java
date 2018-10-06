@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.struct.bag.BagUtil;
 import com.innovanon.rnd.struct.memo.Memoizer;
 import com.innovanon.rnd.struct.stream.StreamUtil;
@@ -298,6 +299,7 @@ public enum SetUtil {
 	}
 
 	// TODO use optionals
+	@Todo("use optionals instead of nulls")
 	/**
 	 * @param c the source collection
 	 * @param ns the supplier of sizes

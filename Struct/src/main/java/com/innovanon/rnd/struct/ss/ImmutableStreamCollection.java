@@ -12,6 +12,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.innovanon.rnd.at.Todo;
+
 /**
  * https://github.com/minborg/infinite-sets/blob/master/src/main/java/com/speedment/infinite_sets/ImmutableStreamSet.java
  * 
@@ -25,6 +27,7 @@ public interface ImmutableStreamCollection<E> extends Collection<E> {
 	@Override
 	public Stream<E> stream();
 
+	@Todo("gracefully handle big sets > Integer.MAX_VALUE")
 	@Override
 	default int size() {
 		// TODO big sets

@@ -12,6 +12,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.ree.words.Word;
 import com.innovanon.rnd.ree.words.WordSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
@@ -39,8 +40,9 @@ public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String
 	 * @see java.util.function.Supplier#get()
 	 */
 	@Override
+	@Todo("possible failure to terminate")
 	public Pair<QueryLang, Collection<String>> get() {
-		// TODO this loop is scary
+		// TODO this loop is scary. langs needs to be Supplier<Stream>. do langs.get().iterator(). return the first working value. if no return, then shit the bed
 		QueryLang ql;
 		do {
 			ql= langs.get();

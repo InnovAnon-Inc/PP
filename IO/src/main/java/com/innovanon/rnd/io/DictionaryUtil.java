@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
@@ -33,6 +34,7 @@ public enum DictionaryUtil {
 	 * 
 	 * @return
 	 */
+	@Todo("filter out comments")
 	private static Stream<String> getDictionaryHelper(String resource) {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream(resource);

@@ -15,6 +15,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.javasync.streams.Replayer;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
@@ -27,6 +28,7 @@ public enum UserAgentUtil {
 	/**
 	 * 
 	 */
+	@Todo("specialized errors")
 	private static Function<String, Supplier<Stream<String>>> userAgents = Memoizer.memoize(uax -> {
 		try {
 			return Replayer.replay(getUserAgentsHelper (uax));

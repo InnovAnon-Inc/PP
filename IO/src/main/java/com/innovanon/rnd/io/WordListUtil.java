@@ -21,6 +21,7 @@ import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
@@ -46,6 +47,7 @@ public enum WordListUtil {
 	return files.stream().filter(predicate).flatMap(f -> getLines (f));
 	}
 	
+	@Todo("specialized errors")
 	private static Stream<String> getLines (File file) {
 		assert file.exists();
 		assert file.isFile();
