@@ -522,7 +522,7 @@
 					</additionalparam>
 					<!-- <useStandardDocletOptions>true</useStandardDocletOptions> -->
 					
-					<additionalparam>-output ${project.build.outputDirectory}/resourcedoc.xml</additionalparam>
+					<!-- <additionalparam>-output ${project.build.outputDirectory}/resourcedoc.xml</additionalparam> -->
                 <useStandardDocletOptions>false</useStandardDocletOptions>
 				</configuration>
 			</plugin>
