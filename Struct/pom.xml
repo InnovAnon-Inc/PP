@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.innovanon.rnd</groupId>
 		<artifactId>PP</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>Struct</artifactId>
 	<name>Struct</name>
@@ -48,13 +48,13 @@
 						<aspectLibrary>
 							<groupId>com.innovanon.rnd</groupId>
 							<artifactId>Aspect</artifactId>
-							<version>0.0.1-SNAPSHOT</version>
+							<version>0.0.2-SNAPSHOT</version>
 						</aspectLibrary>
 					</aspectLibraries>
  -->
  
 					<!-- <weaveDependencies> <weaveDependency> <groupId>com.innovanon.rnd</groupId> 
-						<artifactId>Aspect</artifactId> <version>0.0.1-SNAPSHOT</version> </weaveDependency> 
+						<artifactId>Aspect</artifactId> <version>0.0.2-SNAPSHOT</version> </weaveDependency> 
 						</weaveDependencies> -->
 <!-- 
 				</configuration>
@@ -62,7 +62,7 @@
 					<dependency>
 						<groupId>com.innovanon.rnd</groupId>
 						<artifactId>Aspect</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
+						<version>0.0.2-SNAPSHOT</version>
 					</dependency>
 				</dependencies>
 			</plugin>

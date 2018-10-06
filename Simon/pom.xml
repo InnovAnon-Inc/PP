@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.innovanon.rnd</groupId>
 		<artifactId>PP</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>Simon</artifactId>
 	<name>Simon</name>
