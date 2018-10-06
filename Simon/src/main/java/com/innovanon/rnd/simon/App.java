@@ -53,7 +53,7 @@ public enum App {
 		//IntFunction<Integer> sizes = new BoundedIntFunction(random);
 		//Function<Locale, DiscreteSubsetFunction<Word>> f = words.andThen(c -> new DiscreteSubsetFunction<Word>(c, random, sizes));
 		
-		IntSupplier sizes = new RangedIntSupplier(1, 5, random);
+		IntSupplier sizes = new RangedIntSupplier(1, 3, random);
 		Supplier<Pair<QueryLang,Collection<String>>> queries = new QuerySupplier(random, sizes );
 		
 		IntSupplier widths = new RangedIntSupplier(random, 0, 100);

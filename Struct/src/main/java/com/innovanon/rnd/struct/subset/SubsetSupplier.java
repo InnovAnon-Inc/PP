@@ -17,7 +17,7 @@ import com.innovanon.rnd.struct.ss.SetUtil;
  * @author gouldbergstein
  *
  */
-public class SubsetSupplier<T> implements Supplier<Collection<T>> {
+public class SubsetSupplier<T> implements Supplier< Collection< T>> {
 
 	private Iterator<Stream<T>> filters;
 

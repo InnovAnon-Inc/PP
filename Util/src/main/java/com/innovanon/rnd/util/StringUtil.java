@@ -6,15 +6,29 @@ package com.innovanon.rnd.util;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.function.Function;
+
+import com.innovanon.rnd.struct.stream.StreamUtil;
 
 /**
  * @author gouldbergstein
  *
  */
 public enum StringUtil {
-	;
+	/* no instances */;
+	
+	/**
+	 * @param elements the elements to be joined
+	 * @param mapper the toString function
+	 * @param delimiter the separator between the elements
+	 * @return a string containing a delimiter-separated list of elements
+	 */
+	public static<T> String join (Collection<T> elements, Function<T, String> mapper, String delimiter) {
+		return String.join(delimiter, StreamUtil.map(elements, mapper));
+	}
+	
 	/**
 	 * https://stackoverflow.com/questions/19198048/how-to-repeat-string-n-times-in-java
 	 * 

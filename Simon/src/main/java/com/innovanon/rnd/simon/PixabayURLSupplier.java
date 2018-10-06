@@ -5,25 +5,28 @@ package com.innovanon.rnd.simon;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Locale;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
+
+import org.apache.http.NameValuePair;
 
 import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.io.HomeFileToCharArrayUtil;
+import com.innovanon.rnd.net.nv.NameValuePairImpl;
 import com.innovanon.rnd.ri.suppliers.special.EnumSubsetSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
+import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
+import com.innovanon.rnd.struct.pair.ImmutablePairImpl;
 import com.innovanon.rnd.struct.pair.Pair;
+import com.innovanon.rnd.struct.stream.StreamUtil;
+import com.innovanon.rnd.util.StringUtil;
 
-enum QueryLang {
+enum QueryLang implements NameValuePair{
 	CS("cs"), DA("da"), DE("de"), EN("en"), ES("es"), FR("fr"), ID("id"), IT("it"), HU("hu"), NL("nl"), NO("no"),
 	PL("pl"), PT("pt"), RO("ro"), SK("sk"), FI("fi"), SV("sv"), TR("tr"), VI("vi"), TH("th"), BG("bg"), RU("ru"),
 	EL("el"), JA("ja"), KO("ko"), ZH("zh");
@@ -45,31 +48,33 @@ enum QueryLang {
 	public String getValue() {
 		return value;
 	}
+	
+	public String getName() { return "lang";}
 
 	public Locale getLocale() {
 		return locale;
 	}
 }
 
-enum QueryType {
+enum QueryType  implements NameValuePair{
 	ALL("all"),PHOTO("photo"),ILLUSTRATION("illustration"),VECTOR("vector");
 	private String value;
 	QueryType(String value){this.value=value;}
 
 	public String getValue() {
 		return value;
-	}}
+	}	public String getName (){ return "image_type";}}
 
-enum QueryOrientation {
+enum QueryOrientation  implements NameValuePair{
 	ALL("all"),HORIZONTAL("horizontal"),VERTICAL("vertical");
 	private String value;
 	QueryOrientation(String value){this.value=value;}
 
 	public String getValue() {
 		return value;
-	}}
+	}	public String getName() { return "orientation";}}
 
-enum QueryCategory {
+enum QueryCategory  implements NameValuePair{
 	FASHION("fashion"),NATURE("nature"),BACKGROUNDS("backgrounds"),
 	SCIENCE("scince"),EDUCATION("education"),PEOPLE("people"),FEELINGS("feelings"),RELIGION("religion"),
 	HEALTH("health"),PLACES("places"),ANIMALS("animals"),INDUSTRY("industry"),FOOD("food"), 
@@ -80,7 +85,8 @@ enum QueryCategory {
 
 	public String getValue() {
 		return value;
-	}}
+	}
+	public String getName() {return "category";}}
 
 enum QueryColor {
 	GRAYSCALE("grayscale"), TRANSPARENT("transparent"), RED("red"), ORANGE("orange"), YELLOW("yellow"), 
@@ -94,7 +100,7 @@ enum QueryColor {
 	}
 }
 
-enum QueryChoice {
+enum QueryChoice  implements NameValuePair{
 	TRUE("true"),FALSE("false");
 	;private String value;
 	QueryChoice(String value){this.value=value;}
@@ -102,9 +108,11 @@ enum QueryChoice {
 	public String getValue() {
 		return value;
 	}
+	
+	public String getName () {return  "editors_choice";}
 }
 
-enum QuerySafe {
+enum QuerySafe  implements NameValuePair{
 	TRUE("true"),FALSE("false");
 	;private String value;
 	QuerySafe(String value){this.value=value;}
@@ -112,93 +120,85 @@ enum QuerySafe {
 	public String getValue() {
 		return value;
 	}
+	public String getName () { return "safesearch";}
 }
 
-enum QueryOrder {POPULAR("popular"),LATEST("latest");
+enum QueryOrder  implements NameValuePair{POPULAR("popular"),LATEST("latest");
 	;private String value;
 	QueryOrder(String value){this.value=value;}
 
 	public String getValue() {
 		return value;
 	}
+	public String getName() {return "order";}
 }
 
 /**
  * @author gouldbergstein
  *
  */
-public class PixabayURLSupplier implements Supplier<URL> {
-	private String base = "https://pixabay.com/api";
-
-	private String key;
-
-	private Supplier<Pair<QueryLang, Collection<String>>> queries;
-	
-	private Supplier<Collection<Supplier<String>>> ss;
-
-	//private Supplier<QueryType> types;
-
-	//private Supplier<QueryOrientation> orientations;
-
-	//private Supplier<QueryCategory> categories;
-
-	//private IntSupplier minWidths;
-	//private IntSupplier minHeights;
-
-	//private Supplier<Collection<QueryColor>> colors;
-
-	//private Supplier<QueryChoice> choices;
-	//private Supplier<QuerySafe> safes;
-	//private Supplier<QueryOrder> orders;
-
-	//private IntSupplier pages;
-	//private IntSupplier perPages;
+public class PixabayURLSupplier extends URLSupplier {
 
 	@Todo(message = "don't store passwords in Strings")
 	private static String getKey() throws FileNotFoundException, IOException {
 		return String.valueOf(HomeFileToCharArrayUtil.getData(".pixabay"));
 	}
-
-	/**
-	 * @param base
-	 * @param key
-	 * @param queries
-	 * @param langs
-	 * @param types
-	 * @param orientations
-	 * @param categories
-	 * @param minWidths
-	 * @param minHeights
-	 * @param colors
-	 * @param choices
-	 * @param safes
-	 * @param orders
-	 * @param pages
-	 * @param perPages
-	 * @throws IOException
-	 * @throws FileNotFoundException
-	 */
+	
+	private static Collection< Supplier< NameValuePair>> getNonOptionalParameters() {
+		return Arrays.asList(() -> {
+			try {
+				return new NameValuePairImpl("key", getKey());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				throw new Error(e);
+			}
+		});
+	}
+	
+	private static Collection< Supplier< NameValuePair>> getOptionalParameters(Supplier<QueryType> types,
+			Supplier<QueryOrientation> orientations, Supplier<QueryCategory> categories, IntSupplier minWidths,
+			IntSupplier minHeights, Supplier<Collection<QueryColor>> colors, Supplier<QueryChoice> choices,
+			Supplier<QuerySafe> safes, Supplier<QueryOrder> orders, IntSupplier pages, IntSupplier perPages) {
+		// TODO minWidths, minHeights, pages, perPages
+		return Arrays.asList(
+				()->types.get(),
+				()->orientations.get(),
+				()->categories.get(),
+				()->choices.get(), 
+				()->safes.get(),
+				()->orders.get(),
+				
+				() -> new NameValuePairImpl("min_width", String.valueOf(minWidths.getAsInt())),
+				() -> new NameValuePairImpl( "min_height", String.valueOf(minHeights.getAsInt())),
+				() -> new NameValuePairImpl( "colors",StringUtil.join(colors.get(), x -> x.getValue(), ",") )
+			);
+	}
+	
+	private static	Supplier<Pair<NameValuePair, String>> getQueries (Supplier<Pair<QueryLang,Collection<String>> >queries) {
+		Function<Pair<QueryLang,Collection<String>>, Pair<NameValuePair,String>> mapper=
+				s -> new ImmutablePairImpl<NameValuePair,String>(s.getCar(),String.join(" ", s.getCdr()));
+		return StreamUtil.map(queries,
+				mapper);
+	}
+	
 	public PixabayURLSupplier(Supplier<Pair<QueryLang,Collection<String>> >queries,  Supplier<QueryType> types,
 			Supplier<QueryOrientation> orientations, Supplier<QueryCategory> categories, IntSupplier minWidths,
 			IntSupplier minHeights, Supplier<Collection<QueryColor>> colors, Supplier<QueryChoice> choices,
-			Supplier<QuerySafe> safes, Supplier<QueryOrder> orders, IntSupplier pages, IntSupplier perPages)
+			Supplier<QuerySafe> safes, Supplier<QueryOrder> orders, IntSupplier pages, IntSupplier perPages, IntSupplier ns, Random random)
 			throws FileNotFoundException, IOException {
-		this.key = getKey();
-		this.queries = queries;
-		//this.types = types;
-		//this.orientations = orientations;
-		//this.categories = categories;
-		//this.minWidths = minWidths;
-		//this.minHeights = minHeights;
-		//this.colors = colors;
-		//this.choices = choices;
-		//this.safes = safes;
-		//this.orders = orders;
-		//this.pages = pages;
-		//this.perPages = perPages;
-		ss = new SuppliersSupplier();
+		super (
+				"https", "pixabay.com", "api",
+				getNonOptionalParameters(),
+				"q",
+				getQueries(queries),
+				getOptionalParameters(
+						types, orientations, categories,
+						minWidths, minHeights, colors, choices, safes, orders, pages, perPages),
+				ns,
+				 random
+		);
 	}
-
+	
 	public PixabayURLSupplier(Supplier<Pair<QueryLang,Collection<String>>> queries,  IntSupplier minWidths,
 			IntSupplier minHeights, IntSupplier pages, IntSupplier perPages, Random random) throws FileNotFoundException, IOException {
 		this(queries, new EnumSupplier<QueryType>(QueryType.class, random),
@@ -207,66 +207,7 @@ public class PixabayURLSupplier implements Supplier<URL> {
 				new EnumSubsetSupplier<QueryColor>(QueryColor.class, random),
 				new EnumSupplier<QueryChoice>(QueryChoice.class, random),
 				new EnumSupplier<QuerySafe>(QuerySafe.class, random),
-				new EnumSupplier<QueryOrder>(QueryOrder.class, random), pages, perPages);
+				new EnumSupplier<QueryOrder>(QueryOrder.class, random),
+				pages, perPages, new RangedIntSupplier(0, 5, random), random);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.function.Supplier#get()
-	 */
-	@Override
-	public URL get() {
-		String enc = StandardCharsets.UTF_8.name();
-		try {
-			Pair<QueryLang, Collection<String>> k = queries.get();
-			//System.out.println(enc);
-			String q = 
-			String.join("+",  k.getCdr().stream().map(s -> {
-				try {
-					return URLEncoder.encode(s, enc);
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					throw new Error(e);
-				}
-			}).collect(Collectors.toList()));
-			System.out.println(q);
-			String lang = URLEncoder.encode(k.getCar().getValue(), enc);
-			String image_type = URLEncoder.encode(types.get().getValue(), enc);
-			String orientation = URLEncoder.encode(orientations.get().getValue(), enc);
-			String category = URLEncoder.encode(categories.get().getValue(), enc);
-			int min_width = minWidths.getAsInt();
-			int min_height = minHeights.getAsInt();
-			String colors = 
-					String.join(",",  this.colors.get().stream().map(QueryColor::getValue).map(s -> {
-						try {
-							return URLEncoder.encode(s, enc);
-						} catch (UnsupportedEncodingException e) {
-							// TODO Auto-generated catch block
-							throw new Error(e);
-						}
-					}).collect(Collectors.toList()));
-			String editors_choice = URLEncoder.encode(choices.get().getValue(), enc);
-			String safesearch = URLEncoder.encode(safes.get().getValue(), enc);
-			String order = URLEncoder.encode(orders.get().getValue(), enc);
-			int page = pages.getAsInt();
-			int per_page = perPages.getAsInt();
-			//System.out.println(q);
-			//System.out.println((int)  (key.charAt(key.length()-1)));
-			//System.out.println("test: " + base + " " + key + " " + q +" " + lang);
-			String s = String.format(
-					"%s?key=%s&q=%s&lang=%s&image_type=%s&orientation=%s&category=%s&min_width=%s&min_height=%s&colors=%s&editors_choice=%s&safesearch=%s&order=%s&page=%s&per_page=%s",
-					base, key, q, lang, image_type, orientation, category, min_width, min_height,
-					colors, editors_choice, safesearch, order, page, per_page);
-			//String encoded = URLEncoder.encode(s, "UTF-8");
-			//return new URL(encoded);
-			//System.out.println("test2");
-//System.out.println("test2: " + s);
-			return new URL(s);
-		} catch (UnsupportedEncodingException | MalformedURLException e) {
-			// TODO Auto-generated catch block
-			throw new Error(e);
-		}
-	}
-
 }

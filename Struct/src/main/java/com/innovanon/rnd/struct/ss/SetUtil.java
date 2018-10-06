@@ -11,13 +11,13 @@ import java.util.function.Function;
 import java.util.function.IntSupplier;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.javasync.streams.Replayer;
 
 import com.innovanon.rnd.struct.bag.BagUtil;
 import com.innovanon.rnd.struct.memo.Memoizer;
+import com.innovanon.rnd.struct.stream.StreamUtil;
 
 /**
  * @author gouldbergstein
@@ -110,7 +110,7 @@ public enum SetUtil {
 		// Stream<Collection<E>> ss = Stream.iterate(0, x -> x + 1).limit
 		// (c.size()-n).map(mapper );
 		// return ss.collect(Collectors.toList());
-		return collectTheCollectors(substreams(c, n));
+		return StreamUtil.collectTheCollectors(substreams(c, n));
 	}
 
 	/**
@@ -119,18 +119,10 @@ public enum SetUtil {
 	 * @return the set of all subsets of c collection
 	 */
 	public static <E> Collection<Collection<E>> superset(Collection<E> c) {
-		return collectTheCollectors(superstream(c));
+		return StreamUtil.collectTheCollectors(superstream(c));
 	}
 
-	/**
-	 * convert a stream of streams to a collection of collections
-	 * 
-	 * @param ss the stream of streams to convert
-	 * @return the collected stream of collected streams
-	 */
-	public static <E> Collection<Collection<E>> collectTheCollectors(Stream<Stream<E>> ss) {
-		return ss.map(s -> s.collect(Collectors.toList())).collect(Collectors.toList());
-	}
+
 
 	/**
 	 * https://stackoverflow.com/questions/25311535/generate-one-stream-from-multiple-suppliers
