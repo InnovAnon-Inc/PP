@@ -520,7 +520,10 @@
 					<additionalparam>
 						-views -all
 					</additionalparam>
-					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<!-- <useStandardDocletOptions>true</useStandardDocletOptions> -->
+					
+					<additionalparam>-output ${project.build.outputDirectory}/resourcedoc.xml</additionalparam>
+                <useStandardDocletOptions>false</useStandardDocletOptions>
 				</configuration>
 			</plugin>
 
