@@ -768,6 +768,19 @@
 					</dependency>
 					<!-- <dependency> <groupId>com.innovanon.rnd</groupId> <artifactId>Aspect</artifactId> 
 						<version>0.0.1-SNAPSHOT</version> </dependency> -->
+						<!-- https://stackoverflow.com/questions/48173963/maven-aspectj-plugin-fails-to-build-with-java-9-due-to-missing-tools-jar -->
+						<!-- <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency> -->
+						<dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>${java.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/pom.xml</systemPath>
+        </dependency>
 				</dependencies>
 			</plugin>
 
