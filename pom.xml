@@ -738,8 +738,8 @@
 				<version>${aspectj.plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<source>10</source>
+					<target>10</target>
 					<complianceLevel>10</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
