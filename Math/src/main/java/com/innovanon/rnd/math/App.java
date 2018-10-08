@@ -4,9 +4,10 @@ package com.innovanon.rnd.math;
  * Hello world!
  *
  */
-public class App 
+public enum App 
 {
-    public static void main( String[] args )
+	/* no instances */ ;
+    public static void main( String... args )
     {
         System.out.println( "Hello World!" );
     }

@@ -1,4 +1,6 @@
-package com.innovanon.rnd.ri;
+package com.innovanon.rnd.ree.re;
+
+import java.io.IOException;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -30,8 +32,9 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
+     * @throws IOException 
      */
-    public void testApp()
+    public void testApp() throws IOException
     {
         //assertTrue( true );
     	String args = null;

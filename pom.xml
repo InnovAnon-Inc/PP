@@ -448,19 +448,20 @@
 		</dependencies>
 	</dependencyManagement>
 
+<!-- 
 	<reporting>
 		<plugins>
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven-javadoc-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-					<!-- <defaultAuthor>InnovAnon</defaultAuthor> -->
+-->					<!-- <defaultAuthor>InnovAnon</defaultAuthor> -->
 					<!-- <charset></charset> -->
-					<description>${project.description}</description>
-					<!-- <detectLinks>true</detectLinks> <keywords>true</keywords> <linksource>true</linksource> 
+<!--					<description>${project.description}</description>
+-->					<!-- <detectLinks>true</detectLinks> <keywords>true</keywords> <linksource>true</linksource> 
 						<old>true</old> <validateLinks>true</validateLinks> <serialwarn>true</serialwarn> 
 						<splitindex>true</splitindex> -->
 					<!-- <docfilessubdirs></docfilessubdirs> -->
@@ -469,26 +470,26 @@
 					<!-- <javadocVersion>1.5</javadocVersion> -->
 					<!-- <locale>en</locale> -->
 
-					<level>private</level>
+<!--					<level>private</level>
 					<show>private</show>
-					<!-- <stylesheet>java</stylesheet> -->
-					<source>${java.version}</source>
+-->					<!-- <stylesheet>java</stylesheet> -->
+<!--					<source>${java.version}</source>
 					<sourcetab>${indentSize}</sourcetab>
 
 					<stylesheetfile>src/main/javadoc/javadoc_stylesheet.css</stylesheetfile>
 
 					<failOnError>false</failOnError>
-					<!-- <bootclasspath>${sun.boot.class.path}</bootclasspath> -->
+-->					<!-- <bootclasspath>${sun.boot.class.path}</bootclasspath> -->
 
 					<!-- TODO donations, chat help -->
-					<packagesheader><![CDATA[
+<!--					<packagesheader><![CDATA[
 					<b>${project.name} Project</b><br />${project.version}
                     ]]></packagesheader>
 					<top>Free Code for a Free World</top>
 					<footer>Innovations Anonymous</footer>
-					<!-- <docfilessubdirs>true</docfilessubdirs> -->
+-->					<!-- <docfilessubdirs>true</docfilessubdirs> -->
 
-					<header><![CDATA[
+<!--					<header><![CDATA[
 					<div style="overflow: auto">                
     					<div style="float: left; display: block"><a
     						href="https://innovanon-inc.github.com/LHP"><img 
@@ -503,7 +504,7 @@
 
 
 
-					<!-- <stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile> 
+-->					<!-- <stylesheetfile>${basedir}/src/main/resources/stylesheet.css</stylesheetfile> 
 						<bootclasspath>${sun.boot.class.path}</bootclasspath> -->
 					<!-- <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet> <docletArtifact> --><!-- https://search.maven.org/artifact/org.umlgraph/doclet -->
 					<!-- <groupId>org.umlgraph</groupId> <artifactId>doclet</artifactId> 
@@ -511,7 +512,7 @@
 						-types -visibility -inferdep -quiet -hide java.* -collpackages java.util.* 
 						-qualify -postfixpackage -nodefontsize 9 -nodefontpackagesize 7 </additionalparam> -->
 					<!-- https://search.maven.org/artifact/org.umlgraph/umlgraph/5.6.6/jar -->
-					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+<!--					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
 					<docletArtifact>
 						<groupId>org.umlgraph</groupId>
 						<artifactId>umlgraph</artifactId>
@@ -520,34 +521,34 @@
 					<additionalparam>
 						-views -all
 					</additionalparam>
-					<!-- <useStandardDocletOptions>true</useStandardDocletOptions> -->
+-->					<!-- <useStandardDocletOptions>true</useStandardDocletOptions> -->
 					
 					<!-- <additionalparam>-output ${project.build.outputDirectory}/resourcedoc.xml</additionalparam> -->
-                <useStandardDocletOptions>false</useStandardDocletOptions>
+<!--                <useStandardDocletOptions>false</useStandardDocletOptions>
 				</configuration>
 			</plugin>
 
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>${maven-project-info-reports-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-					<!-- <licenseFileEncoding>UTF-8</licenseFileEncoding> -->
-				</configuration>
+-->					<!-- <licenseFileEncoding>UTF-8</licenseFileEncoding> -->
+<!--				</configuration>
 			</plugin>
 
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>${maven-jxr-plugin.version}</version>
 				<inherited>true</inherited>
 			</plugin>
 
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
@@ -557,8 +558,8 @@
 				</configuration>
 			</plugin>
 
-			<!--   https://mvnrepository.com/artifact/com.atlassian.maven.plugins/maven-clover2-plugin -->
-	<plugin>
+-->			<!--   https://mvnrepository.com/artifact/com.atlassian.maven.plugins/maven-clover2-plugin -->
+<!--	<plugin>
 		<groupId>com.atlassian.maven.plugins</groupId>
 		<artifactId>maven-clover2-plugin</artifactId>
 		<version>${maven-clover2-plugin.version}</version>
@@ -568,8 +569,8 @@
 		</configuration>
 	</plugin> 
 
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven-pmd-plugin.version}</version>
@@ -577,15 +578,15 @@
 				<configuration>
 					<targetjdk>${java.version}</targetjdk>
 					<rulesets>
-						<!-- <ruleset>/rulesets/basic.xml</ruleset> <ruleset>/rulesets/controversial.xml</ruleset> -->
-						<ruleset>/category/java/bestpractices.xml</ruleset>
+-->						<!-- <ruleset>/rulesets/basic.xml</ruleset> <ruleset>/rulesets/controversial.xml</ruleset> -->
+<!--						<ruleset>/category/java/bestpractices.xml</ruleset>
 					</rulesets>
 					<format>xml</format>
 					<linkXref>true</linkXref>
-					<!-- <sourceEncoding>UTF-8</sourceEncoding> -->
-					<minimumTokens>100</minimumTokens>
-					<!-- <aggregate></aggregate> -->
-					<analysisCache>true</analysisCache>
+-->					<!-- <sourceEncoding>UTF-8</sourceEncoding> -->
+<!--					<minimumTokens>100</minimumTokens>
+-->					<!-- <aggregate></aggregate> -->
+<!--					<analysisCache>true</analysisCache>
 					<benchmark>true</benchmark>
 					<includeTests>true</includeTests>
 					<includeXmlInSite>true</includeXmlInSite>
@@ -593,8 +594,8 @@
 				</configuration>
 			</plugin>
 
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-changes-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-changes-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changes-plugin</artifactId>
 				<version>${maven-changes-plugin.version}</version>
@@ -605,12 +606,12 @@
 					<includeOpenIssues>true</includeOpenIssues>
 					<onlyMilestoneIssues>false</onlyMilestoneIssues>
 					<smtpHost>localhost</smtpHost>
-					<!-- <sslMode>true</sslMode> -->
+-->					<!-- <sslMode>true</sslMode> -->
 					<!--<startTls>true</startTls> -->
-				</configuration>
+<!--				</configuration>
 			</plugin>
 
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>changelog-maven-plugin</artifactId> 
+-->			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>changelog-maven-plugin</artifactId> 
 				<inherited>true</inherited></plugin> -->
 
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-changelog-plugin -->
@@ -619,34 +620,34 @@
 				</plugin> -->
 
 			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/taglist-maven-plugin -->
-			<plugin>
+<!--			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>${taglist-maven-plugin.version}</version>
 				<inherited>true</inherited>
 			</plugin>
 
-			<!-- https://search.maven.org/artifact/org.jboss.maven.plugins/code-coverage-maven-plugin/1.0.1.Final/maven-plugin -->
-			<plugin>
+-->			<!-- https://search.maven.org/artifact/org.jboss.maven.plugins/code-coverage-maven-plugin/1.0.1.Final/maven-plugin -->
+<!--			<plugin>
 				<groupId>org.jboss.maven.plugins</groupId>
 				<artifactId>code-coverage-maven-plugin</artifactId>
 				<version>${code-coverage-maven-plugin.version}</version>
 				<inherited>true</inherited>
 			</plugin>
 			
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
-			<plugin>
+-->			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven-checkstyle-plugin.version}</version>
 				<configuration>
-					<!-- <excludes>**/test/java/**/*.java</excludes> -->
-					<headerLocation>LICENSE</headerLocation>
+-->					<!-- <excludes>**/test/java/**/*.java</excludes> -->
+<!--					<headerLocation>LICENSE</headerLocation>
 					<failOnViolation>true</failOnViolation>
 				</configuration>
 			</plugin>
 			
-			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
+-->			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
 			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -698,46 +699,47 @@
  -->
 
 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/jdepend-maven-plugin -->
-<plugin>
+<!--<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend-maven-plugin.version}</version>
 </plugin>
 		</plugins>
 	</reporting>
-
+-->
 	<build>
-		<defaultGoal>site-deploy deploy</defaultGoal>
+<!--		<defaultGoal>site-deploy deploy</defaultGoal>
+--><defaultGoal>deploy</defaultGoal>
 		<plugins>
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
-			<plugin>
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>${maven-site-plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
 					<generateSitemap>true</generateSitemap>
-					<!-- <topSiteURL>${project_url}</topSiteURL> -->
-					<validate>true</validate>
+-->					<!-- <topSiteURL>${project_url}</topSiteURL> -->
+<!--					<validate>true</validate>
 					<saveProcessedContent>true</saveProcessedContent>
 				</configuration>
 				<dependencies>
-					<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-					<dependency>
+-->					<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<!--					<dependency>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-lang3</artifactId>
 						<version>${commons-lang3.version}</version>
 					</dependency>
 
-					<!-- https://mvnrepository.com/artifact/org.apache.maven.doxia/doxia-site-renderer -->
-					<dependency>
+-->					<!-- https://mvnrepository.com/artifact/org.apache.maven.doxia/doxia-site-renderer -->
+<!--					<dependency>
 						<groupId>org.apache.maven.doxia</groupId>
 						<artifactId>doxia-site-renderer</artifactId>
 						<version>${doxia-site-renderer.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
-
+-->
 			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/aspectj-maven-plugin -->
 			<plugin>
 				<!-- <groupId>org.codehaus.mojo</groupId>-->
@@ -782,14 +784,14 @@
             <artifactId>aspectjrt</artifactId>
             <version>${aspectj.version}</version>
         </dependency> -->
-						<dependency>
+<!--						<dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
             <version>${java.version}</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/pom.xml</systemPath>
         </dependency>
-				</dependencies>
+-->				</dependencies>
 			</plugin>
 
 			<!-- https://mvnrepository.com/artifact/org.codehaus.gmavenplus/gmavenplus-plugin -->
@@ -912,7 +914,11 @@
 					<version>${java.version}</version>
 					</jdkToolchain>
 					<debug>${debug}</debug>
-				</configuration>
+<!--					<compilerArgs>
+						<arg>add-modules</arg>
+            <arg>java.xml.bind</arg>
+					</compilerArgs>
+-->				</configuration>
 			</plugin>
 
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->

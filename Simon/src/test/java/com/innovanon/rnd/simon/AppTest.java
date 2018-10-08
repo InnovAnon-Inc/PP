@@ -1,5 +1,10 @@
 package com.innovanon.rnd.simon;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import javax.xml.bind.JAXBException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,9 +35,14 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
+     * @throws JAXBException 
+     * @throws IOException 
+     * @throws FileNotFoundException 
      */
-    public void testApp()
+    public void testApp() throws FileNotFoundException, IOException, JAXBException
     {
-        assertTrue( true );
+        //assertTrue( true );
+    	String args = null;
+		App.main(args );
     }
 }

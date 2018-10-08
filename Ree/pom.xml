@@ -21,6 +21,10 @@
 		<groupId>com.innovanon.rnd</groupId>
 		<artifactId>IO</artifactId>
 		</dependency>
+				<dependency>
+		<groupId>com.innovanon.rnd</groupId>
+		<artifactId>AlphaTech</artifactId>
+		</dependency>
 	
 		<dependency>
 			<groupId>com.github.mifmif</groupId>

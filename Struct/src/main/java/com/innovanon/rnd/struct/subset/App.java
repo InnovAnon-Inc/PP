@@ -23,6 +23,6 @@ public enum App {
 		Random random=new Random();
 		IntSupplier ns = () -> random.nextInt(3);
 		Supplier<Collection<String>> ss = new SubsetSupplier<String>(suppliers, ns, random);
-		Stream.generate(ss).forEach(System.out::println);
+		Stream.generate(ss).limit (100).forEach(System.out::println);
 	}
 }

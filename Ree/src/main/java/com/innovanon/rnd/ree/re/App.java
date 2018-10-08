@@ -7,6 +7,7 @@ import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.ri.suppliers.special.SizeSupplier;
 import com.mifmif.common.regex.Generex;
 
@@ -66,8 +67,13 @@ public class App implements Consumer<String> {
 	 * @param args
 	 * @throws IOException
 	 */
+	@Todo("stop eating errors")
 	public static void main(String... args) throws IOException {
 		Random random = new Random();
+		try {
 		RegexUtil.getDictionary().stream().forEach(new App(random));
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -20,11 +20,13 @@ public enum App {
 	/* no instances */ ;
 	
 	public static void main(String... args) {
-		Stream<Integer> data1 = Stream.iterate(0, x->3 * x + 2).limit((Integer.MAX_VALUE - 2) / 3);
+		//Stream<Integer> data1 = Stream.iterate(0, x->3 * x + 2).limit((Integer.MAX_VALUE - 2) / 3);
+		Stream<Integer> data1 = Stream.iterate(0, x->3 * x + 2).limit(100);
 		Supplier<Stream<Integer>> supplier1 = Replayer.replay(data1 );
 		Collection<Integer> c1 = new ImmutableStreamCollectionImpl<>(supplier1);
 		//
-		Stream<Integer> data2 = Stream.iterate(1, x->x * x).limit((int) Math.sqrt(Integer.MAX_VALUE));
+		//Stream<Integer> data2 = Stream.iterate(1, x->x * x).limit((int) Math.sqrt(Integer.MAX_VALUE));
+		Stream<Integer> data2 = Stream.iterate(1, x->x * x).limit(100);
 		Supplier<Stream<Integer>> supplier2 = Replayer.replay(data2 );
 		Collection<Integer> c2 = new ImmutableStreamCollectionImpl<>(supplier2);
 		//

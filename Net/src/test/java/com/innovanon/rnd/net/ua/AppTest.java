@@ -1,4 +1,6 @@
-package com.innovanon.rnd.ri;
+package com.innovanon.rnd.net.ua;
+
+import javax.xml.bind.JAXBException;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -30,8 +32,9 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
+     * @throws JAXBException 
      */
-    public void testApp()
+    public void testApp() throws JAXBException
     {
         //assertTrue( true );
     	String args = null;

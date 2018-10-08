@@ -1,4 +1,4 @@
-package com.innovanon.rnd.ri;
+package com.innovanon.rnd.struct.ss;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
