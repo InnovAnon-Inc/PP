@@ -26,7 +26,8 @@ public class DictionarySupplier implements Supplier<String> {
 	 * @param random
 	 */
 	public DictionarySupplier(Random random) {
-		Stream<String> list = DictionaryUtil.getDictionary("all");
+		Stream<String> list = DictionaryUtil.getInstance().apply("all");
+//	list=	list.limit(10);
 		Stream<String>rList = BagUtil.getRandomStream(list, random);
 		//Iterable<String> iter = new BagImpl<>(list, random);
 		//dict = new Reiterator<>(iter);

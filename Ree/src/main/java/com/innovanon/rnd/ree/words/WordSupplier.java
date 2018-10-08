@@ -33,7 +33,7 @@ public class WordSupplier implements Instantiator<Locale, Stream<Word>> {
 	 * @param random
 	 */
 	public WordSupplier(Random random, IntSupplier ns) {
-		Function<Locale, Stream<String>> words = lang -> WordListUtil.getData(lang);
+		Function<Locale, Stream<String>> words = lang -> WordListUtil.getInstance().apply(lang);
 		subsets = l -> {
 			if (l == null)
 				return null;

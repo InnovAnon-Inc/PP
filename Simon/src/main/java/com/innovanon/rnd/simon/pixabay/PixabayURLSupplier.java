@@ -115,7 +115,7 @@ public class PixabayURLSupplier extends URLSupplier {
 
 	@Todo("don't store passwords in Strings")
 	private static String getKey() throws FileNotFoundException, IOException {
-		return String.valueOf(HomeFileToCharArrayUtil.getData(".pixabay"));
+		return String.valueOf(HomeFileToCharArrayUtil.getInstance().apply(".pixabay"));
 	}
 	
 	private static Collection< Supplier< NameValuePair>> getNonOptionalParameters() {

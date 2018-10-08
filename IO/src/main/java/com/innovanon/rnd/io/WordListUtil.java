@@ -13,32 +13,27 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Collection;
 import java.util.Locale;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.javasync.streams.Replayer;
-
 import com.innovanon.rnd.at.Todo;
-import com.innovanon.rnd.struct.memo.Memoizer;
 
 /**
  * @author gouldbergstein
  *
  */
-public enum WordListUtil {
-	/* no instances */ ;
-
-	private static Function<Locale, Supplier<Stream<String>>> userAgents = Memoizer
-			.memoize(uax -> Replayer.replay(getDataHelper(uax)));
-
-	public static Stream<String> getData(Locale lang) {
-		return userAgents.apply(lang).get();
+public class WordListUtil extends IOStream<Locale,String>{
+	
+	private static IOStream<Locale,String> instance;
+	
+	public static IOStream<Locale,String>getInstance(){
+		if(instance==null)instance=new WordListUtil();return instance;
 	}
+	
+	private WordListUtil() {}
 
-	private static Stream<String> getDataHelper(Locale lang) {
+	protected  Stream<String> helper(Locale lang) {
 	Collection<File> files =	WordListsUtil.getData();
 	Predicate<? super File> predicate=f -> f.getName().toLowerCase().contains(lang.getDisplayLanguage().toLowerCase());
 	//System.out.println(lang.getDisplayLanguage());

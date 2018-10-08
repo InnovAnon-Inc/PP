@@ -8,29 +8,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.function.Function;
 
 import com.innovanon.rnd.at.Todo;
-import com.innovanon.rnd.struct.memo.Memoizer;
-import com.innovanon.rnd.util.CountingUtil;
+import com.innovanon.rnd.util.StringUtil;
 
 /**
  * @author gouldbergstein
  *
  */
-public enum HomeFileToCharArrayUtil {
-	/* no instances */ ;
-
-	private static Function<String, char[]> userAgents = Memoizer.memoize(uax -> getUserAgentsHelper(uax));
-
-	public static char[] getData(String filename) {
-		return userAgents.apply(filename);
+public class HomeFileToCharArrayUtil extends IO<String,char[],char[]>{
+	
+	private static IO<String,char[],char[]> instance;
+	
+	public static IO<String,char[],char[]>getInstance(){
+		if (instance==null)instance = new HomeFileToCharArrayUtil();
+		return instance;
 	}
-
-	private static char[] getUserAgentsHelper(String filename) {
-		return getDataHelper(new File(System.getProperty("user.home"), filename));
-	}
-
+	
+	private HomeFileToCharArrayUtil() {}
 	
 	@Todo("clean this up")
 	@Todo("specialized errors")
@@ -53,7 +48,7 @@ public enum HomeFileToCharArrayUtil {
 
 		try {
 			input = new BufferedReader(fis);
-			off = IOUtil.r_read(input, cbuf);
+			off = Restart.r_read(input, cbuf);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new Error(e);
@@ -74,35 +69,18 @@ public enum HomeFileToCharArrayUtil {
 		//// assert !String.valueOf(ret).contains("\0");
 		// System.out.println((int)(ret[off-1]));
 		// return ret;
-		return trim(cbuf, 0, off - 1);
+		return StringUtil.trim(cbuf, 0, off - 1);
 	}
 
-	public static char[] trim(char[] buf) {
-		return trim(buf, 0, buf.length - 1);
-	}
 
-	public static char[] trim(char[] buf, int off, int len) {
-		// System.out.println(off);
-		while (off < len && (Character.isWhitespace(buf[off]) /*|| buf[off] == '\0'||buf[off]==0*/))
-			off++;
-		while (len > off && (Character.isWhitespace(buf[len]) /*|| buf[len] == '\0'||buf[len]==0*/))
-			len--;
-		assert buf[len]!='\0';
-		assert buf[len]!=0;
-		assert len >= 0;
-		assert off <= buf.length;
-		assert off <= len;
-		char[] ret = new char[CountingUtil.inclusiveRange(off, len)];
-		assert ret.length <= buf.length;
-		assert ret.length == len - off + 1;
-		// System.out.println(Arrays.toString(buf));
-		// System.out.println(buf.length);
-		// System.out.println(off);
-		// System.out.println(len);
-		// System.out.println(ret.length);
-		System.arraycopy(buf, off, ret, 0, len + 1);
-		//for (int i = 0; i < ret.length; i++) 
-		//System.out.println((int)ret[i]);
+	@Override
+	protected char[] outputHelper(char[] input) {
+		char[] ret =input.clone();
 		return ret;
+	}
+
+	@Override
+	protected char[] inputHelper(String input) {
+		return getDataHelper(new File(System.getProperty("user.home"),input));
 	}
 }

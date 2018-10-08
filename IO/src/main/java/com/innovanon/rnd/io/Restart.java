@@ -10,7 +10,7 @@ import java.io.Reader;
  * @author gouldbergstein
  *
  */
-public enum IOUtil {
+public enum Restart {
 	/* no instances */ ;
 
 	/**
