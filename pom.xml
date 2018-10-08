@@ -746,9 +746,9 @@
 				<version>${aspectj.plugin.version}</version>
 				<inherited>true</inherited>
 				<configuration>
-					<source>10</source>
-					<target>10</target>
-					<complianceLevel>10</complianceLevel>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<complianceLevel>${java.version}</complianceLevel>
 					<verbose>${verbose}</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
 					<!-- <aspectLibraries> <aspectLibrary> <groupId>com.innovanon.rnd</groupId> 
@@ -907,9 +907,9 @@
 					<target>${java.version}</target>
 					<!-- <encoding>UTF-8</encoding> -->
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<release>10</release>
+					<release>${java.version}</release>
 					<jdkToolchain>
-					<version>10</version>
+					<version>${java.version}</version>
 					</jdkToolchain>
 					<debug>${debug}</debug>
 				</configuration>

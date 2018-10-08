@@ -20,13 +20,21 @@
   <groupId>com.innovanon.rnd</groupId>
   <artifactId>AlphaTech</artifactId>
   </dependency>
-  
-  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 <dependency>
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
-    <version>2.1</version>
+    <version>2.4.0-b180830.0359</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb1-impl -->
+<dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb1-impl</artifactId>
+    <version>2.2.5.1</version>
+</dependency>
+
 
 <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 <dependency>

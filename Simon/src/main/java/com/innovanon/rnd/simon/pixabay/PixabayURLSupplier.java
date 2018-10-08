@@ -1,13 +1,12 @@
 /**
  * 
  */
-package com.innovanon.rnd.simon;
+package com.innovanon.rnd.simon.pixabay;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Locale;
 import java.util.Random;
 import java.util.function.Function;
 import java.util.function.IntSupplier;
@@ -21,40 +20,15 @@ import com.innovanon.rnd.net.nv.NameValuePairImpl;
 import com.innovanon.rnd.ri.suppliers.special.EnumSubsetSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
+import com.innovanon.rnd.simon.QueryLang;
+import com.innovanon.rnd.simon.QuerySupplier;
+import com.innovanon.rnd.simon.URLSupplier;
 import com.innovanon.rnd.struct.pair.ImmutablePairImpl;
 import com.innovanon.rnd.struct.pair.Pair;
 import com.innovanon.rnd.struct.stream.StreamUtil;
 import com.innovanon.rnd.util.StringUtil;
 
-enum QueryLang implements NameValuePair{
-	CS("cs"), DA("da"), DE("de"), EN("en"), ES("es"), FR("fr"), ID("id"), IT("it"), HU("hu"), NL("nl"), NO("no"),
-	PL("pl"), PT("pt"), RO("ro"), SK("sk"), FI("fi"), SV("sv"), TR("tr"), VI("vi"), TH("th"), BG("bg"), RU("ru"),
-	EL("el"), JA("ja"), KO("ko"), ZH("zh");
-	/**
-	 * 
-	 */
-	private String value;
-	
-	private Locale locale;
 
-	/**
-	 * @param value
-	 */
-	QueryLang(String value) {
-		this.value = value;
-		this.locale = Locale.forLanguageTag(value);
-	}
-
-	public String getValue() {
-		return value;
-	}
-	
-	public String getName() { return "lang";}
-
-	public Locale getLocale() {
-		return locale;
-	}
-}
 
 enum QueryType  implements NameValuePair{
 	ALL("all"),PHOTO("photo"),ILLUSTRATION("illustration"),VECTOR("vector");
@@ -209,5 +183,15 @@ public class PixabayURLSupplier extends URLSupplier {
 				new EnumSupplier<QuerySafe>(QuerySafe.class, random),
 				new EnumSupplier<QueryOrder>(QueryOrder.class, random),
 				pages, perPages, new RangedIntSupplier(0, 5, random), random);
+	}
+	
+	public PixabayURLSupplier(Random random) throws IOException{
+		this(
+				new QuerySupplier(random),
+				new RangedIntSupplier(random, 0, 100),
+				new RangedIntSupplier(random, 0, 100),
+				new RangedIntSupplier(random, 0, 10),
+				 new RangedIntSupplier(random, 3, 200), 
+				 random);
 	}
 }

@@ -335,6 +335,7 @@ public enum SetUtil {
 	 * @return stream with the empty optionals removed
 	 */
 	public static <T> Stream<T> filterOptionals (Stream<Optional<T>> s) {
-		return s.flatMap(Optional::stream);
+		//return s.flatMap(Optional::stream);
+		return s.filter(o -> o.isPresent()).map(o -> o.get());
 	}
 }

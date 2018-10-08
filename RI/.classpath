@@ -23,5 +23,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/Refl"/>
+	<classpathentry kind="src" path="/Struct"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

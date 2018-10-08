@@ -12,7 +12,10 @@ import java.util.stream.Stream;
 import javax.xml.bind.JAXBException;
 
 import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
+import com.innovanon.rnd.simon.pixabay.PixabayImageURLSupplier;
+import com.innovanon.rnd.simon.pixabay.PixabayURLSupplier;
 import com.innovanon.rnd.struct.pair.Pair;
+import com.innovanon.rnd.struct.stream.StreamUtil;
 
 /**
  * Hello world!
@@ -53,15 +56,16 @@ public enum App {
 		//IntFunction<Integer> sizes = new BoundedIntFunction(random);
 		//Function<Locale, DiscreteSubsetFunction<Word>> f = words.andThen(c -> new DiscreteSubsetFunction<Word>(c, random, sizes));
 		
-		IntSupplier sizes = new RangedIntSupplier(1, 3, random);
-		Supplier<Pair<QueryLang,Collection<String>>> queries = new QuerySupplier(random, sizes );
+		//IntSupplier sizes = new RangedIntSupplier(1, 3, random);
+		//Supplier<Pair<QueryLang,Collection<String>>> queries = new QuerySupplier(random, sizes );
 		
-		IntSupplier widths = new RangedIntSupplier(random, 0, 100);
-		IntSupplier heights = new RangedIntSupplier(random, 0, 100);
-		IntSupplier page = new RangedIntSupplier(random, 0, 10);
-		IntSupplier pageAmt = new RangedIntSupplier(random, 3, 200);
-		Supplier<URL> urls = new PixabayURLSupplier(queries, widths, heights, page, pageAmt, random);
+		//IntSupplier widths = new RangedIntSupplier(random, 0, 100);
+		//IntSupplier heights = new RangedIntSupplier(random, 0, 100);
+		//IntSupplier page = new RangedIntSupplier(random, 0, 10);
+		//IntSupplier pageAmt = new RangedIntSupplier(random, 3, 200);
+		//Supplier<URL> urls = new PixabayURLSupplier(queries, widths, heights, page, pageAmt, random);
+		Supplier<Stream<URL>> urls = new PixabayImageURLSupplier(random);
 		long maxSize = 10;
-		Stream.generate(urls).limit(maxSize ).forEach(System.out::println);
+		Stream.generate(urls).limit(maxSize ).reduce((a, b) -> Stream.concat(a, b)).get().forEach(System.out::println);
 	}
 }

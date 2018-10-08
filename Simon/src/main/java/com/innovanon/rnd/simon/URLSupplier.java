@@ -92,7 +92,8 @@ public class URLSupplier implements Supplier<URL> {
 			//builder.setParameter("key", nonOptionalParameters);
 			//builder.setParameter("q", k.getCdr());
 			//builder.setParameter("lang", k.getCar().getValue());
-			return builder.build().toURL();
+			URL ret = builder.build().toURL();
+			return ret;
 		} catch (MalformedURLException | URISyntaxException e) {
 			// TODO Auto-generated catch block
 			throw new Error(e);

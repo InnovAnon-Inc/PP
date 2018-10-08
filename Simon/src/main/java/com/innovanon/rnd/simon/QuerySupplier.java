@@ -16,6 +16,7 @@ import com.innovanon.rnd.at.Todo;
 import com.innovanon.rnd.ree.words.Word;
 import com.innovanon.rnd.ree.words.WordSupplier;
 import com.innovanon.rnd.ri.suppliers.special.EnumSupplier;
+import com.innovanon.rnd.ri.suppliers.special.RangedIntSupplier;
 import com.innovanon.rnd.struct.pair.ImmutablePairImpl;
 import com.innovanon.rnd.struct.pair.Pair;
 
@@ -32,6 +33,10 @@ public class QuerySupplier implements Supplier<Pair<QueryLang, Collection<String
 		langs = new EnumSupplier<QueryLang>(QueryLang.class, random);
 		words = new WordSupplier(random, ns);
 		//System.out.println("A");
+	}
+	
+	public QuerySupplier(Random random) {
+		this (random, new RangedIntSupplier(1, 3, random));
 	}
 
 	/*
